@@ -37,7 +37,7 @@ const PetitionInfo = (props: petitionInfoProps) => {
     const getOwnerImage = () => {
         axios
             .get(
-                `http://localhost:4941/api/v1/users/${petitionInfo.ownerId}/image`,
+                `${process.env.APP_URL}/api/v1/users/${petitionInfo.ownerId}/image`,
                 {
                     responseType: "arraybuffer",
                 },
@@ -65,10 +65,10 @@ const PetitionInfo = (props: petitionInfoProps) => {
         axios
             .all([
                 axios.get(
-                    `http://localhost:4941/api/v1/petitions?categoryIds=${petitionInfo.categoryId}`,
+                    `${process.env.APP_URL}/api/v1/petitions?categoryIds=${petitionInfo.categoryId}`,
                 ),
                 axios.get(
-                    `http://localhost:4941/api/v1/petitions?ownerId=${petitionInfo.ownerId}`,
+                    `${process.env.APP_URL}/api/v1/petitions?ownerId=${petitionInfo.ownerId}`,
                 ),
             ])
             .then(
@@ -81,7 +81,7 @@ const PetitionInfo = (props: petitionInfoProps) => {
     };
 
     const getCategories = () => {
-        axios.get(`http://localhost:4941/api/v1/petitions/categories`).then(
+        axios.get(`${process.env.APP_URL}/api/v1/petitions/categories`).then(
             (response) => {
                 setErrorFlag(false);
                 setErrorMessage("");

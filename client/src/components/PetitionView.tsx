@@ -17,7 +17,7 @@ const PetitionView = () => {
     }, [id, setPetition]);
 
     const getPetition = () => {
-        axios.get(`http://localhost:4941/api/v1/petitions/${id}`).then(
+        axios.get(`${process.env.APP_URL}/api/v1/petitions/${id}`).then(
             (response) => {
                 setErrorFlag(false);
                 setErrorMessage("");
@@ -33,7 +33,7 @@ const PetitionView = () => {
 
     const getPetitionImage = () => {
         axios
-            .get(`http://localhost:4941/api/v1/petitions/${id}/image`, {
+            .get(`${process.env.APP_URL}/api/v1/petitions/${id}/image`, {
                 responseType: "arraybuffer",
             })
             .then(

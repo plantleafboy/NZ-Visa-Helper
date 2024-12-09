@@ -33,7 +33,7 @@ const SignUp = () => {
 
     const handleLogin = () => {
         axios
-            .post(process.env.APP_URL + `/api/v1/users/login`, {
+            .post(`${process.env.APP_URL}/api/v1/users/login`, {
                 email: newUserDetails.email,
                 password: newUserDetails.password,
             })
@@ -53,7 +53,7 @@ const SignUp = () => {
     };
 
     const handleRegister = () => {
-        axios.post(`http://localhost:4941/api/v1/users/register`, newUserDetails)
+        axios.post(`${process.env.APP_URL}/api/v1/users/register`, newUserDetails)
             .then((response) => {
                 setFormError(false);
                 setErrorMessage("");
