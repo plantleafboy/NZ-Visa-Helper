@@ -33,7 +33,7 @@ const SignUp = () => {
 
     const handleLogin = () => {
         axios
-            .post(`http://localhost:4941/api/v1/users/login`, {
+            .post(process.env.APP_URL + `/api/v1/users/login`, {
                 email: newUserDetails.email,
                 password: newUserDetails.password,
             })
