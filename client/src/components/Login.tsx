@@ -40,7 +40,7 @@ const Login = () => {
 
 
     const handleLogin = () => {
-        axios.post(`${process.env.APP_URL}/api/v1/users/login`, user).then(
+        axios.post(process.env.APP_URL + `/api/v1/users/login`, user).then(
             (response) => {
                 setEmailError(false);
                 setPasswordError(false);

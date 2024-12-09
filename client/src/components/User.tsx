@@ -75,7 +75,7 @@ import CSS from "csstype";
 
         const getUser = () => {
             axios
-                .get(`${process.env.APP_URL}/api/v1/users/${userId}`, {
+                .get(process.env.APP_URL + `/api/v1/users/${userId}`, {
                     headers: { "x-authorization": userAuthToken },
                 })
 
@@ -95,7 +95,7 @@ import CSS from "csstype";
 
         const getUserImage = () => {
             axios
-                .get(`${process.env.APP_URL}/api/v1/users/${userId}/image`, {
+                .get(process.env.APP_URL + `/api/v1/users/${userId}/image`, {
                     responseType: "arraybuffer",
                 })
                 .then(
@@ -123,7 +123,7 @@ import CSS from "csstype";
                 r.onload = (c) => {
                     if (c.target?.result) {
                         const arrayBuffer = c.target.result as ArrayBuffer;
-                        axios.put(`${process.env.APP_URL}/api/v1/users/${userId}/image`, arrayBuffer,
+                        axios.put(process.env.APP_URL + `/api/v1/users/${userId}/image`, arrayBuffer,
                             {
                                 headers: {
                                     'x-authorization': userAuthToken,
@@ -151,7 +151,7 @@ import CSS from "csstype";
 
         const deleteProfilePicture= () => {
             axios
-                .delete(`${process.env.APP_URL}/api/v1/users/${userId}/image`, {
+                .delete(process.env.APP_URL + `/api/v1/users/${userId}/image`, {
                     headers: { "x-authorization": userAuthToken },
                 })
                 .then(
@@ -268,7 +268,7 @@ import CSS from "csstype";
 
             // } console.log('out if')
             axios
-                .patch(`${process.env.APP_URL}/api/v1/users/${userId}`, editedUser, {
+                .patch(process.env.APP_URL + `/api/v1/users/${userId}`, editedUser, {
                     headers: { "x-authorization": userAuthToken },
                 })
                 .then(
@@ -287,7 +287,7 @@ import CSS from "csstype";
                 });
         };
         const getPetitions = () => {
-            axios.get(`${process.env.APP_URL}/api/v1/petitions?ownerId=${userId}`, {
+            axios.get(process.env.APP_URL + `/api/v1/petitions?ownerId=${userId}`, {
                 })
                 .then((response) => {
                     console.log("API Response: ", response.data);
@@ -303,7 +303,7 @@ import CSS from "csstype";
         const petition_rows = () => petitions.map((petition: Petition) => <PetitionListObject key={petition.petitionId + petition.title} petition={petition}/>);
 
         // const getPetitions = () => {
-        //     axios.get(`${process.env.APP_URL}/api/v1/petitions?ownerId=${userId}`)
+        //     axios.get(process.env.APP_URL + `/api/v1/petitions?ownerId=${userId}`)
         //         .then(
         //             axios.spread((data1, data2) => {
         //                 setPetitions([...data1.data.petitions, ...data2.data.petitions]);

@@ -47,7 +47,7 @@ const PetitionList = () => {
     const currentPetitions = petitions.slice(firstPetitionIndex, lastPetitionIndex);
 
     const getPetitions = () => {
-        axios.get(`${process.env.APP_URL}/api/v1/petitions`, {
+        axios.get(process.env.APP_URL + `/api/v1/petitions`, {
             params: {
                 q: qParam || undefined,
                 categoryIds: categoryIds,
@@ -71,7 +71,7 @@ const PetitionList = () => {
     }, [qParam, categoryIds, sortBy, supportCost]);
 
     const getCategorys = () => {
-        axios.get(`${process.env.APP_URL}/api/v1/petitions/categories`).then(
+        axios.get(process.env.APP_URL + `/api/v1/petitions/categories`).then(
             (response) => {
                 setCategorys(response.data);
             },

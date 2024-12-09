@@ -31,7 +31,7 @@ function NavBar(props: AppBarProps) {
         console.log('log here: ', logState);
         axios
             .post(
-                "${process.env.APP_URL}/api/v1/users/logout", {},
+                "http://localhost:4941/api/v1/users/logout", {},
                 {headers: {'x-authorization': userAuthToken,
                     },
                 },
@@ -52,7 +52,7 @@ function NavBar(props: AppBarProps) {
 
     const getUserImage = () => {
         axios
-            .get(`${process.env.APP_URL}/api/v1/users/${userId}/image`, {
+            .get(process.env.APP_URL + `/api/v1/users/${userId}/image`, {
                 responseType: "arraybuffer",
             })
             .then(
