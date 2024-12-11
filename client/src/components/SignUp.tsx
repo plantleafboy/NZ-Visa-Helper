@@ -52,25 +52,51 @@ const SignUp = () => {
                 },
             );
     };
-
     const handleRegister = () => {
+        console.log("In handleRegister block")
         axios.post(`${BASE_URL}/api/v1/users/register`, newUserDetails)
             .then((response) => {
                 setFormError(false);
                 setErrorMessage("");
                 setNewUserDetails(response.data);
                 handleLogin();
-            },
-            (e) => {
-                if (e.response.status === 403) {
-                    setErrorMessage("This email is already in use!");
-
-                } else setErrorMessage(e.response.statusText);
+            })
+            .catch((e) => {
+                // Improved error handling
+                if (e.response) {
+                    if (e.response.status === 403) {
+                        setErrorMessage("This email is already in use!");
+                    } else {
+                        setErrorMessage(e.response.statusText);
+                    }
+                } else if (e.request) {
+                    setErrorMessage("No response received from the server.");
+                } else {
+                    setErrorMessage("Error occurred while making the request.");
+                }
                 setFormError(true);
-
-            },
-        );
+            });
     };
+
+    // const handleRegister = () => {
+    //     console.log("In handleRegister block")
+    //     axios.post(`${BASE_URL}/api/v1/users/register`, newUserDetails)
+    //         .then((response) => {
+    //             setFormError(false);
+    //             setErrorMessage("");
+    //             setNewUserDetails(response.data);
+    //             handleLogin();
+    //         },
+    //         (e) => {
+    //             if (e.response.status === 403) {
+    //                 setErrorMessage("This email is already in use!");
+    //
+    //             } else setErrorMessage(e.response.statusText);
+    //             setFormError(true);
+    //
+    //         },
+    //     );
+    // };
     const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
         const { name, value } = e.target;
         setNewUserDetails({ ...newUserDetails, [name]: value });
@@ -86,20 +112,25 @@ const SignUp = () => {
         if (!firstName || !lastName || !email || !password) {
             setFormError(true);
             setErrorMessage("All fields are required");
+            console.log("All fields are required")
             hasError = true;
         }
         if (!/\S+@\S+\.\S+/.test(email)) {
             setEmailError(true);
             // setFieldErrors({ ...fieldErrors, [email]:  "Invalid email address format, requires jane@doe.nz"})
             currFieldErrors.email = "Invalid email address format, requires jane@doe.nz";
+            console.log("Invalid email address format, requires jane@doe.nz")
+
             hasError = true;
         } else setEmailError(false);
 
-        const expression: RegExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+        const expression: RegExp = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{6,}$/
         if ((password.length < 6) || !expression.test(password)) {
             setPasswordError(true);
             currFieldErrors.changePassword = "Password requires at least 6 characters and must include atl least one: Uppercase character, number and special character";
             hasError = true;
+            console.log("Password requires at least 6 characters and must include atl least one: Uppercase character, number and special character")
+
         } else setPasswordError(false);
 
             setFieldErrors(currFieldErrors)
@@ -108,8 +139,10 @@ const SignUp = () => {
     };
 
     const handleSubmit = (e: React.FormEvent) => {
+        console.log("In handlesubmit function")
         e.preventDefault();
-        if (validateFields()) {
+        const validationError : Boolean = validateFields()
+        if (validationError) {
             handleRegister();
         }
     };
