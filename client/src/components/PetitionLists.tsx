@@ -18,6 +18,7 @@ import NavBar from "./NavBar";
 import { useUserAuthStateStore } from "../store";
 import {Link} from "react-router-dom";
 import Pagination from "./Pagination";
+import {BASE_URL} from "../utility/config";
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -47,7 +48,7 @@ const PetitionList = () => {
     const currentPetitions = petitions.slice(firstPetitionIndex, lastPetitionIndex);
 
     const getPetitions = () => {
-        axios.get(process.env.APP_URL + `/api/v1/petitions`, {
+        axios.get(`${BASE_URL}/api/v1/petitions`, {
             params: {
                 q: qParam || undefined,
                 categoryIds: categoryIds,
@@ -71,7 +72,7 @@ const PetitionList = () => {
     }, [qParam, categoryIds, sortBy, supportCost]);
 
     const getCategorys = () => {
-        axios.get(process.env.APP_URL + `/api/v1/petitions/categories`).then(
+        axios.get(`${BASE_URL}/api/v1/petitions/categories`).then(
             (response) => {
                 setCategorys(response.data);
             },

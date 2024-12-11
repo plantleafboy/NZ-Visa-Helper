@@ -4,6 +4,7 @@ import React, {useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import {useUserAuthStateStore} from "../store";
 import NavBar from "./NavBar";
+import {BASE_URL} from "../utility/config";
 
 
 const SignUp = () => {
@@ -33,7 +34,7 @@ const SignUp = () => {
 
     const handleLogin = () => {
         axios
-            .post(process.env.APP_URL + `/api/v1/users/login`, {
+            .post(`${BASE_URL}/api/v1/users/login`, {
                 email: newUserDetails.email,
                 password: newUserDetails.password,
             })
@@ -53,7 +54,7 @@ const SignUp = () => {
     };
 
     const handleRegister = () => {
-        axios.post(process.env.APP_URL + `/api/v1/users/register`, newUserDetails)
+        axios.post(`${BASE_URL}/api/v1/users/register`, newUserDetails)
             .then((response) => {
                 setFormError(false);
                 setErrorMessage("");

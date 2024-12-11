@@ -11,6 +11,7 @@ import {
     Typography,
 } from "@mui/material";
 import PetitionListObject from "./PetitionListObject";
+import {BASE_URL} from "../utility/config";
 
 interface petitionInfoProps {
     petition: PetitionInfo;
@@ -37,7 +38,7 @@ const PetitionInfo = (props: petitionInfoProps) => {
     const getOwnerImage = () => {
         axios
             .get(
-                process.env.APP_URL + `/api/v1/users/${petitionInfo.ownerId}/image`,
+                `${BASE_URL}/api/v1/users/${petitionInfo.ownerId}/image`,
                 {
                     responseType: "arraybuffer",
                 },
@@ -65,10 +66,10 @@ const PetitionInfo = (props: petitionInfoProps) => {
         axios
             .all([
                 axios.get(
-                    process.env.APP_URL + `/api/v1/petitions?categoryIds=${petitionInfo.categoryId}`,
+                    `${BASE_URL}/api/v1/petitions?categoryIds=${petitionInfo.categoryId}`,
                 ),
                 axios.get(
-                    process.env.APP_URL + `/api/v1/petitions?ownerId=${petitionInfo.ownerId}`,
+                    `${BASE_URL}/api/v1/petitions?ownerId=${petitionInfo.ownerId}`,
                 ),
             ])
             .then(
@@ -81,7 +82,7 @@ const PetitionInfo = (props: petitionInfoProps) => {
     };
 
     const getCategories = () => {
-        axios.get(process.env.APP_URL + `/api/v1/petitions/categories`).then(
+        axios.get(`${BASE_URL}/api/v1/petitions/categories`).then(
             (response) => {
                 setErrorFlag(false);
                 setErrorMessage("");

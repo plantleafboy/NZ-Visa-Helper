@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, {ChangeEvent, useState} from "react"
 import {Link, useSearchParams} from "react-router-dom";
 import Pagination from "./Pagination";
+import {BASE_URL} from "../utility/config";
 
 const Petitions = () => {
     const [petitions,setPetitions] = React.useState <Petition[]> ([])
@@ -26,7 +27,7 @@ const Petitions = () => {
     };
 
     const getCategories = () => {
-        axios.get(process.env.APP_URL + `/api/v1/petitions/categories`).then(
+        axios.get(`${BASE_URL}/api/v1/petitions/categories`).then(
             (response) => {
                 setCategorys(response.data);
             },
@@ -38,7 +39,7 @@ const Petitions = () => {
     };
 
     const getPetitions = () => {
-       axios.get(process.env.APP_URL + `/api/v1/petitions`, {
+       axios.get(`${BASE_URL}/api/v1/petitions`, {
            params: {
                q: qParam || undefined}})
             .then((response) => {
@@ -57,7 +58,7 @@ const Petitions = () => {
     //     //event.preventDefault();
     //     console.log("submit form step reached")
     //
-    //     axios.get<petitionResponse>('http://localhost:4941/api/v1/petitions?' + 'q=community')
+    //     axios.get<petitionResponse>('`${BASE_URL}/api/v1/petitions?' + 'q=community')
     //         .then((response) => {
     //             console.log("API Response: ", response.data);
     //             setErrorFlag(false);

@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { Container } from "@mui/material";
 import NavBar from "./NavBar";
 import { useUserAuthStateStore } from "../store";
+import {BASE_URL} from "../utility/config";
 const PetitionView = () => {
     const { id } = useParams();
     const [petition, setPetition] = React.useState<Petition>();
@@ -17,7 +18,7 @@ const PetitionView = () => {
     }, [id, setPetition]);
 
     const getPetition = () => {
-        axios.get(process.env.APP_URL + `/api/v1/petitions/${id}`).then(
+        axios.get(`${BASE_URL}/api/v1/petitions/${id}`).then(
             (response) => {
                 setErrorFlag(false);
                 setErrorMessage("");
@@ -33,7 +34,7 @@ const PetitionView = () => {
 
     const getPetitionImage = () => {
         axios
-            .get(process.env.APP_URL + `/api/v1/petitions/${id}/image`, {
+            .get(`${BASE_URL}/api/v1/petitions/${id}/image`, {
                 responseType: "arraybuffer",
             })
             .then(

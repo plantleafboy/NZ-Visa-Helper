@@ -6,6 +6,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Avatar, Box, Button, IconButton, MenuItem } from "@mui/material";
 import { useUserAuthStateStore } from "../store/";
+import {BASE_URL} from "../utility/config";
 
 function NavBar(props: AppBarProps) {
     const redirect = useNavigate();
@@ -31,7 +32,7 @@ function NavBar(props: AppBarProps) {
         console.log('log here: ', logState);
         axios
             .post(
-                "http://localhost:4941/api/v1/users/logout", {},
+                "`${BASE_URL}/api/v1/users/logout", {},
                 {headers: {'x-authorization': userAuthToken,
                     },
                 },
@@ -52,7 +53,7 @@ function NavBar(props: AppBarProps) {
 
     const getUserImage = () => {
         axios
-            .get(process.env.APP_URL + `/api/v1/users/${userId}/image`, {
+            .get(`${BASE_URL}/api/v1/users/${userId}/image`, {
                 responseType: "arraybuffer",
             })
             .then(

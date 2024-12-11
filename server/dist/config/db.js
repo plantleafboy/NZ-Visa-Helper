@@ -25,11 +25,11 @@ const connect = () => __awaiter(void 0, void 0, void 0, function* () {
     state.pool = promise_1.default.createPool({
         connectionLimit: 100,
         multipleStatements: true,
-        host: process.env.SENG365_MYSQL_HOST,
-        user: process.env.SENG365_MYSQL_USER,
-        password: process.env.SENG365_MYSQL_PASSWORD,
-        database: process.env.SENG365_MYSQL_DATABASE,
-        port: parseInt(process.env.SENG365_MYSQL_PORT, 10) || 3306
+        host: process.env.MYSQL_HOST,
+        user: process.env.MYSQL_USER,
+        password: process.env.MYSQL_PASSWORD,
+        database: process.env.MYSQL_DATABASE,
+        port: parseInt(process.env.MYSQL_PORT, 10) || 3306
     });
     yield state.pool.getConnection(); // Check connection
     logger_1.default.info(`Successfully connected to database`);

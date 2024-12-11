@@ -55,7 +55,7 @@ const PetitionListObject = (props: IPetitionProps) => {
         padding: "0px"
     };
     const fetchImage = () => {
-        axios.get(process.env.APP_URL + `/api/v1/users/${petition.ownerId}/image`, {
+        axios.get(`${BASE_URL}/api/v1/users/${petition.ownerId}/image`, {
             responseType: "arraybuffer",
         })
             .then((response) => {
@@ -88,7 +88,7 @@ const PetitionListObject = (props: IPetitionProps) => {
 
     const getOwnerImage = () => {
         axios
-            .get(process.env.APP_URL + `/api/v1/petitions/${petition.petitionId}/image`, {
+            .get(`${BASE_URL}/api/v1/petitions/${petition.petitionId}/image`, {
                 responseType: "arraybuffer",
             })
             .then(

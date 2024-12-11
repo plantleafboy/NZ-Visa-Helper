@@ -4,6 +4,7 @@ import React, {useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import NavBar from "./NavBar";
 import { useUserAuthStateStore } from "../store";
+import {BASE_URL} from "../utility/config";
 const Login = () => {
     const [emailError, setEmailError] = useState(false)
     const [passwordError, setPasswordError] = useState(false)
@@ -40,7 +41,7 @@ const Login = () => {
 
 
     const handleLogin = () => {
-        axios.post(process.env.APP_URL + `/api/v1/users/login`, user).then(
+        axios.post(`${BASE_URL}/api/v1/users/login`, user).then(
             (response) => {
                 setEmailError(false);
                 setPasswordError(false);

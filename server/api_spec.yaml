@@ -6,7 +6,7 @@ info:
 servers:
   - url: https://seng365.csse.canterbury.ac.nz/api/v1
     description: "Reference server"
-  - url: http://localhost:4941/api/v1
+  - url: `${BASE_URL}/api/v1
     description: "Your development server"
 tags:
   - name: backdoor
