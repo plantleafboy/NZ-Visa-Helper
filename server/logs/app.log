@@ -198,3 +198,18 @@
 2024-12-11 17:39:11:3911 [35mhttp[39m: [35m##### POST /api/v1/executeSql #####[39m
 2024-12-11 17:39:11:3911 [31merror[39m: [31m[object Object][39m
 2024-12-11 17:39:11:3911 [31merror[39m: [31mYou have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[object Object]' at line 1[39m
+2024-12-11 19:11:51:1151 [32minfo[39m: [32mSuccessfully connected to database[39m
+2024-12-11 19:11:51:1151 [32minfo[39m: [32mListening on port: 4941[39m
+2024-12-11 19:11:56:1156 [35mhttp[39m: [35m##### OPTIONS /api/v1/users/register #####[39m
+2024-12-11 19:11:56:1156 [35mhttp[39m: [35m##### POST /api/v1/users/register #####[39m
+2024-12-11 19:11:57:1157 [35mhttp[39m: [35m##### OPTIONS /api/v1/users/login #####[39m
+2024-12-11 19:11:57:1157 [35mhttp[39m: [35m##### POST /api/v1/users/login #####[39m
+2024-12-11 19:11:58:1158 [35mhttp[39m: [35m##### GET /api/v1/users/21/image #####[39m
+2024-12-11 19:11:58:1158 [35mhttp[39m: [35m##### GET /api/v1/petitions #####[39m
+2024-12-11 19:11:58:1158 [35mhttp[39m: [35m##### GET /api/v1/petitions/categories #####[39m
+2024-12-11 19:12:07:127 [35mhttp[39m: [35m##### GET /api/v1/users/21/image #####[39m
+2024-12-11 19:12:07:127 [35mhttp[39m: [35m##### GET /api/v1/petitions #####[39m
+2024-12-11 19:12:07:127 [35mhttp[39m: [35m##### GET /api/v1/users/21/image #####[39m
+2024-12-11 19:12:07:127 [35mhttp[39m: [35m##### OPTIONS /api/v1/users/21 #####[39m
+2024-12-11 19:12:07:127 [35mhttp[39m: [35m##### GET /api/v1/users/21 #####[39m
+2024-12-11 19:12:07:127 [35mhttp[39m: [35m##### GET /api/v1/users/21/image #####[39m
