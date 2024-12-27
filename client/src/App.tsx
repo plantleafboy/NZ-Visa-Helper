@@ -7,7 +7,6 @@ import NotFound from "./components/NotFound";
 import Login from "./components/Login";
 import Petitions from "./components/Petitions";
 import SignUp from "./components/SignUp";
-// import UserList from "./components/UserLists";
 import PetitionList from "./components/PetitionLists";
 import Home from "./components/Home";
 import PetitionView from "./components/PetitionView";
@@ -24,7 +23,7 @@ function App() {
                  <Route path="/petitions" element={<PetitionList/>}/>
                  <Route path="/petitions-list" element={<Petitions/>}/>
                  <Route path="/petitions/:id" element={<PetitionView />} />
-                 <Route path="/" element={<PetitionList/>}/>
+                 <Route path="/" element={<Home/>}/>
                  <Route path="/profile/" element={<UserProfile />} />
                  {/*<Route path="*" element={<NotFound/>}/>*/}
              </Routes>

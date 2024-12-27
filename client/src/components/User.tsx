@@ -23,6 +23,7 @@ import PetitionListObject from "./PetitionListObject";
 import Pagination from "./Pagination";
 import CSS from "csstype";
 import { BASE_URL } from "../utility/config";
+import Footer from "./Footer";
 
     const UserProfile = () => {
         const {userId, userAuthToken, authenticated, resetState, userPassword, userEmail} = useUserAuthStateStore((state) => ({
@@ -327,7 +328,6 @@ import { BASE_URL } from "../utility/config";
             return (
                 <div>
                     <NavBar/>
-
                     <CardActions
                         sx={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
                         <h1>{user.firstName} {user.lastName}</h1>

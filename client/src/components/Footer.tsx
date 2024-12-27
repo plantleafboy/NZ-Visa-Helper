@@ -1,6 +1,10 @@
 import React from 'react';
 import {Box, Typography, Link, MenuItem} from "@mui/material";
-function Footer() {
+
+interface FooterProps {
+    text: string;
+}
+function Footer(props: FooterProps) {
 
     const testLoad = () => {
         console.log("footer loaded");
@@ -10,6 +14,11 @@ function Footer() {
         <Box
             component="footer"
             sx={{
+                position: 'fixed',
+                bottom: 0,
+                width: '100%',
+                height: 60,
+                textAlign: 'center',
                 py: 3,
                 px: 2,
                 mt: "auto",
@@ -21,7 +30,7 @@ function Footer() {
         >
 
             <Typography variant="body1" align="center">
-                © {new Date().getFullYear()} Your Company Name
+                © {new Date().getFullYear()} {props.text}
             </Typography>
             <Typography variant="body2" align="center">
                 Built with <Link href="https://mui.com/" underline="hover">MUI</Link>
