@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import UserProfile from "./components/User";
@@ -23,7 +22,6 @@ function App() {
                  <Route path="/petitions" element={<PetitionList/>}/>
                  <Route path="/petitions-list" element={<Petitions/>}/>
                  <Route path="/petitions/:id" element={<PetitionView />} />
-                 <Route path="/" element={<Home/>}/>
                  <Route path="/profile/" element={<UserProfile />} />
                  {/*<Route path="*" element={<NotFound/>}/>*/}
              </Routes>

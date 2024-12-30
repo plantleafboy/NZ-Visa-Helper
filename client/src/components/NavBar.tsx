@@ -2,13 +2,24 @@ import AppBar, { AppBarProps } from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Menu from "@mui/material/Menu";
 import axios from "axios";
-import React from "react";
+import React, {useState} from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Avatar, Box, Button, IconButton, MenuItem } from "@mui/material";
+import {Avatar, Box, Button, IconButton, MenuItem, MenuList, Typography} from "@mui/material";
 import { useUserAuthStateStore } from "../store/";
 import {BASE_URL} from "../utility/config";
+import AirplaneTicketIcon from '@mui/icons-material/AirplaneTicket';
+import MenuIcon from '@mui/icons-material/Menu';
+
 
 function NavBar(props: AppBarProps) {
+    const pages = [
+        { name: "Home", path: "/" },
+        { name: "About Us", path: "/about" },
+        { name: "Visa Info", path: "/visa-info" },
+        { name: "Book an Appointment", path: "/book-appointment" },
+        { name: "Contact Us", path: "/contact" }
+    ];
+
     const redirect = useNavigate();
     const { userId, userAuthToken, authenticated, resetState } = useUserAuthStateStore((state) => ({
         userId: state.userId,
@@ -16,6 +27,13 @@ function NavBar(props: AppBarProps) {
         authenticated: state.authenticated,
         resetState: state.resetState,
     }));
+    const [anchorNav, setAnchorNav] = useState<null | HTMLElement>(null);
+    const openMenu = (event:React.MouseEvent<HTMLElement>) => {
+        setAnchorNav(event.currentTarget);
+    };
+    const closeMenu = () => {
+        setAnchorNav(null);
+    }
 
     const [userImage, setUserImage] = React.useState<string>("");
     const [useStateElement, setUseStateElement] = React.useState<null | HTMLElement>(null);
@@ -83,18 +101,56 @@ function NavBar(props: AppBarProps) {
     };
 
     return (
-        <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
                 <Toolbar>
-                    <Box sx={{ display: "flex", flexGrow: 1 }}>
+                        <IconButton size='large' edge={'start'} color={'inherit'} aria-label={'logo'} sx={{display: {xs:'none', md: 'flex'}}}>
+                            <AirplaneTicketIcon/>
+                        </IconButton>
+                        <Typography variant='h6' component='div' sx={{flexGrow:1, display: {xs:'none', md: 'flex'}}}> Peng Visa Service </Typography>
 
-                        <Button
-                            component={Link}
-                            to="/petitions"
-                            sx={{ my: 1, color: "white", display: "block" }}
-                        >
-                            Petitions
-                        </Button>
+                        <Box sx={{display:{xs:'none',md:'flex'}}}>
+                            {pages.map((page) => (
+                                <Button
+                                    key={page.name}
+                                    component={Link}
+                                    to={page.path}
+                                    sx={{ my: 1, color: "white", display: "block" }}
+                                >
+                                    {page.name}
+                                </Button>
+                            ))}
+
+                            <Button
+                                component={Link}
+                                to="/petitions"
+                                sx={{ my: 1, color: "white", display: "block" }}
+                            >
+                                Example link
+                            </Button>
+                            <Button color={'inherit'}>Home</Button>
+                            <Button>About us</Button>
+                            <Button>Visa Info</Button>
+                            <Button>Book an Appointment</Button>
+                            <Button>Contact Us</Button>
+                        </Box>
+                        <Box sx={{display:{xs:'flex',md:'none'}}}>
+                            <IconButton size='large' edge='start' color='inherit' onClick={openMenu}>
+                                <MenuIcon/>
+                            </IconButton>
+                            <Menu open={Boolean(anchorNav)} onClose={closeMenu} sx={{display:{xs:'flex',md:'none'}}}>
+                                <MenuList>
+                                    <MenuItem>Home</MenuItem>
+                                    <MenuItem>About us</MenuItem>
+                                    <MenuItem>Visa Info</MenuItem>
+                                    <MenuItem>Book an Appointment</MenuItem>
+                                    <MenuItem>Contact Us</MenuItem>
+                                </MenuList>
+                            </Menu>
+                            <IconButton size='large' edge={'start'} color={'inherit'} aria-label={'logo'} sx={{display: {xs:'flex', md: 'none'}}}>
+                                <AirplaneTicketIcon/>
+                            </IconButton>
+                            <Typography variant='h6' component='div' sx={{flexGrow:1, display: {xs:'flex', md: 'none'}}}> Peng Visa Service </Typography>
+                        </Box>
                         <IconButton
                             size="large"
                             aria-label="profile-options"
@@ -105,7 +161,6 @@ function NavBar(props: AppBarProps) {
                         >
                             <Avatar alt="" src={userImage} />
                         </IconButton>
-                    </Box>
 
                     {!authenticated && (
                         <Menu
@@ -167,7 +222,6 @@ function NavBar(props: AppBarProps) {
                     )}
                 </Toolbar>
             </AppBar>
-        </Box>
     );
 }
 
