@@ -9,6 +9,10 @@ import SignUp from "./components/SignUp";
 import PetitionList from "./components/PetitionLists";
 import Home from "./components/Home";
 import PetitionView from "./components/PetitionView";
+import About from "./components/About";
+import VisaInfo from "./components/VisaInfo";
+import BookAppointment from "./components/BookAppointment";
+import ContactUs from "./components/ContactUs";
 
 
 function App() {
