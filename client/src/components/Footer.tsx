@@ -17,7 +17,7 @@ function Footer(props: FooterProps) {
                 position: 'fixed',
                 bottom: 0,
                 width: '100%',
-                height: 60,
+                height: 45,
                 textAlign: 'center',
                 py: 3,
                 px: 2,
@@ -35,13 +35,13 @@ function Footer(props: FooterProps) {
             <Typography variant="body2" align="center">
                 Built with <Link href="https://mui.com/" underline="hover">MUI</Link>
             </Typography>
-            <MenuItem
-                onClick={() => {
-                    testLoad();
-                }}
-            >
-                Logout (test)
-            </MenuItem>
+            {/*<MenuItem*/}
+            {/*    onClick={() => {*/}
+            {/*        testLoad();*/}
+            {/*    }}*/}
+            {/*>*/}
+            {/*    Logout (test)*/}
+            {/*</MenuItem>*/}
         </Box>
 
     );
