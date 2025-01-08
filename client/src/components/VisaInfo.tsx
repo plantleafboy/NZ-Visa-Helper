@@ -1,8 +1,17 @@
-import {Box} from "@mui/material";
+import {Box, Container} from "@mui/material";
+import NavBar from "./NavBar";
+import Footer from "./Footer";
+import ArticleDropdown from "./ArticleDropdown";
 
 const VisaInfo = () => {
     return (
-        <Box>Visa details</Box>
+        <Box>
+            <NavBar />
+            <Container>
+                <ArticleDropdown></ArticleDropdown>
+            </Container>
+            <Footer text={"Footer to add"}></Footer>
+        </Box>
     )
 }
 
