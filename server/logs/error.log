@@ -190,3 +190,4 @@
 2024-12-11 17:36:00:360 [31merror[39m: [31mYou have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[object Object]' at line 1[39m
 2024-12-11 17:39:11:3911 [31merror[39m: [31m[object Object][39m
 2024-12-11 17:39:11:3911 [31merror[39m: [31mYou have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[object Object]' at line 1[39m
+2025-01-19 15:27:47:2747 [31merror[39m: [31mUnable to connect to MySQL. err:  getaddrinfo ENOTFOUND petition-app-mysql-do-user-17782127-0.e.db.ondigitalocean.com[39m

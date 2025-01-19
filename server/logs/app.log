@@ -213,3 +213,4 @@
 2024-12-11 19:12:07:127 [35mhttp[39m: [35m##### OPTIONS /api/v1/users/21 #####[39m
 2024-12-11 19:12:07:127 [35mhttp[39m: [35m##### GET /api/v1/users/21 #####[39m
 2024-12-11 19:12:07:127 [35mhttp[39m: [35m##### GET /api/v1/users/21/image #####[39m
+2025-01-19 15:27:47:2747 [31merror[39m: [31mUnable to connect to MySQL. err:  getaddrinfo ENOTFOUND petition-app-mysql-do-user-17782127-0.e.db.ondigitalocean.com[39m
