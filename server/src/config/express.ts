@@ -33,6 +33,7 @@ export default () => {
     require('../app/routes/backdoor.routes')(app);
     require('../app/routes/user.routes')(app);
     require('../app/routes/petition.routes')(app);
+    require('../app/routes/email.routes')(app);
 
     return app;
 }

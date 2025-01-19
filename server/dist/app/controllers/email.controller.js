@@ -25,6 +25,7 @@ const sendEmailTest = (req, res) => __awaiter(void 0, void 0, void 0, function* 
     catch (e) {
         logger_1.default.error(e);
     }
+    return;
 });
 exports.sendEmailTest = sendEmailTest;
 //# sourceMappingURL=email.controller.js.map

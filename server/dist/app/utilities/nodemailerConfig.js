@@ -64,7 +64,7 @@ const sendEmail = (to = 'hi', subject = 'test', text = 'helloworld', html) => __
 exports.sendEmail = sendEmail;
 const sendEmailWithoutParameters = () => __awaiter(void 0, void 0, void 0, function* () {
     yield transporter.sendMail({
-        to: "alexhpcp@gmailo.com",
+        to: "alexhpcp@gmail.com",
         subject: 'my subject',
         html: htmlTemplate
     }).then(r => "success");

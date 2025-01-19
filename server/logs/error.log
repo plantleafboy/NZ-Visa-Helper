@@ -191,3 +191,8 @@
 2024-12-11 17:39:11:3911 [31merror[39m: [31m[object Object][39m
 2024-12-11 17:39:11:3911 [31merror[39m: [31mYou have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[object Object]' at line 1[39m
 2025-01-19 15:27:47:2747 [31merror[39m: [31mUnable to connect to MySQL. err:  getaddrinfo ENOTFOUND petition-app-mysql-do-user-17782127-0.e.db.ondigitalocean.com[39m
+2025-01-19 16:45:48:4548 [31merror[39m: [31mCannot read properties of null (reading 'query')[39m
+2025-01-19 16:45:48:4548 [31merror[39m: [31mCannot read properties of null (reading 'query')[39m
+2025-01-19 16:56:02:562 [31merror[39m: [31mCannot read properties of null (reading 'query')[39m
+2025-01-19 16:56:12:5612 [31merror[39m: [31mCannot read properties of null (reading 'query')[39m
+2025-01-19 16:56:14:5614 [31merror[39m: [31mCannot read properties of null (reading 'query')[39m

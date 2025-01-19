@@ -13,6 +13,7 @@ const sendEmailTest = async (req: Request, res: Response)   => {
     catch (e) {
         Logger.error(e);
     }
+    return;
 }
 
 export {sendEmailTest}

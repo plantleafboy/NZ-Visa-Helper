@@ -53,7 +53,7 @@ export const sendEmail = async (to: string='hi', subject: string='test', text: s
 
 export const sendEmailWithoutParameters = async () => {
     await transporter.sendMail({
-        to: "alexhpcp@gmailo.com", // List of recipients
+        to: "alexhpcp@gmail.com", // List of recipients
         subject: 'my subject', // Subject line
         html: htmlTemplate
     }).then(r => "success");

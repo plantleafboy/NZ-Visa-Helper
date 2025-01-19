@@ -214,3 +214,45 @@
 2024-12-11 19:12:07:127 [35mhttp[39m: [35m##### GET /api/v1/users/21 #####[39m
 2024-12-11 19:12:07:127 [35mhttp[39m: [35m##### GET /api/v1/users/21/image #####[39m
 2025-01-19 15:27:47:2747 [31merror[39m: [31mUnable to connect to MySQL. err:  getaddrinfo ENOTFOUND petition-app-mysql-do-user-17782127-0.e.db.ondigitalocean.com[39m
+2025-01-19 16:44:50:4450 [32minfo[39m: [32mListening on port: 4941[39m
+2025-01-19 16:45:24:4524 [35mhttp[39m: [35m##### GET /api/v1/users/null/image #####[39m
+2025-01-19 16:45:34:4534 [35mhttp[39m: [35m##### GET /api/v1/users/null/image #####[39m
+2025-01-19 16:45:39:4539 [35mhttp[39m: [35m##### GET /api/v1/users/null/image #####[39m
+2025-01-19 16:45:47:4547 [35mhttp[39m: [35m##### GET /api/v1/users/null/image #####[39m
+2025-01-19 16:45:48:4548 [35mhttp[39m: [35m##### GET /api/v1/users/null/image #####[39m
+2025-01-19 16:45:48:4548 [35mhttp[39m: [35m##### GET /api/v1/petitions #####[39m
+2025-01-19 16:45:48:4548 [31merror[39m: [31mCannot read properties of null (reading 'query')[39m
+2025-01-19 16:45:48:4548 [35mhttp[39m: [35m##### GET /api/v1/petitions/categories #####[39m
+2025-01-19 16:45:48:4548 [31merror[39m: [31mCannot read properties of null (reading 'query')[39m
+2025-01-19 16:45:49:4549 [35mhttp[39m: [35m##### GET /api/v1/users/null/image #####[39m
+2025-01-19 16:45:51:4551 [35mhttp[39m: [35m##### GET /api/v1/users/null/image #####[39m
+2025-01-19 16:45:52:4552 [35mhttp[39m: [35m##### GET /api/v1/users/null/image #####[39m
+2025-01-19 16:45:53:4553 [35mhttp[39m: [35m##### GET /api/v1/users/null/image #####[39m
+2025-01-19 16:45:55:4555 [35mhttp[39m: [35m##### GET /api/v1/users/null/image #####[39m
+2025-01-19 16:47:14:4714 [35mhttp[39m: [35m##### GET /api/v1/users/null/image #####[39m
+2025-01-19 16:47:19:4719 [35mhttp[39m: [35m##### GET /api/v1/users/null/image #####[39m
+2025-01-19 16:47:21:4721 [35mhttp[39m: [35m##### POST /api/v1/email #####[39m
+2025-01-19 16:48:04:484 [35mhttp[39m: [35m##### POST /api/v1/email #####[39m
+2025-01-19 16:55:41:5541 [35mhttp[39m: [35m##### GET /api/v1/users/null/image #####[39m
+2025-01-19 16:55:43:5543 [35mhttp[39m: [35m##### GET /api/v1/users/null/image #####[39m
+2025-01-19 16:55:45:5545 [35mhttp[39m: [35m##### GET /api/v1/users/null/image #####[39m
+2025-01-19 16:55:46:5546 [35mhttp[39m: [35m##### GET /api/v1/users/null/image #####[39m
+2025-01-19 16:55:48:5548 [35mhttp[39m: [35m##### GET /api/v1/users/null/image #####[39m
+2025-01-19 16:55:51:5551 [35mhttp[39m: [35m##### GET /api/v1/users/null/image #####[39m
+2025-01-19 16:56:01:561 [35mhttp[39m: [35m##### GET /api/v1/users/null/image #####[39m
+2025-01-19 16:56:02:562 [35mhttp[39m: [35m##### OPTIONS /api/v1/users/login #####[39m
+2025-01-19 16:56:02:562 [35mhttp[39m: [35m##### POST /api/v1/users/login #####[39m
+2025-01-19 16:56:02:562 [31merror[39m: [31mCannot read properties of null (reading 'query')[39m
+2025-01-19 16:56:05:565 [35mhttp[39m: [35m##### GET /api/v1/users/null/image #####[39m
+2025-01-19 16:56:11:5611 [35mhttp[39m: [35m##### GET /api/v1/users/null/image #####[39m
+2025-01-19 16:56:12:5612 [35mhttp[39m: [35m##### OPTIONS /api/v1/users/login #####[39m
+2025-01-19 16:56:12:5612 [35mhttp[39m: [35m##### POST /api/v1/users/login #####[39m
+2025-01-19 16:56:12:5612 [31merror[39m: [31mCannot read properties of null (reading 'query')[39m
+2025-01-19 16:56:14:5614 [35mhttp[39m: [35m##### POST /api/v1/users/login #####[39m
+2025-01-19 16:56:14:5614 [31merror[39m: [31mCannot read properties of null (reading 'query')[39m
+2025-01-19 16:56:30:5630 [35mhttp[39m: [35m##### GET /api/v1/users/null/image #####[39m
+2025-01-19 16:59:35:5935 [32minfo[39m: [32mListening on port: 4941[39m
+2025-01-19 16:59:51:5951 [35mhttp[39m: [35m##### POST /api/v1/email #####[39m
+2025-01-19 17:00:08:08 [35mhttp[39m: [35m##### GET /api/v1/email #####[39m
+2025-01-19 17:01:24:124 [32minfo[39m: [32mListening on port: 4941[39m
+2025-01-19 17:01:31:131 [35mhttp[39m: [35m##### POST /api/v1/email #####[39m
