@@ -12,24 +12,19 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("./config/express"));
-const logger_1 = __importDefault(require("./config/logger"));
-const app = (0, express_1.default)();
-const port = process.env.PORT || 4941;
-// Connect to MySQL on start
-function main() {
-    return __awaiter(this, void 0, void 0, function* () {
-        try {
-            // await connect();
-            app.listen(port, () => {
-                logger_1.default.info('Listening on port: ' + port);
-            });
-        }
-        catch (err) {
-            logger_1.default.error('Unable to connect to MySQL. err: ', err);
-            process.exit(1);
-        }
-    });
-}
-main().catch(err => logger_1.default.error(err));
-//# sourceMappingURL=server.js.map
+exports.sendEmailTest = void 0;
+const logger_1 = __importDefault(require("../../config/logger"));
+const nodemailerConfig_1 = require("../utilities/nodemailerConfig");
+// extra to do
+// import * as schemas from '../resources/schemas.json';
+// import {validate} from '../services/validator'
+const sendEmailTest = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        yield (0, nodemailerConfig_1.sendEmailWithoutParameters)();
+    }
+    catch (e) {
+        logger_1.default.error(e);
+    }
+});
+exports.sendEmailTest = sendEmailTest;
+//# sourceMappingURL=email.controller.js.map

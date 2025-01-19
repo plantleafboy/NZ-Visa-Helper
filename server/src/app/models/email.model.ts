@@ -1,1 +1,1 @@
-//sending emails store in db or no?
+// sending emails store in db or no?

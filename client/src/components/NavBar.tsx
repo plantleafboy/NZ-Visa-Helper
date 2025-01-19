@@ -17,7 +17,7 @@ function NavBar(props: AppBarProps) {
         { name: "About Us", path: "/about" },
         { name: "Visa Info", path: "/visa-info" },
         { name: "Book an Appointment", path: "/book-appointment" },
-        { name: "Contact Us", path: "/contact" }
+        { name: "Contact Us", path: "/contact-us" }
     ];
 
     const redirect = useNavigate();
