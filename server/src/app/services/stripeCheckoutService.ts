@@ -1,7 +1,9 @@
 import express from 'express';
 const app = express();
+import dotenv from 'dotenv';
+dotenv.config();
 
-const stripe = require('stripe')('sk_test_51QjIpJKgxsHSLKCZiTStjaURzKfkqiAutHv3X51Tp0bOzaihEohndITiG8jcgpjW00MdBdjamdp9AO3o9HQo6IRq003QsELXsT'
+const stripe = require('stripe')(process.env.STRIPE_TEST_SECRET_KEY
 );
 
 app.post('/create-checkout-session', async (req, res) => {
