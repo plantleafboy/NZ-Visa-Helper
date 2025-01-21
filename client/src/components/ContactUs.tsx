@@ -5,6 +5,13 @@ import {BASE_URL} from "../utility/config";
 
 const ContactUs = () => {
 
+    axios.get(`${BASE_URL}/api/v1/users/1/image`,).then(
+        (response) => {
+        },
+        (error) => {
+        },
+    );
+
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         /** TODO
          * validates the input fields for

@@ -4,6 +4,9 @@ import {rootUrl} from "../routes/base.routes";
 const stripe = require('stripe')(process.env.STRIPE_TEST_SECRET_KEY
 );
 
+const testLog = async (req: Request, res: Response) => {
+        Logger.info("working query received")
+}
 const createSession = async (req: Request, res: Response) => {
     try {
         const session = await stripe.checkout.sessions.create({
@@ -24,7 +27,17 @@ const createSession = async (req: Request, res: Response) => {
             // cancel_url: '',
             return_url: rootUrl+'/order-outcome/return?session_id={CHECKOUT_SESSION_ID}'   //make server page (url)
         })
-        res.json({ id: session.id, clientSecret: session.client_secret, url: session.url });
+        res.setHeader('Content-Type', 'application/json');
+
+        if (session.client_secret) {
+            res.json({ clientSecret: session.client_secret });
+        } else {
+            res.status(500).json({ error: 'Client secret is missing from the session response.' });
+        }
+
+
+
+        //res.json({ id: session.id, clientSecret: session.client_secret, url: session.url });
         // res.send({clientSecret: session.client_secret});
     } catch (e) {
         res.status(500).json({ error: e.message })
@@ -69,4 +82,4 @@ const createSession = async (req: Request, res: Response) => {
 //
 // app.listen(4242, () => console.log('Running on port 4242'));
 
-export {createSession}
+export {createSession, testLog}
