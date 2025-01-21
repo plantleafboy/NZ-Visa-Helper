@@ -13,7 +13,6 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 function NavBar(props: AppBarProps) {
     const pages = [
-        { name: "Home", path: "/" },
         { name: "About Us", path: "/about" },
         { name: "Visa Info", path: "/visa-info" },
         { name: "Book an Appointment", path: "/book-appointment" },
@@ -127,7 +126,6 @@ function NavBar(props: AppBarProps) {
                             >
                                 Example link
                             </Button>
-                            <Button color={'inherit'}>Home</Button>
                             <Button>About us</Button>
                             <Button>Visa Info</Button>
                             <Button>Book an Appointment</Button>
@@ -139,7 +137,6 @@ function NavBar(props: AppBarProps) {
                             </IconButton>
                             <Menu open={Boolean(anchorNav)} onClose={closeMenu} sx={{display:{xs:'flex',md:'none'}}}>
                                 <MenuList>
-                                    <MenuItem>Home</MenuItem>
                                     <MenuItem>About us</MenuItem>
                                     <MenuItem>Visa Info</MenuItem>
                                     <MenuItem>Book an Appointment</MenuItem>
