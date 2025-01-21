@@ -13,6 +13,7 @@ import About from "./components/About";
 import VisaInfo from "./components/VisaInfo";
 import BookAppointment from "./components/BookAppointment";
 import ContactUs from "./components/ContactUs";
+// import Redirect from "./components/Redirect";
 
 
 function App() {
@@ -21,11 +22,12 @@ function App() {
          <Router>
            <div>
              <Routes>
-                 <Route path="/" element={<Home/>}/>
+                 <Route path="/" element={<About/>}/>
                  <Route path="/about" element={<About/>}></Route>
                  <Route path="/visa-info" element={<VisaInfo/>}/>
                  <Route path="/book-appointment" element={<BookAppointment/>}/>
                  <Route path="/contact-us" element={<ContactUs/>}/>
+                 {/*<Route path="/order-outcome" element={<Redirect/>}/>*/}
 
                  <Route path="/login" element={<Login/>}/>
                  <Route path="/sign-up" element={<SignUp/>}/>

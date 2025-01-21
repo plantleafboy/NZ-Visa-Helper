@@ -20,11 +20,11 @@ const createSession = async (req: Request, res: Response) => {
             }],
             mode: 'payment',
             ui_mode: 'embedded',
-            // success_url: '',
+            // success_url: '', //for hosted popup
             // cancel_url: '',
-            return_url: rootUrl+'/payment-failure/return?session_id={CHECKOUT_SESSION_ID}'   //make server page (url)
+            return_url: rootUrl+'/order-outcome/return?session_id={CHECKOUT_SESSION_ID}'   //make server page (url)
         })
-        res.json({ id: session.id, client_secret: session.client_secret, url: session.url });
+        res.json({ id: session.id, clientSecret: session.client_secret, url: session.url });
         // res.send({clientSecret: session.client_secret});
     } catch (e) {
         res.status(500).json({ error: e.message })
