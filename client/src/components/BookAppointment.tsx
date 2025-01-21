@@ -1,12 +1,9 @@
-import {Box} from "@mui/material";
+import {Box, Button} from "@mui/material";
 import StripeEmbeddedCheckout from "./StripeEmbeddedCheckout";
 import dotenv from 'dotenv';
 import axios from "axios";
 import {BASE_URL} from "../utility/config";
-dotenv.config();
-
-const stripe = require('stripe')(process.env.STRIPE_TEST_SECRET_KEY);
-
+import {useCallback} from "react";
 const BookAppointment = () => {
 
     return (

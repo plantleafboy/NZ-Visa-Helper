@@ -1,28 +1,35 @@
 import {Request, Response} from "express";
 import Logger from '../../config/logger';
+import {rootUrl} from "../routes/base.routes";
 const stripe = require('stripe')(process.env.STRIPE_TEST_SECRET_KEY
 );
 
-
-
 const createSession = async (req: Request, res: Response) => {
-    const session = await stripe.checkout.sessions.create({
-        line_items: [{
-            price_data: {
-                currency: 'usd',
-                product_data: {
-                    name: 'consultation',
+    try {
+        const session = await stripe.checkout.sessions.create({
+            // payment_method_types: ['card'],
+            line_items: [{
+                price_data: {
+                    currency: 'usd',
+                    product_data: {
+                        name: 'consultation',
+                    },
+                    unit_amount: 6000,
                 },
-                unit_amount: 60,
-            },
-            quantity: 1,
-        }],
-        mode: 'payment',
-        ui_mode: 'embedded',
-        return_url: 'https://example.com/checkout/return?session_id={CHECKOUT_SESSION_ID}'   //use url
-    })
-    res.json({ id: session.id, client_secret: session.client_secret });
-    // res.send({clientSecret: session.client_secret});
+                quantity: 1,
+            }],
+            mode: 'payment',
+            ui_mode: 'embedded',
+            // success_url: '',
+            // cancel_url: '',
+            return_url: rootUrl+'/payment-failure/return?session_id={CHECKOUT_SESSION_ID}'   //make server page (url)
+        })
+        res.json({ id: session.id, client_secret: session.client_secret, url: session.url });
+        // res.send({clientSecret: session.client_secret});
+    } catch (e) {
+        res.status(500).json({ error: e.message })
+    }
+
 };
 
 
