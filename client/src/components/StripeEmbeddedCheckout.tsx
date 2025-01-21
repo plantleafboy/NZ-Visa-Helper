@@ -1,4 +1,5 @@
 import * as React from 'react';
+"use client"; //for use? internal routing?
 import {loadStripe} from '@stripe/stripe-js';
 import {
     EmbeddedCheckoutProvider,
