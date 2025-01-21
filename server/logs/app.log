@@ -263,3 +263,4 @@
 2025-01-19 18:54:46:5446 [35mhttp[39m: [35m##### GET /api/v1/users/null/image #####[39m
 2025-01-19 18:55:01:551 [35mhttp[39m: [35m##### POST /api/v1/email #####[39m
 2025-01-19 20:17:56:1756 [35mhttp[39m: [35m##### GET /api/v1/users/null/image #####[39m
+2025-01-21 18:56:29:5629 [32minfo[39m: [32mListening on port: 4941[39m
