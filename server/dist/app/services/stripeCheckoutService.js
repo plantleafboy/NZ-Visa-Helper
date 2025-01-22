@@ -1,13 +1,14 @@
-import express from 'express';
-const app = express();
-import dotenv from 'dotenv';
-import {sendEmailWithoutParameters} from "../utilities/nodemailerConfig";
-import Logger from '../../config/logger';
-dotenv.config();
-import Stripe from 'stripe';
-const stripe = new Stripe(process.env.STRIPE_TEST_SECRET_KEY!);
-
-
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const app = (0, express_1.default)();
+const dotenv_1 = __importDefault(require("dotenv"));
+dotenv_1.default.config();
+const stripe_1 = __importDefault(require("stripe"));
+const stripe = new stripe_1.default(process.env.STRIPE_TEST_SECRET_KEY);
 // async function fulfillCheckout(sessionId: string) {
 //     // Set your secret key. Remember to switch to your live secret key in production.
 //     // See your keys here: https://dashboard.stripe.com/apikeys
@@ -39,7 +40,6 @@ const stripe = new Stripe(process.env.STRIPE_TEST_SECRET_KEY!);
 //         // TODO: Record/save fulfillment status for this Checkout Session
 //     }
 // }
-
 // app.post('/create-checkout-session', async (req, res) => {
 //   const session = await stripe.checkout.sessions.create({
 //       line_items: [{
@@ -59,5 +59,5 @@ const stripe = new Stripe(process.env.STRIPE_TEST_SECRET_KEY!);
 //     res.json({ id: session.id, client_secret: session.client_secret });
 //     // res.send({clientSecret: session.client_secret});
 // });
-
 // app.listen(4242, () => Logger.info(`Listening on port ${4242}!`));
+//# sourceMappingURL=stripeCheckoutService.js.map

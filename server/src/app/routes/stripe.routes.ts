@@ -1,6 +1,7 @@
 import {Express} from "express";
 import {rootUrl} from "./base.routes";
 import * as stripeCheckout from '../controllers/stripe.controller';
+import Logger from '../../config/logger';
 
 module.exports = (app: Express) => {
 
@@ -13,7 +14,7 @@ module.exports = (app: Express) => {
     // Debug: log all routes
     app._router.stack.forEach((r: any) => {
         if (r.route && r.route.path) {
-            console.log("stripe routes:", r.route.path);
+            Logger.info("stripe routes:", r.route.path);
         }
     });
 }

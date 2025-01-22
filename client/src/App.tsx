@@ -13,7 +13,7 @@ import About from "./components/About";
 import VisaInfo from "./components/VisaInfo";
 import BookAppointment from "./components/BookAppointment";
 import ContactUs from "./components/ContactUs";
-// import Redirect from "./components/Redirect";
+import Redirect from "./components/Redirect";
 
 
 function App() {
@@ -27,7 +27,7 @@ function App() {
                  <Route path="/visa-info" element={<VisaInfo/>}/>
                  <Route path="/book-appointment" element={<BookAppointment/>}/>
                  <Route path="/contact-us" element={<ContactUs/>}/>
-                 {/*<Route path="/order-outcome" element={<Redirect/>}/>*/}
+                 <Route path="/order-outcome" element={<Redirect/>}/>
 
                  <Route path="/login" element={<Login/>}/>
                  <Route path="/sign-up" element={<SignUp/>}/>

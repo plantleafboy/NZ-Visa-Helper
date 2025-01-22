@@ -29,6 +29,10 @@ export default () => {
         res.send({'message': 'I\'m alive!'});
     });
 
+    app.get(rootUrl + '/testbeat', (req, res) => {
+        res.send({'message': 'I\'m a new query!'});
+    });
+
     // ROUTES
     require('../app/routes/backdoor.routes')(app);
     require('../app/routes/stripe.routes')(app);

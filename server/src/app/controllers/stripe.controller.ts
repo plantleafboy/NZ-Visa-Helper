@@ -1,8 +1,13 @@
 import {Request, Response} from "express";
 import Logger from '../../config/logger';
 import {rootUrl} from "../routes/base.routes";
-const stripe = require('stripe')(process.env.STRIPE_TEST_SECRET_KEY
-);
+import Stripe from 'stripe';
+import dotenv from 'dotenv';
+
+dotenv.config();
+const stripe = new Stripe(process.env.STRIPE_TEST_SECRET_KEY, {
+    apiVersion: '2024-12-18.acacia',
+});
 
 const testLog = async (req: Request, res: Response) => {
         Logger.info("working query received")
@@ -23,11 +28,10 @@ const createSession = async (req: Request, res: Response) => {
             }],
             mode: 'payment',
             ui_mode: 'embedded',
-            // success_url: '', //for hosted popup
-            // cancel_url: '',
-            return_url: rootUrl+'/order-outcome/return?session_id={CHECKOUT_SESSION_ID}'   //make server page (url)
+            return_url: `${req.headers.origin}/order-outcome/return?session_id={CHECKOUT_SESSION_ID}`   // make server page (url)
         })
         res.setHeader('Content-Type', 'application/json');
+        // res.status(200).json({ id: session.id });
 
         if (session.client_secret) {
             res.json({ clientSecret: session.client_secret });
@@ -35,10 +39,6 @@ const createSession = async (req: Request, res: Response) => {
             res.status(500).json({ error: 'Client secret is missing from the session response.' });
         }
 
-
-
-        //res.json({ id: session.id, clientSecret: session.client_secret, url: session.url });
-        // res.send({clientSecret: session.client_secret});
     } catch (e) {
         res.status(500).json({ error: e.message })
     }

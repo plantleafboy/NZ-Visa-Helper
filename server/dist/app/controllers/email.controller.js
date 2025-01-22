@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.sendEmailTest = void 0;
+exports.testLog = exports.sendEmailTest = void 0;
 const logger_1 = __importDefault(require("../../config/logger"));
 const nodemailerConfig_1 = require("../utilities/nodemailerConfig");
 // extra to do
@@ -21,6 +21,7 @@ const nodemailerConfig_1 = require("../utilities/nodemailerConfig");
 const sendEmailTest = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield (0, nodemailerConfig_1.sendEmailWithoutParameters)();
+        res.status(200).send('Email sent successfully');
     }
     catch (e) {
         logger_1.default.error(e);
@@ -28,4 +29,9 @@ const sendEmailTest = (req, res) => __awaiter(void 0, void 0, void 0, function* 
     return;
 });
 exports.sendEmailTest = sendEmailTest;
+const testLog = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    logger_1.default.info("working query received");
+    res.status(200).send('Test hold query sent successfully');
+});
+exports.testLog = testLog;
 //# sourceMappingURL=email.controller.js.map

@@ -22,15 +22,23 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const base_routes_1 = require("./base.routes");
-const email = __importStar(require("../controllers/email.controller"));
 const stripeCheckout = __importStar(require("../controllers/stripe.controller"));
-// note try use internal routing here for the API request
+const logger_1 = __importDefault(require("../../config/logger"));
 module.exports = (app) => {
-    app.route(base_routes_1.rootUrl + '/email')
-        .post(email.sendEmailTest);
-    app.route(base_routes_1.rootUrl + '/email')
-        .get(stripeCheckout.testLog);
+    app.route(base_routes_1.rootUrl + '/stripe/embedded-checkout')
+        .post(stripeCheckout.createSession);
+    app.route(base_routes_1.rootUrl + '/test')
+        .post(stripeCheckout.testLog);
+    // Debug: log all routes
+    app._router.stack.forEach((r) => {
+        if (r.route && r.route.path) {
+            logger_1.default.info("stripe routes:", r.route.path);
+        }
+    });
 };
-//# sourceMappingURL=email.routes.js.map
+//# sourceMappingURL=stripe.routes.js.map

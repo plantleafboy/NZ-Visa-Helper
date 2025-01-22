@@ -28,8 +28,12 @@ exports.default = () => {
     app.get(base_routes_1.rootUrl + '/heartbeat', (req, res) => {
         res.send({ 'message': 'I\'m alive!' });
     });
+    app.get(base_routes_1.rootUrl + '/testbeat', (req, res) => {
+        res.send({ 'message': 'I\'m a new query!' });
+    });
     // ROUTES
     require('../app/routes/backdoor.routes')(app);
+    require('../app/routes/stripe.routes')(app);
     require('../app/routes/user.routes')(app);
     require('../app/routes/petition.routes')(app);
     require('../app/routes/email.routes')(app);

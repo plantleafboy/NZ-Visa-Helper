@@ -23,6 +23,18 @@ const ContactUs = () => {
         sendEmail();
     }
 
+    const testQuery = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        axios.get(`${BASE_URL}/api/v1/email`).then(
+            (response) => {
+                console.log(response);
+            },
+            (error) => {
+                console.log(error);
+            },
+        );
+    }
+
     const sendEmail = () => {
         axios.post(`${BASE_URL}/api/v1/email`).then(
             (response) => {
@@ -34,7 +46,7 @@ const ContactUs = () => {
 
     return (
         <Box>Contact us in construction
-            <form autoComplete="off" onSubmit={handleSubmit} noValidate>
+            <form autoComplete="off" onSubmit={testQuery} noValidate>
                 <h2>Login Form</h2>
                 {/*<TextField*/}
                 {/*    label="Email"*/}
