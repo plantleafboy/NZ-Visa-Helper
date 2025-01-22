@@ -500,3 +500,14 @@
 2025-01-23 03:02:09:29 [35mhttp[39m: [35m##### GET /api/v1/users/null/image #####[39m
 2025-01-23 03:02:10:210 [35mhttp[39m: [35m##### GET /api/v1/users/null/image #####[39m
 2025-01-23 03:02:11:211 [35mhttp[39m: [35m##### POST /api/v1/stripe/embedded-checkout #####[39m
+2025-01-23 03:05:26:526 [32minfo[39m: [32mstripe routes:[39m
+2025-01-23 03:05:26:526 [32minfo[39m: [32mstripe routes:[39m
+2025-01-23 03:05:26:526 [32minfo[39m: [32mstripe routes:[39m
+2025-01-23 03:05:26:526 [32minfo[39m: [32mstripe routes:[39m
+2025-01-23 03:05:26:526 [32minfo[39m: [32mstripe routes:[39m
+2025-01-23 03:05:26:526 [32minfo[39m: [32mstripe routes:[39m
+2025-01-23 03:05:26:526 [32minfo[39m: [32mstripe routes:[39m
+2025-01-23 03:05:26:526 [32minfo[39m: [32mstripe routes:[39m
+2025-01-23 03:05:26:526 [32minfo[39m: [32mstripe routes:[39m
+2025-01-23 03:05:26:526 [32minfo[39m: [32mListening on port: 4941[39m
+2025-01-23 03:05:32:532 [35mhttp[39m: [35m##### POST /api/v1/stripe/embedded-checkout #####[39m

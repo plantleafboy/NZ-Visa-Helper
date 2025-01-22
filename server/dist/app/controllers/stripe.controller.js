@@ -40,21 +40,15 @@ const createSession = (req, res) => __awaiter(void 0, void 0, void 0, function* 
                 }],
             mode: 'payment',
             ui_mode: 'embedded',
-            // success_url: `${req.headers.origin}/success?session_id={CHECKOUT_SESSION_ID}`,
-            // cancel_url: `${req.headers.origin}/cancel`
-            // https://docs.stripe.com/api/checkout/sessions/object
             return_url: `${req.headers.origin}/order-outcome/return?session_id={CHECKOUT_SESSION_ID}` // make server page (url)
         });
         res.setHeader('Content-Type', 'application/json');
-        // res.status(200).json({ id: session.id });
-        if (session.client_secret) {
-            res.json({ clientSecret: session.client_secret });
-        }
-        else {
-            res.status(500).json({ error: 'Client secret is missing from the session response.' });
-        }
-        // res.json({ id: session.id, clientSecret: session.client_secret, url: session.url });
-        // res.send({clientSecret: session.client_secret});
+        res.status(200).json({ id: session.id, clientSecret: session.client_secret });
+        // if (session.client_secret) {
+        //     res.json({ clientSecret: session.client_secret });
+        // } else {
+        //     res.status(500).json({ error: 'Client secret is missing from the session response.' });
+        // }
     }
     catch (e) {
         res.status(500).json({ error: e.message });

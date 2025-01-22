@@ -9,13 +9,10 @@ const stripe = new Stripe(process.env.STRIPE_TEST_SECRET_KEY, {
     apiVersion: '2024-12-18.acacia',
 });
 
-const testLog = async (req: Request, res: Response) => {
-        Logger.info("working query received")
-}
 const createSession = async (req: Request, res: Response) => {
     try {
         const session = await stripe.checkout.sessions.create({
-            // payment_method_types: ['card'],
+            // payment_method_types: ['card'], FOR EXTRA PAYMENT TYPES
             line_items: [{
                 price_data: {
                     currency: 'usd',
@@ -31,13 +28,7 @@ const createSession = async (req: Request, res: Response) => {
             return_url: `${req.headers.origin}/order-outcome/return?session_id={CHECKOUT_SESSION_ID}`   // make server page (url)
         })
         res.setHeader('Content-Type', 'application/json');
-        // res.status(200).json({ id: session.id });
-
-        if (session.client_secret) {
-            res.json({ clientSecret: session.client_secret });
-        } else {
-            res.status(500).json({ error: 'Client secret is missing from the session response.' });
-        }
+        res.status(200).json({ id: session.id, clientSecret: session.client_secret });
 
     } catch (e) {
         res.status(500).json({ error: e.message })
@@ -80,6 +71,5 @@ const createSession = async (req: Request, res: Response) => {
 //     response.status(200).end();
 // });
 //
-// app.listen(4242, () => console.log('Running on port 4242'));
 
-export {createSession, testLog}
+export {createSession}
