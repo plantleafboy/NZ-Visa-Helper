@@ -37,7 +37,10 @@ const createSession = async (req: Request, res: Response) => {
 };
 
 const getCheckoutStatus = async (req: Request, res: Response) => {
-    const session = await stripe.checkout.sessions.retrieve(<string>req.query.sessionId);
+    Logger.info('enter function here');
+
+    const session = await stripe.checkout.sessions.retrieve(req.query.session_id as string);
+    Logger.info(req.query.session_id);
     res.send({
         status: session.status,
         payment_status: session.payment_status,

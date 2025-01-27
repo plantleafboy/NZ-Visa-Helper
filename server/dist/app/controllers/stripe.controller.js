@@ -12,7 +12,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createSession = void 0;
+exports.getCheckoutStatus = exports.createSession = void 0;
+const logger_1 = __importDefault(require("../../config/logger"));
 const stripe_1 = __importDefault(require("stripe"));
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
@@ -45,4 +46,15 @@ const createSession = (req, res) => __awaiter(void 0, void 0, void 0, function* 
     }
 });
 exports.createSession = createSession;
+const getCheckoutStatus = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    logger_1.default.info('enter function here');
+    const session = yield stripe.checkout.sessions.retrieve(req.query.session_id);
+    logger_1.default.info(req.query.session_id);
+    res.send({
+        status: session.status,
+        payment_status: session.payment_status,
+        customer_email: session.customer_details.email
+    });
+});
+exports.getCheckoutStatus = getCheckoutStatus;
 //# sourceMappingURL=stripe.controller.js.map

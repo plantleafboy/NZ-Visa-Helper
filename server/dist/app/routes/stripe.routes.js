@@ -28,5 +28,8 @@ const stripeCheckout = __importStar(require("../controllers/stripe.controller"))
 module.exports = (app) => {
     app.route(base_routes_1.rootUrl + '/stripe/embedded-checkout')
         .post(stripeCheckout.createSession);
+    // app.route(rootUrl+'/stripe/webhook')
+    app.route(base_routes_1.rootUrl + '/stripe/session-status')
+        .get(stripeCheckout.getCheckoutStatus);
 };
 //# sourceMappingURL=stripe.routes.js.map

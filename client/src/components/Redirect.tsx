@@ -52,53 +52,88 @@
 import NavBar from "./NavBar";
 import {Box} from "@mui/material";
 import axios from "axios";
-import {useParams} from "react-router-dom";
+import {Navigate, useParams} from "react-router-dom";
+import {useCallback, useEffect, useState} from "react";
+import {BASE_URL} from "../utility/config";
 
 
 const Redirect = () => {
-
+    const [status, setStatus] = useState(null);
+    const [customerEmail, setCustomerEmail] = useState('');
     //tanstack requires react 18+
     // const query = useQuery();
     // const sessionId = query.get('session_id'); // Get the session_id from the URL
-    const { session_id } = useParams();
 
-    try {
-        const session = await axios.get(`/session_status?session_id=${session_id}`)
-        console.log(session)
-    } catch (error: unknown) {
-    console.error('Error:', error);
-    }
+    //using react-router-dom
+    // const session_id = useParams();
+    // console.log(session_id)
+
+    useEffect(() => {
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const sessionId = urlParams.get('session_id');
+        console.log(sessionId)
+
+        //using param object
+        // axios
+        //     .get(`/session-status`, {
+        //         params: {
+        //             session_id: sessionId, // Pass the session ID as a query parameter
+        //         },
+        //     })
+        axios.get(`${BASE_URL}/api/v1/stripe/session-status?session_id=${sessionId}`)
+
+            .then((response) => {
+                const { status, customer_email } = response.data;
+                setStatus(status);
+                setCustomerEmail(customer_email);
+                console.log("get ersponse: ", response.data)
+
+            })
+            .catch((error) => {
+                console.error("Error fetching session status:", error);
+            });
+
+    }, []);
 
     // @ts-ignore
-    if (session.status == 'open') {
+    if (status === 'open') {
         //TODO: or redirect to book an appointment page with a prop to open the payment form MODAL
         return (
             <Box>
                 <NavBar></NavBar>
+                <Navigate to="/book-appointment" />
                 <h3>Exception Error code 500</h3>
             </Box>
-        )    } else { // @ts-ignore
-        if (session.status == 'complete') {
-            //TODO: call fullfilment function
+        )
+        // @ts-ignore
+    } else if (status === 'complete') {
+            //TODO: call fulfillment function
             return (
                 // Show success page
                 // Optionally use session.payment_status or session.customer_email
                 // to customize the success page
                 <Box>
                     <NavBar></NavBar>
-                    <h3>Successful payment: code success</h3>
+                    <section id="success">
+                        <p>
+                            We appreciate your business! A confirmation email will be sent to {customerEmail}
+                             and we will be in contact with you shortly.
+                            <br/>
+                            If you have any questions, please email <a
+                            href="mailto:orders@example.com">orders@example.com</a>.
+                        </p>
+                    </section>
                 </Box>
             )
-
-            }
+    } else {
+        return (
+            <Box>
+                <NavBar></NavBar>
+                <h3>Exception Error session status: not complete or open code 500</h3>
+            </Box>
+        )
     }
-
-    return (
-        <Box>
-            <NavBar></NavBar>
-            <h3>Exception Error code 500</h3>
-        </Box>
-    )
 }
 
 export default Redirect;
