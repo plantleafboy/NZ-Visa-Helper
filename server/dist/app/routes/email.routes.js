@@ -25,12 +25,9 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const base_routes_1 = require("./base.routes");
 const email = __importStar(require("../controllers/email.controller"));
-const stripeCheckout = __importStar(require("../controllers/stripe.controller"));
 // note try use internal routing here for the API request
 module.exports = (app) => {
     app.route(base_routes_1.rootUrl + '/email')
         .post(email.sendEmailTest);
-    app.route(base_routes_1.rootUrl + '/email')
-        .get(stripeCheckout.testLog);
 };
 //# sourceMappingURL=email.routes.js.map

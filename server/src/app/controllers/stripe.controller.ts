@@ -36,8 +36,15 @@ const createSession = async (req: Request, res: Response) => {
 
 };
 
+const getCheckoutStatus = async (req: Request, res: Response) => {
+    const session = await stripe.checkout.sessions.retrieve(<string>req.query.sessionId);
+    res.send({
+        status: session.status,
+        payment_status: session.payment_status,
+        customer_email: session.customer_details.email
+    });
 
-
+}
 
 // // Use the secret provided by Stripe CLI for local testing
 // // or your webhook endpoint's secret.
@@ -72,4 +79,4 @@ const createSession = async (req: Request, res: Response) => {
 // });
 //
 
-export {createSession}
+export {createSession, getCheckoutStatus}

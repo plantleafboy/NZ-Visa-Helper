@@ -8,7 +8,4 @@ import * as stripeCheckout from '../controllers/stripe.controller';
 module.exports = (app: Express) => {
     app.route(rootUrl+'/email')
         .post(email.sendEmailTest);
-
-    app.route(rootUrl+'/email')
-        .get(stripeCheckout.testLog);
 }

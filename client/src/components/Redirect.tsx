@@ -49,10 +49,56 @@
 //         <h3>Exception Error code 500</h3>
 //     )
 // }
+import NavBar from "./NavBar";
+import {Box} from "@mui/material";
+import axios from "axios";
+import {useParams} from "react-router-dom";
 
 
-export default function Redirect(){
+const Redirect = () => {
+
+    //tanstack requires react 18+
+    // const query = useQuery();
+    // const sessionId = query.get('session_id'); // Get the session_id from the URL
+    const { session_id } = useParams();
+
+    try {
+        const session = await axios.get(`/session_status?session_id=${session_id}`)
+        console.log(session)
+    } catch (error: unknown) {
+    console.error('Error:', error);
+    }
+
+    // @ts-ignore
+    if (session.status == 'open') {
+        //TODO: or redirect to book an appointment page with a prop to open the payment form MODAL
+        return (
+            <Box>
+                <NavBar></NavBar>
+                <h3>Exception Error code 500</h3>
+            </Box>
+        )    } else { // @ts-ignore
+        if (session.status == 'complete') {
+            //TODO: call fullfilment function
+            return (
+                // Show success page
+                // Optionally use session.payment_status or session.customer_email
+                // to customize the success page
+                <Box>
+                    <NavBar></NavBar>
+                    <h3>Successful payment: code success</h3>
+                </Box>
+            )
+
+            }
+    }
+
     return (
-        <h3>Exception Error code 500</h3>
+        <Box>
+            <NavBar></NavBar>
+            <h3>Exception Error code 500</h3>
+        </Box>
     )
 }
+
+export default Redirect;

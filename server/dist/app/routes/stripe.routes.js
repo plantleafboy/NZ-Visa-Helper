@@ -22,23 +22,11 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 const base_routes_1 = require("./base.routes");
 const stripeCheckout = __importStar(require("../controllers/stripe.controller"));
-const logger_1 = __importDefault(require("../../config/logger"));
 module.exports = (app) => {
     app.route(base_routes_1.rootUrl + '/stripe/embedded-checkout')
         .post(stripeCheckout.createSession);
-    app.route(base_routes_1.rootUrl + '/test')
-        .post(stripeCheckout.testLog);
-    // Debug: log all routes
-    app._router.stack.forEach((r) => {
-        if (r.route && r.route.path) {
-            logger_1.default.info("stripe routes:", r.route.path);
-        }
-    });
 };
 //# sourceMappingURL=stripe.routes.js.map

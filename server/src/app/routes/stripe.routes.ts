@@ -8,4 +8,8 @@ module.exports = (app: Express) => {
     app.route(rootUrl+'/stripe/embedded-checkout')
         .post(stripeCheckout.createSession)
 
+    // app.route(rootUrl+'/stripe/webhook')
+
+    app.route(rootUrl+'/stripe/session-status')
+        .get(stripeCheckout.getCheckoutStatus)
 }
