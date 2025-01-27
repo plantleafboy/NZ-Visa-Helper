@@ -12,14 +12,44 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getCheckoutStatus = exports.createSession = void 0;
+exports.webhookFulfilment = exports.getCheckoutStatus = exports.createSession = exports.rawBodyParser = void 0;
 const logger_1 = __importDefault(require("../../config/logger"));
 const stripe_1 = __importDefault(require("stripe"));
 const dotenv_1 = __importDefault(require("dotenv"));
+const nodemailerConfig_1 = require("../utilities/nodemailerConfig");
+const body_parser_1 = __importDefault(require("body-parser"));
 dotenv_1.default.config();
 const stripe = new stripe_1.default(process.env.STRIPE_TEST_SECRET_KEY, {
     apiVersion: '2024-12-18.acacia',
 });
+function fulfillCheckout(sessionId) {
+    return __awaiter(this, void 0, void 0, function* () {
+        // Set your secret key. Remember to switch to your live secret key in production.
+        // See your keys here: https://dashboard.stripe.com/apikeys
+        logger_1.default.info('Fulfilling Checkout Session ' + sessionId);
+        // TODO: Make this function safe to run multiple times,
+        // even concurrently, with the same session ID
+        // TODO: Make sure fulfillment hasn't already been
+        // disable payment button afterwards for such users? embedded checkout handles?
+        // performed for this Checkout Session if (axios.get().then.. check user.fulfilled from DB).
+        // Retrieve the Checkout Session from the API with line_items expanded
+        const checkoutSession = yield stripe.checkout.sessions.retrieve(sessionId, {
+            expand: ['line_items'],
+        });
+        // Check the Checkout Session's payment_status property
+        // to determine if fulfillment should be performed
+        if (checkoutSession.payment_status !== 'unpaid') {
+            // TODO: Perform fulfillment of the line items
+            try {
+                yield (0, nodemailerConfig_1.sendEmailWithoutParameters)(); // change to correct email function
+            }
+            catch (e) {
+                logger_1.default.error('Error sending email:', e);
+            }
+            // TODO: Record/save fulfillment status for this Checkout Session save IN USER DB
+        }
+    });
+}
 const createSession = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const session = yield stripe.checkout.sessions.create({
@@ -57,4 +87,27 @@ const getCheckoutStatus = (req, res) => __awaiter(void 0, void 0, void 0, functi
     });
 });
 exports.getCheckoutStatus = getCheckoutStatus;
+// Use the secret provided by Stripe CLI for local testing
+// or your webhook endpoint's secret.
+const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET;
+// Use body-parser to retrieve the raw body as a buffer
+exports.rawBodyParser = body_parser_1.default.raw({ type: "application/json" });
+// const bodyParser = require('body-parser');
+const webhookFulfilment = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const payload = req.body;
+    const sig = req.headers['stripe-signature'];
+    let event;
+    try {
+        event = stripe.webhooks.constructEvent(payload, sig, endpointSecret);
+    }
+    catch (err) {
+        return res.status(400).send(`Webhook Error: ${err.message}`);
+    }
+    if (event.type === 'checkout.session.completed'
+        || event.type === 'checkout.session.async_payment_succeeded') {
+        yield fulfillCheckout(event.data.object.id);
+    }
+    res.status(200).end();
+});
+exports.webhookFulfilment = webhookFulfilment;
 //# sourceMappingURL=stripe.controller.js.map

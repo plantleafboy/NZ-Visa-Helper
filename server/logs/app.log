@@ -537,3 +537,49 @@
 2025-01-28 01:21:27:2127 [32minfo[39m: [32mListening on port: 4941[39m
 2025-01-28 01:21:30:2130 [35mhttp[39m: [35m##### POST /api/v1/stripe/embedded-checkout #####[39m
 2025-01-28 01:21:49:2149 [35mhttp[39m: [35m##### GET /api/v1/users/null/image #####[39m
+2025-01-28 01:26:21:2621 [32minfo[39m: [32mListening on port: 4941[39m
+2025-01-28 01:26:29:2629 [35mhttp[39m: [35m##### POST /api/v1/stripe/embedded-checkout #####[39m
+2025-01-28 01:26:53:2653 [35mhttp[39m: [35m##### GET /api/v1/users/null/image #####[39m
+2025-01-28 02:07:38:738 [35mhttp[39m: [35m##### GET /api/v1/users/null/image #####[39m
+2025-01-28 02:08:12:812 [35mhttp[39m: [35m##### GET /api/v1/users/null/image #####[39m
+2025-01-28 02:08:36:836 [35mhttp[39m: [35m##### GET /api/v1/users/null/image #####[39m
+2025-01-28 02:08:41:841 [35mhttp[39m: [35m##### POST /api/v1/stripe/embedded-checkout #####[39m
+2025-01-28 02:08:58:858 [35mhttp[39m: [35m##### GET /api/v1/users/null/image #####[39m
+2025-01-28 02:11:44:1144 [35mhttp[39m: [35m##### GET /api/v1/stripe/session-status #####[39m
+2025-01-28 02:11:44:1144 [32minfo[39m: [32menter function here[39m
+2025-01-28 02:11:45:1145 [32minfo[39m: [32mcs_test_a1WcGvRwJ9rmrJllm2fN3Aqk0RpyGnR3JpBmPCSOMHk2aVdb7meBW73n4I[39m
+2025-01-28 02:11:59:1159 [35mhttp[39m: [35m##### POST /api/v1/stripe/embedded-checkout #####[39m
+2025-01-28 02:15:28:1528 [35mhttp[39m: [35m##### GET /api/v1/stripe/session-status #####[39m
+2025-01-28 02:15:28:1528 [32minfo[39m: [32menter function here[39m
+2025-01-28 02:15:28:1528 [35mhttp[39m: [35m##### GET /api/v1/users/null/image #####[39m
+2025-01-28 02:15:29:1529 [32minfo[39m: [32mcs_test_a1BcbH2iSiJoQRhHpF6Z1izFIY3AoftJvc6chlc7IQuhevV7cIv6MgkfEw[39m
+2025-01-28 02:21:57:2157 [35mhttp[39m: [35m##### GET /api/v1/users/null/image #####[39m
+2025-01-28 02:22:01:221 [35mhttp[39m: [35m##### POST /api/v1/stripe/embedded-checkout #####[39m
+2025-01-28 02:22:22:2222 [35mhttp[39m: [35m##### GET /api/v1/users/null/image #####[39m
+2025-01-28 02:22:52:2252 [35mhttp[39m: [35m##### GET /api/v1/stripe/session-status #####[39m
+2025-01-28 02:22:52:2252 [32minfo[39m: [32menter function here[39m
+2025-01-28 02:22:52:2252 [32minfo[39m: [32mcs_test_a1NEav98HHZRiJ4A07Eys3lVDwoGq0fb0rOjPe6oNh0lYrVesC8mK3x9dx[39m
+2025-01-28 02:25:03:253 [35mhttp[39m: [35m##### GET /api/v1/stripe/session-status #####[39m
+2025-01-28 02:25:03:253 [32minfo[39m: [32menter function here[39m
+2025-01-28 02:25:03:253 [32minfo[39m: [32mcs_test_a1NEav98HHZRiJ4A07Eys3lVDwoGq0fb0rOjPe6oNh0lYrVesC8mK3x9dx[39m
+2025-01-28 02:25:26:2526 [35mhttp[39m: [35m##### GET /api/v1/stripe/session-status #####[39m
+2025-01-28 02:25:26:2526 [32minfo[39m: [32menter function here[39m
+2025-01-28 02:25:27:2527 [32minfo[39m: [32mcs_test_a1NEav98HHZRiJ4A07Eys3lVDwoGq0fb0rOjPe6oNh0lYrVesC8mK3x9dx[39m
+2025-01-28 02:25:56:2556 [35mhttp[39m: [35m##### GET /api/v1/stripe/session-status #####[39m
+2025-01-28 02:25:56:2556 [32minfo[39m: [32menter function here[39m
+2025-01-28 02:25:56:2556 [32minfo[39m: [32mcs_test_a1NEav98HHZRiJ4A07Eys3lVDwoGq0fb0rOjPe6oNh0lYrVesC8mK3x9dx[39m
+2025-01-28 02:40:16:4016 [35mhttp[39m: [35m##### GET /api/v1/users/null/image #####[39m
+2025-01-28 02:45:26:4526 [35mhttp[39m: [35m##### GET /api/v1/users/null/image #####[39m
+2025-01-28 02:45:28:4528 [35mhttp[39m: [35m##### POST /api/v1/stripe/embedded-checkout #####[39m
+2025-01-28 02:45:29:4529 [35mhttp[39m: [35m##### GET /api/v1/users/null/image #####[39m
+2025-01-28 02:45:57:4557 [35mhttp[39m: [35m##### POST /api/v1/stripe/embedded-checkout #####[39m
+2025-01-28 02:46:06:466 [35mhttp[39m: [35m##### GET /api/v1/users/null/image #####[39m
+2025-01-28 02:46:07:467 [35mhttp[39m: [35m##### GET /api/v1/users/1/image #####[39m
+2025-01-28 02:46:07:467 [31merror[39m: [31mCannot read properties of null (reading 'query')[39m
+2025-01-28 02:46:13:4613 [35mhttp[39m: [35m##### GET /api/v1/users/null/image #####[39m
+2025-01-28 02:46:14:4614 [35mhttp[39m: [35m##### GET /api/v1/users/null/image #####[39m
+2025-01-28 02:46:14:4614 [35mhttp[39m: [35m##### GET /api/v1/petitions #####[39m
+2025-01-28 02:46:15:4615 [31merror[39m: [31mCannot read properties of null (reading 'query')[39m
+2025-01-28 02:46:15:4615 [35mhttp[39m: [35m##### GET /api/v1/petitions/categories #####[39m
+2025-01-28 02:46:15:4615 [31merror[39m: [31mCannot read properties of null (reading 'query')[39m
+2025-01-28 02:46:16:4616 [35mhttp[39m: [35m##### POST /api/v1/stripe/embedded-checkout #####[39m

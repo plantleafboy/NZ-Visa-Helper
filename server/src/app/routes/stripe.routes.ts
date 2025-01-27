@@ -11,5 +11,8 @@ module.exports = (app: Express) => {
     // app.route(rootUrl+'/stripe/webhook')
 
     app.route(rootUrl+'/stripe/session-status')
-        .get(stripeCheckout.getCheckoutStatus)
+        .get(stripeCheckout.getCheckoutStatus);
+
+    app.route(rootUrl+'/stripe/webhook')
+        .post(stripeCheckout.webhookFulfilment);
 }

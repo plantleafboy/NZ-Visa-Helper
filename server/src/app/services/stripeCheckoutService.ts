@@ -36,28 +36,6 @@ const stripe = new Stripe(process.env.STRIPE_TEST_SECRET_KEY!);
 //         }
 //
 //
-//         // TODO: Record/save fulfillment status for this Checkout Session
+//         // TODO: Record/save fulfillment status for this Checkout Session save IN USER DB
 //     }
 // }
-
-// app.post('/create-checkout-session', async (req, res) => {
-//   const session = await stripe.checkout.sessions.create({
-//       line_items: [{
-//           price_data: {
-//               currency: 'usd',
-//               product_data: {
-//                   name: 'consultation',
-//               },
-//               unit_amount: 60,
-//           },
-//           quantity: 1,
-//       }],
-//       mode: 'payment',
-//       ui_mode: 'embedded',
-//       return_url: 'https://example.com/checkout/return?session_id={CHECKOUT_SESSION_ID}'   // use url
-//     })
-//     res.json({ id: session.id, client_secret: session.client_secret });
-//     // res.send({clientSecret: session.client_secret});
-// });
-
-// app.listen(4242, () => Logger.info(`Listening on port ${4242}!`));

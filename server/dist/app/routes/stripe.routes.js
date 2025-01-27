@@ -31,5 +31,7 @@ module.exports = (app) => {
     // app.route(rootUrl+'/stripe/webhook')
     app.route(base_routes_1.rootUrl + '/stripe/session-status')
         .get(stripeCheckout.getCheckoutStatus);
+    app.route(base_routes_1.rootUrl + '/stripe/webhook')
+        .post(stripeCheckout.webhookFulfilment);
 };
 //# sourceMappingURL=stripe.routes.js.map
