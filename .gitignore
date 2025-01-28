@@ -4,4 +4,5 @@ server/node_modules
 server/.env
 server/logs/app.log
 client/logs/app.log
-client/src/components/BookAppointment.tsx
+server/logs/error.log
+client/logs/error.log

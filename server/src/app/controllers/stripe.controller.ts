@@ -6,7 +6,7 @@ import {sendEmailWithoutParameters} from "../utilities/nodemailerConfig";
 
 dotenv.config();
 
-//TODO: set up production key when redeployed
+// TODO: set up production key when redeployed
 const stripe = new Stripe(process.env.STRIPE_TEST_SECRET_KEY, {
     apiVersion: '2024-12-18.acacia',
 });
@@ -99,7 +99,7 @@ const webhookFulfilment = async (req: Request, res: Response) => {
         return res.status(400).send(`Webhook construct event Error: ${err.message}`);
     }
 
-    //since we use checkout API from stripe, we can expect these events
+    // since we use checkout API from stripe, we can expect these events
     if (
         event.type === 'checkout.session.completed'
         || event.type === 'checkout.session.async_payment_succeeded'
@@ -108,7 +108,7 @@ const webhookFulfilment = async (req: Request, res: Response) => {
         await fulfillCheckout(event.data.object.id);
     }
 
-    //alternative webhook wevents, hoewever should not be applicable to us TODO: if needed, finish alternative flow(s)
+    // alternative webhook wevents, hoewever should not be applicable to us TODO: if needed, finish alternative flow(s)
     else if (event.type === 'payment_intent.succeeded') { // TODO: confirm what data is required and where it is retrieved from
         Logger.info('PaymentIntent was successful!');
 

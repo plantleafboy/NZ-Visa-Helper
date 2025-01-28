@@ -12,13 +12,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.webhookFulfilment = exports.getCheckoutStatus = exports.createSession = exports.rawBodyParser = void 0;
+exports.webhookFulfilment = exports.getCheckoutStatus = exports.createSession = void 0;
 const logger_1 = __importDefault(require("../../config/logger"));
 const stripe_1 = __importDefault(require("stripe"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const nodemailerConfig_1 = require("../utilities/nodemailerConfig");
-const body_parser_1 = __importDefault(require("body-parser"));
 dotenv_1.default.config();
+// TODO: set up production key when redeployed
 const stripe = new stripe_1.default(process.env.STRIPE_TEST_SECRET_KEY, {
     apiVersion: '2024-12-18.acacia',
 });
@@ -90,14 +90,10 @@ exports.getCheckoutStatus = getCheckoutStatus;
 // Use the secret provided by Stripe CLI for local testing
 // or your webhook endpoint's secret.
 const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET;
-// Use body-parser to retrieve the raw body as a buffer
-exports.rawBodyParser = body_parser_1.default.raw({ type: "application/json" });
-// const bodyParser = require('body-parser');
 const webhookFulfilment = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     logger_1.default.info("Received > webhook req.body", req.body);
     const payload = req.body;
     const sig = req.headers['stripe-signature'];
-    // Logger.error('req.body is not a Buffer or string:', typeof req.body); // check body type: json or raw via global parser application
     let event;
     try {
         event = stripe.webhooks.constructEvent(payload, sig, endpointSecret);
@@ -106,11 +102,13 @@ const webhookFulfilment = (req, res) => __awaiter(void 0, void 0, void 0, functi
         logger_1.default.error('fail on construction ', err.message);
         return res.status(400).send(`Webhook construct event Error: ${err.message}`);
     }
+    // since we use checkout API from stripe, we can expect these events
     if (event.type === 'checkout.session.completed'
         || event.type === 'checkout.session.async_payment_succeeded') {
         logger_1.default.info('Checkout session was completed!');
         yield fulfillCheckout(event.data.object.id);
     }
+    // alternative webhook wevents, hoewever should not be applicable to us TODO: if needed, finish alternative flow(s)
     else if (event.type === 'payment_intent.succeeded') { // TODO: confirm what data is required and where it is retrieved from
         logger_1.default.info('PaymentIntent was successful!');
         const checkoutSessions = yield stripe.checkout.sessions.list({

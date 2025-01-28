@@ -4,10 +4,12 @@ import dotenv from 'dotenv';
 import axios from "axios";
 import {BASE_URL} from "../utility/config";
 import {useCallback} from "react";
+import NavBar from "./NavBar";
 const BookAppointment = () => {
 
     return (
-        <Box>Book with us
+        <Box>
+            <NavBar></NavBar>
             <StripeEmbeddedCheckout></StripeEmbeddedCheckout>
         </Box>
     )

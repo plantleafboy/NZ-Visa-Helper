@@ -2,6 +2,7 @@ import {Box, Button, TextField} from "@mui/material";
 import React from "react";
 import axios from "axios";
 import {BASE_URL} from "../utility/config";
+import NavBar from "./NavBar";
 
 const ContactUs = () => {
 
@@ -45,7 +46,8 @@ const ContactUs = () => {
     };
 
     return (
-        <Box>Contact us in construction
+        <Box>
+            <NavBar></NavBar>
             <form autoComplete="off" onSubmit={testQuery} noValidate>
                 <h2>Login Form</h2>
                 {/*<TextField*/}
