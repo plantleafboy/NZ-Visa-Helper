@@ -74,20 +74,13 @@ const Redirect = () => {
         const sessionId = urlParams.get('session_id');
         console.log(sessionId)
 
-        //using param object
-        // axios
-        //     .get(`/session-status`, {
-        //         params: {
-        //             session_id: sessionId, // Pass the session ID as a query parameter
-        //         },
-        //     })
         axios.get(`${BASE_URL}/api/v1/stripe/session-status?session_id=${sessionId}`)
 
             .then((response) => {
                 const { status, customer_email } = response.data;
                 setStatus(status);
                 setCustomerEmail(customer_email);
-                console.log("get ersponse: ", response.data)
+                console.log("get response: ", response.data)
 
             })
             .catch((error) => {
@@ -108,11 +101,10 @@ const Redirect = () => {
         )
         // @ts-ignore
     } else if (status === 'complete') {
-            //TODO: call fulfillment function
+            //TODO: call fulfillment function?? HERE WE WAIT FOR WEBHOOK FLOW AND SHOW STANDARD SUCCESS PAGE
             return (
-                // Show success page
-                // Optionally use session.payment_status or session.customer_email
-                // to customize the success page
+                // Show success page + use session.payment_status or session.customer_email
+                // customize the success page
                 <Box>
                     <NavBar></NavBar>
                     <section id="success">
@@ -130,7 +122,8 @@ const Redirect = () => {
         return (
             <Box>
                 <NavBar></NavBar>
-                <h3>Exception Error session status: not complete or open code 500</h3>
+                <h3>Exception Error session status: neither complete or open. Please try payment again</h3>
+                <Navigate to="/book-appointment" />
             </Box>
         )
     }
