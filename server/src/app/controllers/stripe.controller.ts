@@ -1,12 +1,12 @@
 import {Request, Response} from "express";
 import Logger from '../../config/logger';
-import {rootUrl} from "../routes/base.routes";
 import Stripe from 'stripe';
 import dotenv from 'dotenv';
 import {sendEmailWithoutParameters} from "../utilities/nodemailerConfig";
-import bodyParser from "body-parser";
 
 dotenv.config();
+
+//TODO: set up production key when redeployed
 const stripe = new Stripe(process.env.STRIPE_TEST_SECRET_KEY, {
     apiVersion: '2024-12-18.acacia',
 });
