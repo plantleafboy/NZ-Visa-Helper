@@ -68,7 +68,6 @@ const createSession = async (req: Request, res: Response) => {
     } catch (e) {
         res.status(500).json({ error: e.message })
     }
-
 };
 
 const getCheckoutStatus = async (req: Request, res: Response) => {
@@ -81,23 +80,16 @@ const getCheckoutStatus = async (req: Request, res: Response) => {
         payment_status: session.payment_status,
         customer_email: session.customer_details.email
     });
-
 }
 
 // Use the secret provided by Stripe CLI for local testing
 // or your webhook endpoint's secret.
 const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET;
-// Use body-parser to retrieve the raw body as a buffer
-export const rawBodyParser = bodyParser.raw({ type: "application/json" });
-// const bodyParser = require('body-parser');
 
 const webhookFulfilment = async (req: Request, res: Response) => {
     Logger.info("Received > webhook req.body", req.body);
     const payload = req.body;
     const sig = req.headers['stripe-signature'];
-
-
-    // Logger.error('req.body is not a Buffer or string:', typeof req.body); // check body type: json or raw via global parser application
     let event;
 
     try {
@@ -105,15 +97,30 @@ const webhookFulfilment = async (req: Request, res: Response) => {
     } catch (err) {
         Logger.error('fail on construction ', err.message);
         return res.status(400).send(`Webhook construct event Error: ${err.message}`);
-
     }
 
+    //since we use checkout API from stripe, we can expect these events
     if (
         event.type === 'checkout.session.completed'
         || event.type === 'checkout.session.async_payment_succeeded'
-        || event.type === 'payment_intent.succeeded'
     ) {
+        Logger.info('Checkout session was completed!');
         await fulfillCheckout(event.data.object.id);
+    }
+
+    //alternative webhook wevents, hoewever should not be applicable to us TODO: if needed, finish alternative flow(s)
+    else if (event.type === 'payment_intent.succeeded') { // TODO: confirm what data is required and where it is retrieved from
+        Logger.info('PaymentIntent was successful!');
+
+        const checkoutSessions = await stripe.checkout.sessions.list({
+            payment_intent: event.data.object.id,
+        });
+        if (checkoutSessions.data.length > 0) {
+            const session = checkoutSessions.data[0];
+            Logger.info('Found Checkout Session:', session);
+        } else {
+            Logger.error('No Checkout Session associated with this Payment Intent');
+        }
     }
 
     res.status(200).end();

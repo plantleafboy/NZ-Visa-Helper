@@ -107,9 +107,22 @@ const webhookFulfilment = (req, res) => __awaiter(void 0, void 0, void 0, functi
         return res.status(400).send(`Webhook construct event Error: ${err.message}`);
     }
     if (event.type === 'checkout.session.completed'
-        || event.type === 'checkout.session.async_payment_succeeded'
-        || event.type === 'payment_intent.succeeded') {
+        || event.type === 'checkout.session.async_payment_succeeded') {
+        logger_1.default.info('Checkout session was completed!');
         yield fulfillCheckout(event.data.object.id);
+    }
+    else if (event.type === 'payment_intent.succeeded') { // TODO: confirm what data is required and where it is retrieved from
+        logger_1.default.info('PaymentIntent was successful!');
+        const checkoutSessions = yield stripe.checkout.sessions.list({
+            payment_intent: event.data.object.id,
+        });
+        if (checkoutSessions.data.length > 0) {
+            const session = checkoutSessions.data[0];
+            logger_1.default.info('Found Checkout Session:', session);
+        }
+        else {
+            logger_1.default.error('No Checkout Session associated with this Payment Intent');
+        }
     }
     res.status(200).end();
     logger_1.default.info('fulfilled');

@@ -12,16 +12,6 @@ exports.default = () => {
     const app = (0, express_1.default)();
     // Middleware
     app.use(cors_middleware_1.default);
-    // app.use(bodyParser.json(
-    //     {
-    //         // Because Stripe needs the raw body, we compute it but only when hitting the Stripe callback URL.
-    //         verify: function(req,res,buf) {
-    //             var url = req.originalUrl;
-    //             if (url.startsWith('/stripe-webhooks')) {
-    //                 req.rawBody = buf.toString()
-    //             }
-    //
-    // ));
     app.use((req, res, next) => {
         if (req.originalUrl === '/api/v1/stripe/webhook') {
             logger_1.default.info('Stripe webhook called via /api/v1');
