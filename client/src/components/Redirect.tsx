@@ -95,7 +95,7 @@ const Redirect = () => {
         return (
             <Box>
                 <NavBar></NavBar>
-                <Navigate to="/book-appointment" />
+                {/*<Navigate to="/book-appointment" />*/}
                 <h3>Exception Error code 500</h3>
             </Box>
         )
@@ -123,7 +123,7 @@ const Redirect = () => {
             <Box>
                 <NavBar></NavBar>
                 <h3>Exception Error session status: neither complete or open. Please try payment again</h3>
-                <Navigate to="/book-appointment" />
+                {/*<Navigate to="/book-appointment" />*/}
             </Box>
         )
     }
