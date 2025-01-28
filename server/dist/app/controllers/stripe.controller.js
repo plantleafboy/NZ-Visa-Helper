@@ -94,20 +94,25 @@ const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET;
 exports.rawBodyParser = body_parser_1.default.raw({ type: "application/json" });
 // const bodyParser = require('body-parser');
 const webhookFulfilment = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    logger_1.default.info("Received > webhook req.body", req.body);
     const payload = req.body;
     const sig = req.headers['stripe-signature'];
+    logger_1.default.error('req.body is not a Buffer or string:', typeof req.body); // check body type: json or raw via global parser application
     let event;
     try {
         event = stripe.webhooks.constructEvent(payload, sig, endpointSecret);
     }
     catch (err) {
-        return res.status(400).send(`Webhook Error: ${err.message}`);
+        logger_1.default.error('fail on construction ', err.message);
+        return res.status(400).send(`Webhook construct event Error: ${err.message}`);
     }
     if (event.type === 'checkout.session.completed'
-        || event.type === 'checkout.session.async_payment_succeeded') {
+        || event.type === 'checkout.session.async_payment_succeeded'
+        || event.type === 'payment_intent.succeeded') {
         yield fulfillCheckout(event.data.object.id);
     }
     res.status(200).end();
+    logger_1.default.info('fulfilled');
 });
 exports.webhookFulfilment = webhookFulfilment;
 //# sourceMappingURL=stripe.controller.js.map

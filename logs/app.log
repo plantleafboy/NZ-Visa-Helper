@@ -1,0 +1,17 @@
+2025-01-28 22:41:07:417 [32minfo[39m: [32mListening on port: 4941[39m
+2025-01-28 22:41:20:4120 [35mhttp[39m: [35m##### POST /api/v1/stripe/webhook #####[39m
+2025-01-28 22:41:20:4120 [32minfo[39m: [32mReceived > webhook req.body[39m
+2025-01-28 22:41:20:4120 [31merror[39m: [31mfail on construction [39m
+2025-01-28 22:41:20:4120 [35mhttp[39m: [35m##### POST /api/v1/stripe/webhook #####[39m
+2025-01-28 22:41:20:4120 [32minfo[39m: [32mReceived > webhook req.body[39m
+2025-01-28 22:41:20:4120 [31merror[39m: [31mfail on construction [39m
+2025-01-28 22:41:20:4120 [35mhttp[39m: [35m##### POST /api/v1/stripe/webhook #####[39m
+2025-01-28 22:41:20:4120 [32minfo[39m: [32mReceived > webhook req.body[39m
+2025-01-28 22:41:20:4120 [31merror[39m: [31mfail on construction [39m
+2025-01-28 22:41:22:4122 [35mhttp[39m: [35m##### POST /api/v1/stripe/webhook #####[39m
+2025-01-28 22:41:22:4122 [32minfo[39m: [32mReceived > webhook req.body[39m
+2025-01-28 22:41:22:4122 [31merror[39m: [31mfail on construction [39m
+2025-01-28 22:41:57:4157 [32minfo[39m: [32mListening on port: 4941[39m
+2025-01-28 22:41:58:4158 [35mhttp[39m: [35m##### POST /api/v1/stripe/webhook #####[39m
+2025-01-28 22:41:58:4158 [32minfo[39m: [32mReceived > webhook req.body[39m
+2025-01-28 23:07:30:730 [31merror[39m: [31mfail on construction [39m

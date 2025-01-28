@@ -583,3 +583,110 @@
 2025-01-28 02:46:15:4615 [35mhttp[39m: [35m##### GET /api/v1/petitions/categories #####[39m
 2025-01-28 02:46:15:4615 [31merror[39m: [31mCannot read properties of null (reading 'query')[39m
 2025-01-28 02:46:16:4616 [35mhttp[39m: [35m##### POST /api/v1/stripe/embedded-checkout #####[39m
+2025-01-28 03:25:09:259 [32minfo[39m: [32mListening on port: 4941[39m
+2025-01-28 03:25:57:2557 [35mhttp[39m: [35m##### POST /stripe/webhook #####[39m
+2025-01-28 03:25:57:2557 [35mhttp[39m: [35m##### POST /stripe/webhook #####[39m
+2025-01-28 03:25:57:2557 [35mhttp[39m: [35m##### POST /stripe/webhook #####[39m
+2025-01-28 03:25:57:2557 [35mhttp[39m: [35m##### POST /stripe/webhook #####[39m
+2025-01-28 03:25:58:2558 [35mhttp[39m: [35m##### GET /api/v1/users/null/image #####[39m
+2025-01-28 03:25:58:2558 [35mhttp[39m: [35m##### GET /api/v1/stripe/session-status #####[39m
+2025-01-28 03:25:58:2558 [32minfo[39m: [32menter function here[39m
+2025-01-28 03:25:59:2559 [32minfo[39m: [32mcs_test_a1uTpqkifB8yAuQpvoxfPCcpEP2TrhtlpcMr0Vqc47hrwGUjNsEQccKfeZ[39m
+2025-01-28 03:25:59:2559 [35mhttp[39m: [35m##### POST /stripe/webhook #####[39m
+2025-01-28 21:48:42:4842 [35mhttp[39m: [35m##### POST /stripe/webhook #####[39m
+2025-01-28 21:48:42:4842 [35mhttp[39m: [35m##### POST /stripe/webhook #####[39m
+2025-01-28 21:48:42:4842 [35mhttp[39m: [35m##### POST /stripe/webhook #####[39m
+2025-01-28 21:48:44:4844 [35mhttp[39m: [35m##### POST /stripe/webhook #####[39m
+2025-01-28 21:55:52:5552 [32minfo[39m: [32mListening on port: 4941[39m
+2025-01-28 21:56:01:561 [35mhttp[39m: [35m##### POST /api/v1/stripe/embedded-checkout #####[39m
+2025-01-28 21:56:19:5619 [35mhttp[39m: [35m##### POST /stripe/webhook #####[39m
+2025-01-28 21:56:19:5619 [35mhttp[39m: [35m##### POST /stripe/webhook #####[39m
+2025-01-28 21:56:19:5619 [35mhttp[39m: [35m##### POST /stripe/webhook #####[39m
+2025-01-28 21:56:20:5620 [35mhttp[39m: [35m##### GET /api/v1/stripe/session-status #####[39m
+2025-01-28 21:56:20:5620 [32minfo[39m: [32menter function here[39m
+2025-01-28 21:56:20:5620 [35mhttp[39m: [35m##### GET /api/v1/users/null/image #####[39m
+2025-01-28 21:56:20:5620 [32minfo[39m: [32mcs_test_a1mlH30SaAcsIEu4aWJGhdnz6XXFEhJcvjUI8GQLHtMKyY7WCdmAmNee8K[39m
+2025-01-28 21:56:21:5621 [35mhttp[39m: [35m##### POST /stripe/webhook #####[39m
+2025-01-28 21:56:30:5630 [35mhttp[39m: [35m##### POST /stripe/webhook #####[39m
+2025-01-28 21:57:03:573 [35mhttp[39m: [35m##### POST /stripe/webhook #####[39m
+2025-01-28 21:57:04:574 [35mhttp[39m: [35m##### POST /stripe/webhook #####[39m
+2025-01-28 21:57:04:574 [35mhttp[39m: [35m##### POST /stripe/webhook #####[39m
+2025-01-28 21:57:06:576 [35mhttp[39m: [35m##### POST /stripe/webhook #####[39m
+2025-01-28 22:03:15:315 [35mhttp[39m: [35m##### POST /api/v1/stripe/webhook #####[39m
+2025-01-28 22:03:15:315 [32minfo[39m: [32mWebhook received[39m
+2025-01-28 22:03:15:315 [31merror[39m: [31mfail on construction[39m
+2025-01-28 22:03:15:315 [35mhttp[39m: [35m##### POST /api/v1/stripe/webhook #####[39m
+2025-01-28 22:03:15:315 [32minfo[39m: [32mWebhook received[39m
+2025-01-28 22:03:15:315 [31merror[39m: [31mfail on construction[39m
+2025-01-28 22:03:15:315 [35mhttp[39m: [35m##### POST /api/v1/stripe/webhook #####[39m
+2025-01-28 22:03:15:315 [32minfo[39m: [32mWebhook received[39m
+2025-01-28 22:03:15:315 [31merror[39m: [31mfail on construction[39m
+2025-01-28 22:03:18:318 [35mhttp[39m: [35m##### POST /api/v1/stripe/webhook #####[39m
+2025-01-28 22:03:18:318 [32minfo[39m: [32mWebhook received[39m
+2025-01-28 22:03:18:318 [31merror[39m: [31mfail on construction[39m
+2025-01-28 22:12:31:1231 [32minfo[39m: [32mListening on port: 4941[39m
+2025-01-28 22:12:39:1239 [35mhttp[39m: [35m##### POST /api/v1/stripe/webhook #####[39m
+2025-01-28 22:12:39:1239 [32minfo[39m: [32mWebhook received[39m
+2025-01-28 22:12:39:1239 [31merror[39m: [31mfail on construction [39m
+2025-01-28 22:12:39:1239 [35mhttp[39m: [35m##### POST /api/v1/stripe/webhook #####[39m
+2025-01-28 22:12:39:1239 [32minfo[39m: [32mWebhook received[39m
+2025-01-28 22:12:39:1239 [31merror[39m: [31mfail on construction [39m
+2025-01-28 22:12:39:1239 [35mhttp[39m: [35m##### POST /api/v1/stripe/webhook #####[39m
+2025-01-28 22:12:39:1239 [32minfo[39m: [32mWebhook received[39m
+2025-01-28 22:12:39:1239 [31merror[39m: [31mfail on construction [39m
+2025-01-28 22:12:42:1242 [35mhttp[39m: [35m##### POST /api/v1/stripe/webhook #####[39m
+2025-01-28 22:12:42:1242 [32minfo[39m: [32mWebhook received[39m
+2025-01-28 22:12:42:1242 [31merror[39m: [31mfail on construction [39m
+2025-01-28 22:20:46:2046 [32minfo[39m: [32mListening on port: 4941[39m
+2025-01-28 22:20:54:2054 [35mhttp[39m: [35m##### POST /api/v1/stripe/webhook #####[39m
+2025-01-28 22:20:54:2054 [32minfo[39m: [32mReceived > webhook req.body[39m
+2025-01-28 22:20:54:2054 [31merror[39m: [31mfail on construction [39m
+2025-01-28 22:20:54:2054 [35mhttp[39m: [35m##### POST /api/v1/stripe/webhook #####[39m
+2025-01-28 22:20:54:2054 [32minfo[39m: [32mReceived > webhook req.body[39m
+2025-01-28 22:20:54:2054 [31merror[39m: [31mfail on construction [39m
+2025-01-28 22:20:54:2054 [35mhttp[39m: [35m##### POST /api/v1/stripe/webhook #####[39m
+2025-01-28 22:20:54:2054 [32minfo[39m: [32mReceived > webhook req.body[39m
+2025-01-28 22:20:54:2054 [31merror[39m: [31mfail on construction [39m
+2025-01-28 22:20:57:2057 [35mhttp[39m: [35m##### POST /api/v1/stripe/webhook #####[39m
+2025-01-28 22:20:57:2057 [32minfo[39m: [32mReceived > webhook req.body[39m
+2025-01-28 22:20:57:2057 [31merror[39m: [31mfail on construction [39m
+2025-01-28 22:21:24:2124 [35mhttp[39m: [35m##### POST /api/v1/stripe/webhook #####[39m
+2025-01-28 22:21:24:2124 [32minfo[39m: [32mReceived > webhook req.body[39m
+2025-01-28 22:21:24:2124 [31merror[39m: [31mfail on construction [39m
+2025-01-28 22:21:24:2124 [35mhttp[39m: [35m##### POST /api/v1/stripe/webhook #####[39m
+2025-01-28 22:21:24:2124 [32minfo[39m: [32mReceived > webhook req.body[39m
+2025-01-28 22:21:24:2124 [31merror[39m: [31mfail on construction [39m
+2025-01-28 22:21:24:2124 [35mhttp[39m: [35m##### POST /api/v1/stripe/webhook #####[39m
+2025-01-28 22:21:24:2124 [32minfo[39m: [32mReceived > webhook req.body[39m
+2025-01-28 22:21:24:2124 [31merror[39m: [31mfail on construction [39m
+2025-01-28 22:21:26:2126 [35mhttp[39m: [35m##### POST /api/v1/stripe/webhook #####[39m
+2025-01-28 22:21:26:2126 [32minfo[39m: [32mReceived > webhook req.body[39m
+2025-01-28 22:21:26:2126 [31merror[39m: [31mfail on construction [39m
+2025-01-28 22:29:16:2916 [32minfo[39m: [32mListening on port: 4941[39m
+2025-01-28 22:29:23:2923 [35mhttp[39m: [35m##### POST /api/v1/stripe/webhook #####[39m
+2025-01-28 22:29:23:2923 [32minfo[39m: [32mReceived > webhook req.body[39m
+2025-01-28 22:29:23:2923 [31merror[39m: [31mfail on construction [39m
+2025-01-28 22:29:23:2923 [35mhttp[39m: [35m##### POST /api/v1/stripe/webhook #####[39m
+2025-01-28 22:29:23:2923 [32minfo[39m: [32mReceived > webhook req.body[39m
+2025-01-28 22:29:23:2923 [31merror[39m: [31mfail on construction [39m
+2025-01-28 22:29:23:2923 [35mhttp[39m: [35m##### POST /api/v1/stripe/webhook #####[39m
+2025-01-28 22:29:23:2923 [32minfo[39m: [32mReceived > webhook req.body[39m
+2025-01-28 22:29:23:2923 [31merror[39m: [31mfail on construction [39m
+2025-01-28 22:29:25:2925 [35mhttp[39m: [35m##### POST /api/v1/stripe/webhook #####[39m
+2025-01-28 22:29:25:2925 [32minfo[39m: [32mReceived > webhook req.body[39m
+2025-01-28 22:29:25:2925 [31merror[39m: [31mfail on construction [39m
+2025-01-28 22:32:05:325 [32minfo[39m: [32mListening on port: 4941[39m
+2025-01-28 22:33:38:3338 [32minfo[39m: [32mListening on port: 4941[39m
+2025-01-28 22:34:07:347 [32minfo[39m: [32mListening on port: 4941[39m
+2025-01-28 22:34:18:3418 [35mhttp[39m: [35m##### POST /api/v1/stripe/webhook #####[39m
+2025-01-28 22:34:18:3418 [32minfo[39m: [32mReceived > webhook req.body[39m
+2025-01-28 22:34:18:3418 [31merror[39m: [31mfail on construction [39m
+2025-01-28 22:34:18:3418 [35mhttp[39m: [35m##### POST /api/v1/stripe/webhook #####[39m
+2025-01-28 22:34:18:3418 [32minfo[39m: [32mReceived > webhook req.body[39m
+2025-01-28 22:34:18:3418 [31merror[39m: [31mfail on construction [39m
+2025-01-28 22:34:18:3418 [35mhttp[39m: [35m##### POST /api/v1/stripe/webhook #####[39m
+2025-01-28 22:34:18:3418 [32minfo[39m: [32mReceived > webhook req.body[39m
+2025-01-28 22:34:18:3418 [31merror[39m: [31mfail on construction [39m
+2025-01-28 22:34:20:3420 [35mhttp[39m: [35m##### POST /api/v1/stripe/webhook #####[39m
+2025-01-28 22:34:20:3420 [32minfo[39m: [32mReceived > webhook req.body[39m
+2025-01-28 22:34:20:3420 [31merror[39m: [31mfail on construction [39m

@@ -12,7 +12,26 @@ exports.default = () => {
     const app = (0, express_1.default)();
     // Middleware
     app.use(cors_middleware_1.default);
-    app.use(body_parser_1.default.json());
+    // app.use(bodyParser.json(
+    //     {
+    //         // Because Stripe needs the raw body, we compute it but only when hitting the Stripe callback URL.
+    //         verify: function(req,res,buf) {
+    //             var url = req.originalUrl;
+    //             if (url.startsWith('/stripe-webhooks')) {
+    //                 req.rawBody = buf.toString()
+    //             }
+    //
+    // ));
+    app.use((req, res, next) => {
+        if (req.originalUrl === '/api/v1/stripe/webhook') {
+            // Skip body parsing for the Stripe webhook route
+            next();
+        }
+        else {
+            // Apply JSON and raw body parsing for other routes
+            body_parser_1.default.json()(req, res, next);
+        }
+    });
     app.use(body_parser_1.default.raw({ type: 'text/plain' }));
     app.use(body_parser_1.default.raw({ type: ['image/*'], limit: '5mb' }));
     // Debug

@@ -9,7 +9,29 @@ export default () => {
 
     // Middleware
     app.use(allowCrossOriginRequestsMiddleware);
-    app.use(bodyParser.json());
+
+    // app.use(bodyParser.json(
+    //     {
+    //         // Because Stripe needs the raw body, we compute it but only when hitting the Stripe callback URL.
+    //         verify: function(req,res,buf) {
+    //             var url = req.originalUrl;
+    //             if (url.startsWith('/stripe-webhooks')) {
+    //                 req.rawBody = buf.toString()
+    //             }
+    //
+    // ));
+
+    app.use((req, res, next) => {
+        if (req.originalUrl === '/api/v1/stripe/webhook') {
+            // Skip body parsing for the Stripe webhook route
+            next();
+        } else {
+            // Apply JSON and raw body parsing for other routes
+            bodyParser.json()(req, res, next);
+        }
+    });
+
+
     app.use(bodyParser.raw({type: 'text/plain'}));
     app.use(bodyParser.raw({type: ['image/*'], limit: '5mb'}));
 
