@@ -97,7 +97,7 @@ const webhookFulfilment = (req, res) => __awaiter(void 0, void 0, void 0, functi
     logger_1.default.info("Received > webhook req.body", req.body);
     const payload = req.body;
     const sig = req.headers['stripe-signature'];
-    logger_1.default.error('req.body is not a Buffer or string:', typeof req.body); // check body type: json or raw via global parser application
+    // Logger.error('req.body is not a Buffer or string:', typeof req.body); // check body type: json or raw via global parser application
     let event;
     try {
         event = stripe.webhooks.constructEvent(payload, sig, endpointSecret);

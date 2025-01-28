@@ -97,7 +97,7 @@ const webhookFulfilment = async (req: Request, res: Response) => {
     const sig = req.headers['stripe-signature'];
 
 
-    Logger.error('req.body is not a Buffer or string:', typeof req.body); // check body type: json or raw via global parser application
+    // Logger.error('req.body is not a Buffer or string:', typeof req.body); // check body type: json or raw via global parser application
     let event;
 
     try {

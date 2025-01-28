@@ -24,11 +24,10 @@ exports.default = () => {
     // ));
     app.use((req, res, next) => {
         if (req.originalUrl === '/api/v1/stripe/webhook') {
-            // Skip body parsing for the Stripe webhook route
+            logger_1.default.info('Stripe webhook called via /api/v1');
             next();
         }
         else {
-            // Apply JSON and raw body parsing for other routes
             body_parser_1.default.json()(req, res, next);
         }
     });
