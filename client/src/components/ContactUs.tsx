@@ -1,10 +1,25 @@
-import {Box, Button, TextField} from "@mui/material";
-import React from "react";
+import {Box, Button, Container, FormControl, FormLabel, Stack, TextField} from "@mui/material";
+import React, {useState} from "react";
 import axios from "axios";
 import {BASE_URL} from "../utility/config";
 import NavBar from "./NavBar";
+import {Link} from "react-router-dom";
 
 const ContactUs = () => {
+
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        message: ""
+    });
+
+    const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setFormData((prevState) => ({
+            ...prevState,
+            [name]: value,
+        }));
+    };
 
     axios.get(`${BASE_URL}/api/v1/users/1/image`,).then(
         (response) => {
@@ -13,7 +28,7 @@ const ContactUs = () => {
         },
     );
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = (e: React.FormEvent) => {
         /** TODO
          * validates the input fields for
          * email
@@ -46,40 +61,58 @@ const ContactUs = () => {
     };
 
     return (
-        <Box>
+        <React.Fragment>
             <NavBar></NavBar>
-            <form autoComplete="off" onSubmit={testQuery} noValidate>
-                <h2>Login Form</h2>
-                {/*<TextField*/}
-                {/*    label="Email"*/}
-                {/*    onChange={handleInputChange}*/}
-                {/*    required*/}
-                {/*    variant="outlined"*/}
-                {/*    color="secondary"*/}
-                {/*    type="email"*/}
-                {/*    sx={{mb: 3}}*/}
-                {/*    fullWidth*/}
-                {/*    name="email"*/}
-                {/*    // value={user.email}*/}
-                {/*    error={emailError}*/}
-                {/*/>*/}
-                {/*<TextField*/}
-                {/*    label="Subject"*/}
-                {/*    onChange={handleInputChange}*/}
-                {/*    required*/}
-                {/*    name="subject"*/}
-                {/*    variant="outlined"*/}
-                {/*    color="secondary"*/}
-                {/*    type="subject"*/}
-                {/*    // value={user.subject}*/}
-                {/*    error={subjectError}*/}
-                {/*    fullWidth*/}
-                {/*    sx={{mb: 3}}*/}
-                {/*/>*/}
-                <Button variant="outlined" color="secondary" type="submit">Send Email</Button>
-                {/*<span>{formError && (<div>{errorMessage}</div>)}</span>*/}
-            </form>
-        </Box>
+            <Box className="sign-up" sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mt: 4 }}>
+                <h1>Sign Up Form</h1>
+                <form onSubmit={handleSubmit} id="sign-up-form" noValidate>
+                    <Stack spacing={2} direction="row" sx={{marginBottom: 4, width: '100%'}}>
+                        <FormControl margin="normal" >
+                            <FormLabel>Name</FormLabel>
+                            <TextField
+                                // label="Name"
+                                type="text"
+                                onChange={handleChange}
+                                name="Name"
+                                placeholder="Jane"
+                                value={formData.name}
+                                required
+                            />
+                        </FormControl>
+                        <FormControl margin="normal">
+                            <FormLabel>Message</FormLabel>
+                            <TextField
+                                type="text"
+                                onChange={handleChange}
+                                name="message"
+                                placeholder="Doe"
+                                value={formData.email}
+                                required
+                            />
+                        </FormControl>
+                    </Stack>
+                    <Stack spacing={2} direction="column" sx={{marginBottom: 4, width: '100%'}}>
+                        <FormControl margin="dense">
+                            <FormLabel>Email</FormLabel>
+                            <TextField
+                                type="email"
+                                onChange={handleChange}
+                                name="email"
+                                placeholder="example@email.com"
+                                value={formData.email}
+                                // error={emailError}
+                                required
+                            />
+                            {/*<span>{emailError && (<div>{fieldErrors.email}</div>)}</span>*/}
+
+                        </FormControl>
+                        {/*<span>{formError && (<div>{errorMessage}</div>)}</span>*/}
+                        <Button variant="outlined" color="secondary" type="submit">Send Email</Button>
+
+                    </Stack>
+                </form>
+            </Box>
+        </React.Fragment>
     )
 }
 
