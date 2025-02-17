@@ -4,6 +4,7 @@ import axios from "axios";
 import {BASE_URL} from "../utility/config";
 import NavBar from "./NavBar";
 import {Link} from "react-router-dom";
+import InsuranceDisplay from "./InsuranceDisplay";
 
 const ContactUs = () => {
 
@@ -64,7 +65,7 @@ const ContactUs = () => {
         <React.Fragment>
             <NavBar></NavBar>
             <Box className="sign-up" sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mt: 4 }}>
-                <h1>Sign Up Form</h1>
+                <h1>Contact Us</h1>
                 <form onSubmit={handleSubmit} id="sign-up-form" noValidate>
                     <Stack spacing={2} direction="row" sx={{marginBottom: 4, width: '100%'}}>
                         <FormControl margin="normal" >
@@ -110,6 +111,7 @@ const ContactUs = () => {
                         <Button variant="outlined" color="secondary" type="submit">Send Email</Button>
 
                     </Stack>
+                    <InsuranceDisplay></InsuranceDisplay>
                 </form>
             </Box>
         </React.Fragment>
