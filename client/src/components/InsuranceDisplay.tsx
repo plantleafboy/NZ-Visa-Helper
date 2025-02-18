@@ -15,7 +15,7 @@ import {Delete, Edit} from "@mui/icons-material";
 import React from "react";
 
 
-// "/images/OrbitProtect_IntStud_300x250_.png"
+// "/images/OrbitProtect-IntStud.png"
 // https://quoting.orbitprotect.com/international-student?referrer=297
 
 const InsuranceDisplay = () => {
@@ -24,16 +24,15 @@ const InsuranceDisplay = () => {
             <Container>
                 {/*<Typography variant="h4" sx={{ mb: 4, mt: 2}}>Purchase Insurance Here</Typography>*/}
 
-                <Card sx={{ maxWidth: 345 }}>
+                <Card sx={{ maxWidth: 400, ml: 4}}>
                     <CardActionArea component="a"
                                     href="https://quoting.orbitprotect.com/international-student?referrer=297"
                     >
 
                         <CardMedia
                             component={"img"}
-                            sx={{ height: 140 }}
-                            image= '/images/brandi-redd-aJTiW00qqtI-unsplash.jpg'
-                            // image= '/images/OrbitProtect_IntStud_300x250_.png'
+                            sx={{ height: 320 }}
+                            image= '/images/OrbitProtect-Insurance.jpg'
                             title="purchase insurance - Orbit Protect"
                         />
                         <CardContent>
