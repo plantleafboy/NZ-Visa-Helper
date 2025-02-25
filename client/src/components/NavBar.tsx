@@ -118,14 +118,13 @@ function NavBar(props: AppBarProps) {
                                     {page.name}
                                 </Button>
                             ))}
-
-                            <Button
-                                component={Link}
-                                to="/petitions"
-                                sx={{ my: 1, color: "white", display: "block" }}
-                            >
-                                Example link
-                            </Button>
+                            {/*<Button*/}
+                            {/*    component={Link}*/}
+                            {/*    to="/petitions"*/}
+                            {/*    sx={{ my: 1, color: "white", display: "block" }}*/}
+                            {/*>*/}
+                            {/*    Example link*/}
+                            {/*</Button>*/}
                             <Button>About us</Button>
                             <Button>Visa Info</Button>
                             <Button>Book an Appointment</Button>
