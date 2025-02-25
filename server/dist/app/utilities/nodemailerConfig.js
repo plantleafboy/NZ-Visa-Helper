@@ -65,9 +65,9 @@ exports.sendAppointmentEmail = sendAppointmentEmail;
 const sendContactEmail = (name, email, message) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const info = yield transporter.sendMail({
-            to: "alexhpcp@gmail.com",
             from: email,
-            subject: `Contact message`,
+            to: "alexhpcp@gmail.com",
+            subject: `New Query from Visa Helper`,
             text: message,
             // html: htmlTemplate
         });

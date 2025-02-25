@@ -5,6 +5,9 @@ import {BASE_URL} from "../utility/config";
 import NavBar from "./NavBar";
 import {Link} from "react-router-dom";
 import InsuranceDisplay from "./InsuranceDisplay";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const ContactUs = () => {
 
@@ -34,15 +37,27 @@ const ContactUs = () => {
          * message
          */
         e.preventDefault();
+
+        if (!formData.name || !formData.email || !formData.message) {
+            toast.error("All fields are required.");
+            return;
+        }
+        
         sendEmail(); //to change
     }
 
     const sendEmail = () => {
         axios.post(`${BASE_URL}/api/v1/email/contact`, formData).then(
             (response) => {
-                console.log('email sent');
+                toast.success("Email sent successfully!");
+                setFormData({
+                    name: "",
+                    email: "",
+                    message: ""
+                });
             },
             (error) => {
+                toast.error("Failed to send email.");
             },
         );
     };
@@ -55,9 +70,8 @@ const ContactUs = () => {
                 <form onSubmit={handleSubmit} id="sign-up-form" noValidate>
                     <Stack spacing={2} direction="column" sx={{marginBottom: 4, width: '100%'}}>
                         <FormControl margin="normal" >
-                            <FormLabel>Name</FormLabel>
                             <TextField
-                                // label="Name"
+                                label="Name"
                                 type="text"
                                 onChange={handleChange}
                                 name="name"
@@ -67,8 +81,8 @@ const ContactUs = () => {
                             />
                         </FormControl>
                         <FormControl margin="dense">
-                            <FormLabel>Email</FormLabel>
                             <TextField
+                                label="Email"
                                 type="email"
                                 onChange={handleChange}
                                 name="email"
@@ -87,18 +101,22 @@ const ContactUs = () => {
                                 type="text"
                                 onChange={handleChange}
                                 name="message"
+                                multiline
                                 placeholder="I would like to find out more about..."
                                 value={formData.message}
+                                minRows={4}
+                                maxRows={6}
                                 required
                             />
                         </FormControl>
                         {/*<span>{formError && (<div>{errorMessage}</div>)}</span>*/}
                         <Button variant="outlined" color="secondary" type="submit">Send Email</Button>
-
                     </Stack>
+
                     <InsuranceDisplay></InsuranceDisplay>
                 </form>
             </Box>
+            <ToastContainer />
         </React.Fragment>
     )
 }
