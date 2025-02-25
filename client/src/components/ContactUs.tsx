@@ -42,7 +42,7 @@ const ContactUs = () => {
             toast.error("All fields are required.");
             return;
         }
-        
+
         sendEmail(); //to change
     }
 
