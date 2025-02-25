@@ -52,9 +52,9 @@ const createSession = async (req: Request, res: Response) => {
                 price_data: {
                     currency: 'usd',
                     product_data: {
-                        name: 'consultation',
+                        name: 'Client Appointment',
                     },
-                    unit_amount: 6000,
+                    unit_amount: 9000,
                 },
                 quantity: 1,
             }],
