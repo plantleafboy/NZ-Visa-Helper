@@ -26,13 +26,21 @@ function NavBar(props: AppBarProps) {
         authenticated: state.authenticated,
         resetState: state.resetState,
     }));
-    const [anchorNav, setAnchorNav] = useState<null | HTMLElement>(null);
-    const openMenu = (event:React.MouseEvent<HTMLElement>) => {
-        setAnchorNav(event.currentTarget);
+    // const [anchorNav, setAnchorNav] = useState<null | HTMLElement>(null);
+    // const openMenu = (event:React.MouseEvent<HTMLElement>) => {
+    //     setAnchorNav(event.currentTarget);
+    // };
+    // const closeMenu = () => {
+    //     setAnchorNav(null);
+    // }
+    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+    const open = Boolean(anchorEl);
+    const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+        setAnchorEl(event.currentTarget);
     };
-    const closeMenu = () => {
-        setAnchorNav(null);
-    }
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
 
     const [userImage, setUserImage] = React.useState<string>("");
     const [useStateElement, setUseStateElement] = React.useState<null | HTMLElement>(null);
@@ -95,7 +103,7 @@ function NavBar(props: AppBarProps) {
         setUseStateElement(event.currentTarget);
     };
 
-    const handleClose = () => {
+    const handleProfileClose = () => {
         setUseStateElement(null);
     };
 
@@ -125,23 +133,45 @@ function NavBar(props: AppBarProps) {
                             {/*>*/}
                             {/*    Example link*/}
                             {/*</Button>*/}
-                            <Button>About us</Button>
-                            <Button>Visa Info</Button>
-                            <Button>Book an Appointment</Button>
-                            <Button>Contact Us</Button>
                         </Box>
                         <Box sx={{display:{xs:'flex',md:'none'}}}>
-                            <IconButton size='large' edge='start' color='inherit' onClick={openMenu}>
+                            <IconButton
+                                size='large' edge='start' color='inherit' onClick={handleClick}
+                                id="demo-positioned-button"
+                                aria-controls={open ? 'demo-positioned-menu' : undefined}
+                                aria-haspopup="true"
+                                aria-expanded={open ? 'true' : undefined}>
                                 <MenuIcon/>
                             </IconButton>
-                            <Menu open={Boolean(anchorNav)} onClose={closeMenu} sx={{display:{xs:'flex',md:'none'}}}>
-                                <MenuList>
-                                    <MenuItem>About us</MenuItem>
-                                    <MenuItem>Visa Info</MenuItem>
-                                    <MenuItem>Book an Appointment</MenuItem>
-                                    <MenuItem>Contact Us</MenuItem>
-                                </MenuList>
+
+                            <Menu
+                                id="demo-positioned-menu"
+                                aria-labelledby="demo-positioned-button"
+                                anchorEl={anchorEl}
+                                open={open}
+                                onClose={handleClose}
+                                anchorOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'left',
+                                }}
+                                transformOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'left',
+                                }}
+                            >
+                                {pages.map((page) => (
+                                    <MenuItem
+                                        key={page.name}
+                                        component={Link}
+                                        to={page.path}
+                                        sx={{ my: 1, color: "Black" }}
+                                        onClick={handleClose}
+                                    >
+                                        {page.name}
+                                    </MenuItem>
+                                ))}
                             </Menu>
+
                             <IconButton size='large' edge={'start'} color={'inherit'} aria-label={'logo'} sx={{display: {xs:'flex', md: 'none'}}}>
                                 <AirplaneTicketIcon/>
                             </IconButton>
@@ -172,12 +202,12 @@ function NavBar(props: AppBarProps) {
                                 horizontal: "right",
                             }}
                             open={Boolean(useStateElement)}
-                            onClose={handleClose}
+                            onClose={handleProfileClose}
                         >
-                            <MenuItem component={Link} to="/login" onClick={handleClose}>
+                            <MenuItem component={Link} to="/login" onClick={handleProfileClose}>
                                 Login
                             </MenuItem>
-                            <MenuItem component={Link} to="/sign-up" onClick={handleClose}>
+                            <MenuItem component={Link} to="/sign-up" onClick={handleProfileClose}>
                                 Register
                             </MenuItem>
                         </Menu>
@@ -197,19 +227,19 @@ function NavBar(props: AppBarProps) {
                                 horizontal: "right",
                             }}
                             open={Boolean(useStateElement)}
-                            onClose={handleClose}
+                            onClose={handleProfileClose}
                         >
                             <MenuItem
                                 component={Link}
                                 to={`/profile`}
-                                onClick={handleClose}
+                                onClick={handleProfileClose}
                             >
                                 Profile
                             </MenuItem>
                             <MenuItem
                                 onClick={() => {
                                     logoutUser();
-                                    handleClose();
+                                    handleProfileClose();
                                 }}
                             >
                                 Logout

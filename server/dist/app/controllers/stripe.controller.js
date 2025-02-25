@@ -58,9 +58,9 @@ const createSession = (req, res) => __awaiter(void 0, void 0, void 0, function* 
                     price_data: {
                         currency: 'usd',
                         product_data: {
-                            name: 'consultation',
+                            name: 'Client Appointment',
                         },
-                        unit_amount: 6000,
+                        unit_amount: 9000,
                     },
                     quantity: 1,
                 }],
