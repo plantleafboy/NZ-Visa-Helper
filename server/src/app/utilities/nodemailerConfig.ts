@@ -29,11 +29,11 @@ const transporter = nodemailer.createTransport({
 // });
 
 // Function to send an email
-export const sendEmail = async (to: string='hi', subject: string='test', text: string='helloworld', html?: string) => {
+export const sendAppointmentEmail = async (to: string='hi', subject: string='test', text: string='helloworld', html?: string) => {
     try {
         const info = await transporter.sendMail({
             to: "holdEmail", // List of recipients
-            subject: 'my subject', // Subject line
+            subject: 'Contact request from ', // Subject line
             html: htmlTemplate
         });
         // const info = await transporter.sendMail({
@@ -43,6 +43,23 @@ export const sendEmail = async (to: string='hi', subject: string='test', text: s
         //     text, // Plain text body
         //     html, // HTML body (optional)
         // });
+
+        // console.log(`Email sent: ${info.messageId}`);
+    } catch (error) {
+        // console.error("Error sending email:", error);
+        throw error;
+    }
+};
+
+export const sendContactEmail = async (name: string, email: string, message: string) => {
+    try {
+        const info = await transporter.sendMail({
+            from: email,
+            to: "alexhpcp@gmail.com", // List of recipients
+            subject: `New Query from Visa Helper`, // Subject line
+            text: message,
+            // html: htmlTemplate
+        });
 
         // console.log(`Email sent: ${info.messageId}`);
     } catch (error) {
@@ -57,26 +74,4 @@ export const sendEmailWithoutParameters = async () => {
         subject: 'my subject', // Subject line
         html: htmlTemplate
     }).then(r => "success");
-};
-
-export const sendEmailParams = async (to: string='hi', subject: string='test', text: string='helloworld', html?: string) => {
-    try {
-        const info = await transporter.sendMail({
-            to: "holdEmail", // List of recipients
-            subject: 'my subject', // Subject line
-            html: htmlTemplate
-        });
-        // const info = await transporter.sendMail({
-        //     from: `"Immigration service" <${process.env.EMAIL_USER}>`, // Sender address
-        //     to, // List of recipients
-        //     subject, // Subject line
-        //     text, // Plain text body
-        //     html, // HTML body (optional)
-        // });
-
-        // console.log(`Email sent: ${info.messageId}`);
-    } catch (error) {
-        // console.error("Error sending email:", error);
-        throw error;
-    }
 };

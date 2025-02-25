@@ -1,14 +1,25 @@
 import {Request, Response} from "express";
 import Logger from '../../config/logger';
-import {sendEmailWithoutParameters} from '../utilities/nodemailerConfig'
+import {sendContactEmail, sendAppointmentEmail} from '../utilities/nodemailerConfig'
 
 // extra to do
 // import * as schemas from '../resources/schemas.json';
 // import {validate} from '../services/validator'
 
-const sendEmailTest = async (req: Request, res: Response)   => {
+const handleContactEmail = async (req: Request, res: Response)   => {
     try {
-        await sendEmailWithoutParameters()
+        await sendContactEmail(req.body.name, req.body.email, req.body.message)
+        res.status(200).send('Email sent successfully');
+    }
+    catch (e) {
+        Logger.error(e);
+    }
+    return;
+}
+
+const handleAppointmentEmail = async (req: Request, res: Response)   => {
+    try {
+        await sendAppointmentEmail()
         res.status(200).send('Email sent successfully');
     }
     catch (e) {
@@ -23,4 +34,4 @@ const testLog = async (req: Request, res: Response) => {
 }
 
 
-export {sendEmailTest, testLog}
+export {handleContactEmail, testLog, handleAppointmentEmail}

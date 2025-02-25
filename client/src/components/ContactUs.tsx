@@ -16,45 +16,31 @@ const ContactUs = () => {
 
     const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
         const { name, value } = e.target;
-        setFormData((prevState) => ({
-            ...prevState,
-            [name]: value,
-        }));
+        setFormData({ ...formData, [name]: value});
     };
 
-    axios.get(`${BASE_URL}/api/v1/users/1/image`,).then(
-        (response) => {
-        },
-        (error) => {
-        },
-    );
+    // axios.get(`${BASE_URL}/api/v1/users/1/image`,).then(
+    //     (response) => {
+    //     },
+    //     (error) => {
+    //     },
+    // );
 
     const handleSubmit = (e: React.FormEvent) => {
         /** TODO
-         * validates the input fields for
+         * validates the input fields for form data:
          * email
          * subject
          * message
          */
         e.preventDefault();
-        sendEmail();
-    }
-
-    const testQuery = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        axios.get(`${BASE_URL}/api/v1/email`).then(
-            (response) => {
-                console.log(response);
-            },
-            (error) => {
-                console.log(error);
-            },
-        );
+        sendEmail(); //to change
     }
 
     const sendEmail = () => {
-        axios.post(`${BASE_URL}/api/v1/email`).then(
+        axios.post(`${BASE_URL}/api/v1/email/contact`, formData).then(
             (response) => {
+                console.log('email sent');
             },
             (error) => {
             },
@@ -67,32 +53,19 @@ const ContactUs = () => {
             <Box className="sign-up" sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mt: 4 }}>
                 <h1>Contact Us</h1>
                 <form onSubmit={handleSubmit} id="sign-up-form" noValidate>
-                    <Stack spacing={2} direction="row" sx={{marginBottom: 4, width: '100%'}}>
+                    <Stack spacing={2} direction="column" sx={{marginBottom: 4, width: '100%'}}>
                         <FormControl margin="normal" >
                             <FormLabel>Name</FormLabel>
                             <TextField
                                 // label="Name"
                                 type="text"
                                 onChange={handleChange}
-                                name="Name"
+                                name="name"
                                 placeholder="Jane"
                                 value={formData.name}
                                 required
                             />
                         </FormControl>
-                        <FormControl margin="normal">
-                            <FormLabel>Message</FormLabel>
-                            <TextField
-                                type="text"
-                                onChange={handleChange}
-                                name="message"
-                                placeholder="Doe"
-                                value={formData.email}
-                                required
-                            />
-                        </FormControl>
-                    </Stack>
-                    <Stack spacing={2} direction="column" sx={{marginBottom: 4, width: '100%'}}>
                         <FormControl margin="dense">
                             <FormLabel>Email</FormLabel>
                             <TextField
@@ -105,7 +78,19 @@ const ContactUs = () => {
                                 required
                             />
                             {/*<span>{emailError && (<div>{fieldErrors.email}</div>)}</span>*/}
-
+                        </FormControl>
+                    </Stack>
+                    <Stack spacing={2} direction="column" sx={{marginBottom: 4, width: '100%'}}>
+                        <FormControl margin="normal">
+                            <FormLabel>Message</FormLabel>
+                            <TextField
+                                type="text"
+                                onChange={handleChange}
+                                name="message"
+                                placeholder="I would like to find out more about..."
+                                value={formData.message}
+                                required
+                            />
                         </FormControl>
                         {/*<span>{formError && (<div>{errorMessage}</div>)}</span>*/}
                         <Button variant="outlined" color="secondary" type="submit">Send Email</Button>
