@@ -6,6 +6,9 @@ import {BASE_URL} from "../utility/config";
 import {useCallback, useState} from "react";
 import NavBar from "./NavBar";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import MyCarousel from "./Testmionials";
+import Carousel from "react-material-ui-carousel";
+import MyTestimonials from "./MyTestimonials";
 const BookAppointment = () => {
     const [open, setOpen] = useState(false);
 
@@ -47,6 +50,7 @@ const BookAppointment = () => {
                     {/*autofocus*/}
                 </DialogActions>
             </Dialog>
+            <MyTestimonials></MyTestimonials>
         </Box>
     )
 }

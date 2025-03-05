@@ -2,6 +2,7 @@ import {Avatar, Box, Button, Card, CardContent, Container, Grid, Typography} fro
 import React from "react";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
+import MyCarousel from "./Testmionials";
 interface TestimonialProps {
     name: string
     comment: string
@@ -96,6 +97,7 @@ const About = () => {
                             pb: 5,
                         }}
                     >
+                        <MyCarousel></MyCarousel>
                         {testimonials.map((testimonial, index) => (
                             <Card key={index} sx={{ minWidth: 300 }}>
                                 <CardContent>
