@@ -97,7 +97,6 @@ const About = () => {
                             pb: 5,
                         }}
                     >
-                        <MyCarousel></MyCarousel>
                         {testimonials.map((testimonial, index) => (
                             <Card key={index} sx={{ minWidth: 300 }}>
                                 <CardContent>
