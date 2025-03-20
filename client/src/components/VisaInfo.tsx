@@ -15,13 +15,11 @@ const VisaInfo = () => {
                 //justifyContent: // Centers vertically
                 height: "100vh",
             }}>
-
-                <Typography variant="h4" sx={{ mb: 4, mt: 2}}>Visa Info & FAQ</Typography>
-                <ArticleDropdown></ArticleDropdown>
                 <EducationOptions></EducationOptions>
+                <ArticleDropdown></ArticleDropdown>
 
             </Container>
-            <Footer text={"Footer to add"}></Footer>
+            {/*<Footer text={"Footer to add"}></Footer>*/}
         </Box>
     )
 }
