@@ -7,7 +7,7 @@ const EducationOptions = () => {
 
     return (
         <Box
-            sx={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", height: "100vh", textAlign: "center", mt: 0.5, mb: 0.5}}
+            sx={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", height: "100vh", textAlign: "center", mt: 4, mb: 4}}
         >
             <motion.div
                 initial={{ y: 50, opacity: 0 }}
@@ -27,7 +27,7 @@ const EducationOptions = () => {
                     size="large"
                     variant="contained"
                     color="primary"
-                    sx={{ mt: 2 }}
+                    sx={{ mt: 1 }}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     href="https://www.studywithnewzealand.govt.nz/cn"

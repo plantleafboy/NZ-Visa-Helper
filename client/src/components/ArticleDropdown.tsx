@@ -3,6 +3,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import {Accordion, Box} from "@mui/material";
 import { motion } from "motion/react"
 const ArticleDropdown = () => {
@@ -11,8 +12,7 @@ const ArticleDropdown = () => {
     const accordionVariants = {hidden: {opacity: 0 }, show: {opacity: 1}}
 
     return (
-        <div>
-            <Box sx={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", mb: 4}}
+            <Box sx={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", width: 0.6}}
             >
                 <Typography variant="h3" sx={{mb: 2}}>Info & FAQ</Typography>
                 <motion.section
@@ -29,13 +29,19 @@ const ArticleDropdown = () => {
                 >
                     <MotionAccordion
                         variants={accordionVariants}
+                        sx={{backgroundColor: "#f5f5f5"}}
                     >
                         <AccordionSummary
-                            expandIcon={<ArrowDownwardIcon/>}
+                            expandIcon={<ExpandMoreIcon />}
                             aria-controls="panel1-content"
                             id="panel1-header"
+                            sx={{
+                                padding: "12px 24px", // Padding inside the summary
+                                fontWeight: "bold", // Makes title bold
+                                textAlign: "left", // Aligns text to the left
+                                }}
                         >
-                            <Typography component="span">Accordion 1</Typography>
+                            <Typography component="span" sx={{ml: 0.5, textAlign:"right"}}>Accordion test</Typography>
                         </AccordionSummary>
                         <AccordionDetails>
                             <Typography>
@@ -46,13 +52,19 @@ const ArticleDropdown = () => {
                     </MotionAccordion>
                     <MotionAccordion
                         variants={accordionVariants}
+                        sx={{backgroundColor: "#f5f5f5"}}
                     >
                         <AccordionSummary
-                            expandIcon={<ArrowDownwardIcon/>}
+                            expandIcon={<ExpandMoreIcon />}
                             aria-controls="panel1-content"
                             id="panel1-header"
+                            sx={{
+                                padding: "12px 24px", // Padding inside the summary
+                                fontWeight: "bold", // Makes title bold
+                                textAlign: "left", // Aligns text to the left
+                            }}
                         >
-                            <Typography component="span">Accordion 1</Typography>
+                            <Typography component="span" sx={{ml: 0.5, textAlign:"right"}}>Accordion test</Typography>
                         </AccordionSummary>
                         <AccordionDetails>
                             <Typography>
@@ -60,33 +72,44 @@ const ArticleDropdown = () => {
                                 malesuada lacus ex, sit amet blandit leo lobortis eget.
                             </Typography>
                         </AccordionDetails>
-                    </MotionAccordion>
+                    </MotionAccordion><MotionAccordion
+                    variants={accordionVariants}
+                    sx={{backgroundColor: "#f5f5f5"}}
+                >
+                    <AccordionSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel1-content"
+                        id="panel1-header"
+                        sx={{
+                            padding: "12px 24px", // Padding inside the summary
+                            fontWeight: "bold", // Makes title bold
+                            textAlign: "left", // Aligns text to the left
+                        }}
+                    >
+                        <Typography component="span" sx={{ml: 0.5, textAlign:"right"}}>Accordion test</Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                        <Typography>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+                            malesuada lacus ex, sit amet blandit leo lobortis eget.
+                        </Typography>
+                    </AccordionDetails>
+                </MotionAccordion>
                     <MotionAccordion
                         variants={accordionVariants}
+                        sx={{backgroundColor: "#f5f5f5"}}
                     >
                         <AccordionSummary
-                            expandIcon={<ArrowDownwardIcon/>}
+                            expandIcon={<ExpandMoreIcon />}
                             aria-controls="panel1-content"
                             id="panel1-header"
+                            sx={{
+                                padding: "12px 24px", // Padding inside the summary
+                                fontWeight: "bold", // Makes title bold
+                                textAlign: "left", // Aligns text to the left
+                            }}
                         >
-                            <Typography component="span">Accordion 1</Typography>
-                        </AccordionSummary>
-                        <AccordionDetails>
-                            <Typography>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                                malesuada lacus ex, sit amet blandit leo lobortis eget.
-                            </Typography>
-                        </AccordionDetails>
-                    </MotionAccordion>
-                    <MotionAccordion
-                        variants={accordionVariants}
-                    >
-                        <AccordionSummary
-                            expandIcon={<ArrowDownwardIcon/>}
-                            aria-controls="panel1-content"
-                            id="panel1-header"
-                        >
-                            <Typography component="span">Accordion 1</Typography>
+                            <Typography component="span" sx={{ml: 0.5, textAlign:"right"}}>Accordion test</Typography>
                         </AccordionSummary>
                         <AccordionDetails>
                             <Typography>
@@ -97,7 +120,6 @@ const ArticleDropdown = () => {
                     </MotionAccordion>
                 </motion.section>
             </Box>
-        </div>
     )
 
 }

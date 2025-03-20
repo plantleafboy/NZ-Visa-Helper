@@ -12,8 +12,9 @@ const VisaInfo = () => {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                //justifyContent: // Centers vertically
+                // justifyContent: "center"
                 height: "100vh",
+                mb: 10
             }}>
                 <EducationOptions></EducationOptions>
                 <ArticleDropdown></ArticleDropdown>
