@@ -121,7 +121,23 @@ function NavBar(props: AppBarProps) {
                                     key={page.name}
                                     component={Link}
                                     to={page.path}
-                                    sx={{ my: 1, color: "white", display: "block" }}
+                                    sx={{ my: 1, color: "white", display: "block", fontSize: 16, fontWeight: "medium",
+                                        textTransform: "none",
+                                        "&::after": {
+                                            content: '""',
+                                            position: "absolute",
+                                            width: "100%",
+                                            transform: "scaleX(0)",
+                                            height: "2px",
+                                            bottom: 0,
+                                            left: 0,
+                                            backgroundColor: "#FFD700",
+                                            transition: "transform 0.25s ease-out",
+                                        },
+                                        "&:hover::after": {
+                                            transform: "scaleX(1)",
+                                        },
+                                    }}
                                 >
                                     {page.name}
                                 </Button>
