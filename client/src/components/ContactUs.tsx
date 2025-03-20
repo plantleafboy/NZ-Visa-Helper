@@ -1,4 +1,15 @@
-import {Box, Button, Container, FormControl, FormLabel, Stack, TextField} from "@mui/material";
+import {
+    Box,
+    Button,
+    Container,
+    Divider,
+    FormControl,
+    FormLabel,
+    Paper,
+    Stack,
+    TextField,
+    Typography
+} from "@mui/material";
 import React, {useState} from "react";
 import axios from "axios";
 import {BASE_URL} from "../utility/config";
@@ -68,64 +79,84 @@ const ContactUs = () => {
     return (
         <React.Fragment>
             <NavBar></NavBar>
-            <Box className="sign-up" sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mt: 4 }}>
-                <h1>Contact Us</h1>
-                <form onSubmit={handleSubmit} id="sign-up-form" noValidate>
-                    <Stack spacing={2} direction="column" sx={{marginBottom: 4, width: '100%'}}>
-                        <FormControl margin="normal" >
-                            <TextField
-                                label="Name"
-                                type="text"
-                                onChange={handleChange}
-                                name="name"
-                                placeholder="Jane"
-                                value={formData.name}
-                                required
-                            />
-                        </FormControl>
-                        <FormControl margin="dense">
-                            <TextField
-                                label="Email"
-                                type="email"
-                                onChange={handleChange}
-                                name="email"
-                                placeholder="example@email.com"
-                                value={formData.email}
-                                // error={emailError}
-                                required
-                            />
-                            {/*<span>{emailError && (<div>{fieldErrors.email}</div>)}</span>*/}
-                        </FormControl>
-                    </Stack>
-                    <Stack spacing={2} direction="column" sx={{marginBottom: 4, width: '100%'}}>
-                        <FormControl margin="normal">
-                            <FormLabel>Message</FormLabel>
-                            <TextField
-                                type="text"
-                                onChange={handleChange}
-                                name="message"
-                                multiline
-                                placeholder="I would like to find out more about..."
-                                value={formData.message}
-                                minRows={4}
-                                maxRows={6}
-                                required
-                            />
-                        </FormControl>
-                        {/*<span>{formError && (<div>{errorMessage}</div>)}</span>*/}
-                        <MotionButton variant="outlined"
-                                      color="secondary"
-                                      type="submit"
-                                      whileHover={{ scale: 1.1 }}
-                                      whileTap={{ scale: 0.9 }}>
-                            Send Email
-                        </MotionButton>
-                    </Stack>
-
-                    <InsuranceDisplay></InsuranceDisplay>
-                </form>
+            <Box className="sign-up" sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', mt: 4, justifyContent: 'center', ml: 10, mr: 3 }}>
+                <Container sx={{flex: 0.4, pb: 10}}>
+                    <h1>Get Started by Contacting Us</h1>
+                    <Typography variant='h5'>Let us help start your journey in New Zealand</Typography>
+                </Container>
+                {/*<Container sx={{flex: 0.6, ml: 4, mt: 4, backgroundColor: ""}}>*/}
+                <Paper
+                    elevation={3} // Controls shadow depth
+                    sx={{
+                        mx: "auto",
+                        flex: 0.6,
+                        p: 4, // Adds padding inside the form
+                        borderRadius: 3, // Makes the corners rounded
+                        border: "1px solid #ccc", // Optional: Adds an outline
+                        boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)", // Subtle shadow
+                        backgroundColor: "white"
+                    }}
+                >
+                    <form onSubmit={handleSubmit} id="sign-up-form" noValidate>
+                        <Stack spacing={2} direction="column" sx={{marginBottom: 2, width: '100%'}}>
+                            <FormControl margin="normal">
+                                <TextField
+                                    label="Name"
+                                    type="text"
+                                    onChange={handleChange}
+                                    name="name"
+                                    placeholder="Jane"
+                                    value={formData.name}
+                                    required
+                                />
+                            </FormControl>
+                            <FormControl margin="dense">
+                                <TextField
+                                    label="Email"
+                                    type="email"
+                                    onChange={handleChange}
+                                    name="email"
+                                    placeholder="example@email.com"
+                                    value={formData.email}
+                                    // error={emailError}
+                                    required
+                                />
+                                {/*<span>{emailError && (<div>{fieldErrors.email}</div>)}</span>*/}
+                            </FormControl>
+                        </Stack>
+                        <Stack spacing={2} direction="column" sx={{marginBottom: 2, width: '100%'}}>
+                            <FormControl margin="normal">
+                                <FormLabel>Message</FormLabel>
+                                <TextField
+                                    type="text"
+                                    onChange={handleChange}
+                                    name="message"
+                                    multiline
+                                    placeholder="I would like to find out more about..."
+                                    value={formData.message}
+                                    minRows={4}
+                                    maxRows={6}
+                                    required
+                                />
+                            </FormControl>
+                            {/*<span>{formError && (<div>{errorMessage}</div>)}</span>*/}
+                            <MotionButton variant="outlined"
+                                          color="secondary"
+                                          type="submit"
+                                          whileHover={{scale: 1.1}}
+                                          whileTap={{scale: 0.9}}
+                                          sx={{width: 0.6, ml:'auto'}}
+                            >
+                                Send Email
+                            </MotionButton>
+                        </Stack>
+                    </form>
+                {/*</Container>*/}
+                </Paper>
             </Box>
-            <ToastContainer />
+            <InsuranceDisplay></InsuranceDisplay>
+
+            <ToastContainer/>
         </React.Fragment>
     )
 }
