@@ -2,6 +2,7 @@ import {Avatar, Box, Button, Card, CardContent, Container, Grid, Typography} fro
 import React from "react";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
+import InsuranceDisplay from "./InsuranceDisplay";
 import MyCarousel from "./Testmionials";
 interface TestimonialProps {
     name: string
@@ -117,6 +118,7 @@ const About = () => {
                     </Box>
                 </Container>
             </Box>
+            <InsuranceDisplay></InsuranceDisplay>
             <Footer text={"about us page test"}></Footer>
         </Box>
     )

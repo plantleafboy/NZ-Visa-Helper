@@ -7,9 +7,12 @@ import {Link} from "react-router-dom";
 import InsuranceDisplay from "./InsuranceDisplay";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { motion } from "framer-motion";
 
 
 const ContactUs = () => {
+
+    const MotionButton = motion(Button);
 
     const [formData, setFormData] = useState({
         name: "",
@@ -110,7 +113,13 @@ const ContactUs = () => {
                             />
                         </FormControl>
                         {/*<span>{formError && (<div>{errorMessage}</div>)}</span>*/}
-                        <Button variant="outlined" color="secondary" type="submit">Send Email</Button>
+                        <MotionButton variant="outlined"
+                                      color="secondary"
+                                      type="submit"
+                                      whileHover={{ scale: 1.1 }}
+                                      whileTap={{ scale: 0.9 }}>
+                            Send Email
+                        </MotionButton>
                     </Stack>
 
                     <InsuranceDisplay></InsuranceDisplay>
