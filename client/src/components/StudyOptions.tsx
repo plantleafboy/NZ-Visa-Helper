@@ -1,4 +1,3 @@
-// https://www.studywithnewzealand.govt.nz/en
 import {
     Avatar,
     Box,

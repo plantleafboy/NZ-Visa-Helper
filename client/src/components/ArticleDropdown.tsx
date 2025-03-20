@@ -8,7 +8,7 @@ import {Accordion, Box} from "@mui/material";
 const ArticleDropdown = () => {
     return (
         <div>
-            <Box >
+            <Box>
                 <Accordion>
                     <AccordionSummary
                         expandIcon={<ArrowDownwardIcon/>}
@@ -77,51 +77,6 @@ const ArticleDropdown = () => {
                     id="panel1-header"
                 >
                     <Typography component="span">Accordion 1</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                    <Typography>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                        malesuada lacus ex, sit amet blandit leo lobortis eget.
-                    </Typography>
-                </AccordionDetails>
-            </Accordion>
-            <Accordion>
-                <AccordionSummary
-                    expandIcon={<ArrowDownwardIcon/>}
-                    aria-controls="panel2-content"
-                    id="panel2-header"
-                >
-                    <Typography component="span">Accordion 2</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                    <Typography>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                        malesuada lacus ex, sit amet blandit leo lobortis eget.
-                    </Typography>
-                </AccordionDetails>
-            </Accordion>
-            <Accordion>
-                <AccordionSummary
-                    expandIcon={<ArrowDownwardIcon/>}
-                    aria-controls="panel2-content"
-                    id="panel2-header"
-                >
-                    <Typography component="span">Accordion 3</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                    <Typography>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                        malesuada lacus ex, sit amet blandit leo lobortis eget.
-                    </Typography>
-                </AccordionDetails>
-            </Accordion>
-            <Accordion>
-                <AccordionSummary
-                    expandIcon={<ArrowDownwardIcon/>}
-                    aria-controls="panel2-content"
-                    id="panel2-header"
-                >
-                    <Typography component="span">Accordion 4</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
