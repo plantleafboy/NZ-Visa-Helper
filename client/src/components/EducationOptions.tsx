@@ -7,7 +7,11 @@ const EducationOptions = () => {
 
     return (
         <Box
-            sx={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", height: "100vh", textAlign: "center", mt: 4, mb: 4}}
+            sx={{display: "flex", flexDirection: "column", justifyContent: "center",
+                alignItems: "center", height: "100%", textAlign: "center", mb: 4, minHeight: "100vh",
+                backgroundImage: "url('/images/classroom-snapshot.jpg')",
+                backgroundSize: "cover",
+                backgroundPosition: "center"}}
         >
             <motion.div
                 initial={{ y: 50, opacity: 0 }}
@@ -19,7 +23,7 @@ const EducationOptions = () => {
                 {/*    variant="h2" gutterBottom>*/}
                 {/*    Education Options*/}
                 {/*</Typography>*/}
-                <Typography variant="h3" gutterBottom>
+                <Typography variant="h2" gutterBottom>
                     New Zealand has a vast range of schools and universities to choose from. Explore the various options
                     and find the <b>perfect</b> choice <i>for your family</i>.
                 </Typography>

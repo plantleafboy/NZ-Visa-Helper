@@ -4,6 +4,7 @@ import NavBar from "./NavBar";
 import Footer from "./Footer";
 import InsuranceDisplay from "./InsuranceDisplay";
 import MyCarousel from "./Testmionials";
+import MyTestimonials from "./MyTestimonials";
 interface TestimonialProps {
     name: string
     comment: string
@@ -35,12 +36,13 @@ const About = () => {
             {/* Hero Section */}
             <Box
                 sx={{
-                    backgroundImage: "url('/images/brandi-redd-aJTiW00qqtI-unsplash.jpg')",
+                    backgroundImage: "url('/images/hiking.png')",
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                     color: "white",
                     py: 10,
                     textAlign: "center",
+                    height: "60vh"
                 }}
             >
                 <Typography variant="h3" gutterBottom color={'black'}>
@@ -56,70 +58,79 @@ const About = () => {
             </Box>
 
             {/* Info Section */}
-            <Container sx={{ py: 5 }}>
-                <Typography variant="h4" gutterBottom textAlign="center">
-                    Why Choose Us?
-                </Typography>
-                <Grid container spacing={4}>
-                    <Grid item xs={12} md={4}>
-                        <Typography variant="h6">Expert Guidance</Typography>
-                        <Typography>
-                            Our team of immigration experts understands the ins and outs of New Zealand's visa and residency
-                            requirements.
-                        </Typography>
-                    </Grid>
-                    <Grid item xs={12} md={4}>
-                        <Typography variant="h6">Personalized Support</Typography>
-                        <Typography>
-                            We tailor our services to meet your unique needs and circumstances, ensuring a smooth transition.
-                        </Typography>
-                    </Grid>
-                    <Grid item xs={12} md={4}>
-                        <Typography variant="h6">Proven Success</Typography>
-                        <Typography>
-                            Hundreds of successful cases have made us a trusted partner for immigration from China to New Zealand.
-                        </Typography>
-                    </Grid>
-                </Grid>
-            </Container>
-
-            {/* Testimonials Section */}
-            <Box sx={{ py: 5, bgcolor: "grey.100" }}>
+            <Box sx={{py: 5, bgcolor: "grey.100"}}>
                 <Container>
                     <Typography variant="h4" gutterBottom textAlign="center">
-                        What Our Clients Say
+                        Why Choose Us?
                     </Typography>
-                    <Box
-                        sx={{
-                            display: "flex",
-                            overflowX: "auto",
-                            gap: 3,
-                            pt: 3,
-                            pb: 5,
-                        }}
-                    >
-                        {testimonials.map((testimonial, index) => (
-                            <Card key={index} sx={{ minWidth: 300 }}>
-                                <CardContent>
-                                    <Avatar
-                                        src={testimonial.profileImage}
-                                        alt={testimonial.name}
-                                        sx={{ width: 60, height: 60, mx: "auto", mb: 2 }}
-                                    />
-                                    <Typography variant="body1" sx={{ mb: 2 }}>
-                                        "{testimonial.comment}"
-                                    </Typography>
-                                    <Typography variant="subtitle1" textAlign="center" color="primary">
-                                        - {testimonial.name}
-                                    </Typography>
-                                </CardContent>
-                            </Card>
-                        ))}
-                    </Box>
+                    <Grid container spacing={4}>
+                        <Grid item xs={12} md={4}>
+                            <Typography variant="h6">Expert Guidance</Typography>
+                            <Typography>
+                                Our team of immigration experts understands the ins and outs of New Zealand's visa and residency
+                                requirements.
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={12} md={4}>
+                            <Typography variant="h6">Personalized Support</Typography>
+                            <Typography>
+                                We tailor our services to meet your unique needs and circumstances, ensuring a smooth transition.
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={12} md={4}>
+                            <Typography variant="h6">Proven Success</Typography>
+                            <Typography>
+                                Hundreds of successful cases have made us a trusted partner for immigration from China to New Zealand.
+                            </Typography>
+                        </Grid>
+                    </Grid>
                 </Container>
             </Box>
-            <InsuranceDisplay></InsuranceDisplay>
-            <Footer text={"about us page test"}></Footer>
+
+            <Container sx={{display: 'flex', flexDirection: 'row', justifyContent: 'center', mt: 4, mb: 4, height: '40vh' }}>
+                <MyTestimonials></MyTestimonials>
+            </Container>
+
+
+
+            {/*<Box sx={{ py: 5, bgcolor: "grey.100", height: '40vh' }}>*/}
+            {/*    <Container>*/}
+            {/*        <Typography variant="h4" gutterBottom textAlign="center">*/}
+            {/*            What Our Clients Say*/}
+            {/*        </Typography>*/}
+            {/*        <Box*/}
+            {/*            sx={{*/}
+            {/*                display: "flex",*/}
+            {/*                overflowX: "auto",*/}
+            {/*                gap: 3,*/}
+            {/*                pt: 3,*/}
+            {/*                pb: 5,*/}
+            {/*            }}*/}
+            {/*        >*/}
+            {/*            {testimonials.map((testimonial, index) => (*/}
+            {/*                <Card key={index} sx={{ minWidth: 300 }}>*/}
+            {/*                    <CardContent>*/}
+            {/*                        <Avatar*/}
+            {/*                            src={testimonial.profileImage}*/}
+            {/*                            alt={testimonial.name}*/}
+            {/*                            sx={{ width: 60, height: 60, mx: "auto", mb: 2 }}*/}
+            {/*                        />*/}
+            {/*                        <Typography variant="body1" sx={{ mb: 2 }}>*/}
+            {/*                            "{testimonial.comment}"*/}
+            {/*                        </Typography>*/}
+            {/*                        <Typography variant="subtitle1" textAlign="center" color="primary">*/}
+            {/*                            - {testimonial.name}*/}
+            {/*                        </Typography>*/}
+            {/*                    </CardContent>*/}
+            {/*                </Card>*/}
+            {/*            ))}*/}
+            {/*        </Box>*/}
+            {/*    </Container>*/}
+            {/*</Box>*/}
+            <Box sx={{bgcolor: 'grey.100', display: 'flex', flexDirection: 'row', justifyContent: 'center', mt: 4, mb: 4}}>
+                <InsuranceDisplay></InsuranceDisplay>
+            </Box>
+            {/*<Footer text={"about us page test"}></Footer>*/}
         </Box>
     )
 }

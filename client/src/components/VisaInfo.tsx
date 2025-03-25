@@ -6,7 +6,7 @@ import EducationOptions from "./EducationOptions";
 
 const VisaInfo = () => {
     return (
-        <Box>
+        <Box sx={{ height: "100vh", display: "flex", flexDirection: "column", mb: 10 }}>
             <NavBar />
             <Container sx={{
                 display: "flex",
@@ -14,7 +14,6 @@ const VisaInfo = () => {
                 alignItems: "center",
                 // justifyContent: "center"
                 height: "100vh",
-                mb: 10
             }}>
                 <EducationOptions></EducationOptions>
                 <ArticleDropdown></ArticleDropdown>
