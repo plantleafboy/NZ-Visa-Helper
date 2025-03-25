@@ -154,8 +154,9 @@ const ContactUs = () => {
                 {/*</Container>*/}
                 </Paper>
             </Box>
-            <InsuranceDisplay></InsuranceDisplay>
-
+            <Box sx={{bgcolor: 'grey.100', display: 'flex', flexDirection: 'row', justifyContent: 'center', mt: 4, mb: 4, py: 4}}>
+                <InsuranceDisplay></InsuranceDisplay>
+            </Box>
             <ToastContainer/>
         </React.Fragment>
     )

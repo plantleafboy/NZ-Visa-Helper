@@ -9,7 +9,7 @@ const EducationOptions = () => {
         <Box
             sx={{display: "flex", flexDirection: "column", justifyContent: "center",
                 alignItems: "center", height: "100%", textAlign: "center", mb: 4, minHeight: "100vh",
-                backgroundImage: "url('/images/classroom-snapshot.jpg')",
+                // backgroundImage: "url('/images/students on laptops.png')",
                 backgroundSize: "cover",
                 backgroundPosition: "center"}}
         >
