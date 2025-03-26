@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import Carousel from 'react-material-ui-carousel'
-import {Paper, Button, Box, Typography} from '@mui/material'
+import {Paper, Button, Box, Typography, CardContent, Avatar, Card} from '@mui/material'
 
 interface ItemProps {
     name: string;
@@ -67,9 +67,24 @@ function Project({item}: ProjectProps) {
             }}
             elevation={10}
         >
-            <Typography variant='h5'>{item.name}</Typography>
-            <br/>
-            <Typography>{item.description}</Typography>
+            <Card sx={{ minWidth: 300 }}>
+                <CardContent>
+                    <Avatar
+                        src={item.name}
+                        alt={item.name}
+                        sx={{ width: 60, height: 60, mx: "auto", mb: 2 }}
+                    />
+                    <Typography variant="body1" sx={{ mb: 2 }}>
+                        "{item.description}"
+                    </Typography>
+                    <Typography variant="subtitle1" textAlign="center" color="primary">
+                        - {item.href}
+                    </Typography>
+                </CardContent>
+            </Card>
+            {/*<Typography variant='h5'>{item.name}</Typography>*/}
+            {/*<br/>*/}
+            {/*<Typography>{item.description}</Typography>*/}
         </Paper>
     )
 }

@@ -92,11 +92,9 @@ const About = () => {
                 </Container>
             </Box>
 
-            <Container sx={{display: 'flex', flexDirection: 'row', justifyContent: 'center', mt: 4, mb: 4, height: '40vh' }}>
+            <Container sx={{display: 'flex', flexDirection: 'row', justifyContent: 'center', mt: 4, mb: 4, height: '50vh' }}>
                 <MyTestimonials></MyTestimonials>
             </Container>
-
-
 
             {/*<Box sx={{ py: 5, bgcolor: "grey.100", height: '40vh' }}>*/}
             {/*    <Container>*/}
