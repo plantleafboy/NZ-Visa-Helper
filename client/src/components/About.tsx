@@ -37,8 +37,8 @@ const About = () => {
             <Box
                 sx={{
                     backgroundImage: "url('/images/hiking.png')",
-                    backgroundSize: "contain",
-                    backgroundPosition: "center center",
+                    backgroundSize: "cover",
+                    backgroundPosition: "top center",
                     color: "white",
                     py: 10,
                     textAlign: "center",
