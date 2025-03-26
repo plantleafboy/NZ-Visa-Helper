@@ -14,7 +14,7 @@ const ArticleDropdown = () => {
     return (
             <Box sx={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", width: 0.6}}
             >
-                <Typography variant="h3" sx={{mb: 2}}>Info & FAQ</Typography>
+                {/*<Typography variant="h3" sx={{mb: 2}}>Info & FAQ</Typography>*/}
                 <motion.section
                     variants={{ hidden: {opacity: 0},
                             show: {
@@ -25,7 +25,9 @@ const ArticleDropdown = () => {
                             },
                     }}
                     initial="hidden"
-                    animate="show"
+                    whileInView="show"
+                    viewport={{ once: true, amount: 0.9 }} // Plays only once when 20% of it is in view
+
                 >
                     <MotionAccordion
                         variants={accordionVariants}
@@ -97,7 +99,7 @@ const ArticleDropdown = () => {
                 </MotionAccordion>
                     <MotionAccordion
                         variants={accordionVariants}
-                        sx={{backgroundColor: "#f5f5f5"}}
+                        sx={{backgroundColor: "#f5f5f5", mb: 4}}
                     >
                         <AccordionSummary
                             expandIcon={<ExpandMoreIcon />}
