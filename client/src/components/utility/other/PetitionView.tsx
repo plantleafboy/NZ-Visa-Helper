@@ -2,9 +2,9 @@ import axios from "axios";
 import React from "react";
 import { useParams } from "react-router-dom";
 import { Container } from "@mui/material";
-import NavBar from "./NavBar";
-import { useUserAuthStateStore } from "../store";
-import {BASE_URL} from "../utility/config";
+import NavBar from "../../NavBar";
+import { useUserAuthStateStore } from "../../../store";
+import {BASE_URL} from "../../../utility/config";
 const PetitionView = () => {
     const { id } = useParams();
     const [petition, setPetition] = React.useState<Petition>();

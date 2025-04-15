@@ -12,10 +12,10 @@ import {
 } from "@mui/material";
 import React, {useState} from "react";
 import axios from "axios";
-import {BASE_URL} from "../utility/config";
-import NavBar from "./NavBar";
+import {BASE_URL} from "../../utility/config";
+import NavBar from "../NavBar";
 import {Link} from "react-router-dom";
-import InsuranceDisplay from "./InsuranceDisplay";
+import InsuranceDisplay from "../utility/other/InsuranceDisplay";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { motion } from "framer-motion";

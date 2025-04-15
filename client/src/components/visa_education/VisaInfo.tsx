@@ -1,8 +1,8 @@
 import {Box, Container, Typography} from "@mui/material";
-import NavBar from "./NavBar";
-import Footer from "./Footer";
-import ArticleDropdown from "./ArticleDropdown";
-import EducationOptions from "./EducationOptions";
+import NavBar from "../NavBar";
+import Footer from "../Footer";
+import ArticleDropdown from "../visa_education/ArticleDropdown";
+import EducationOptions from "../visa_education/EducationOptions";
 
 const VisaInfo = () => {
     return (

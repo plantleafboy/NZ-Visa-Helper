@@ -11,7 +11,7 @@ import {
     Typography,
 } from "@mui/material";
 import PetitionListObject from "./PetitionListObject";
-import {BASE_URL} from "../utility/config";
+import {BASE_URL} from "../../../utility/config";
 
 interface petitionInfoProps {
     petition: PetitionInfo;

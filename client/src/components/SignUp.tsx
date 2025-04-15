@@ -216,6 +216,20 @@ const SignUp = () => {
                                     /> <span>{passwordError && (<div>{fieldErrors.password}</div>)}</span>
                                 </FormControl>
                                 <span>{formError && (<div>{errorMessage}</div>)}</span>
+                                <html>
+                                <head>
+                                    <title>reCAPTCHA demo: Simple page</title>
+                                    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+                                </head>
+                                <body>
+                                <form action="?" method="POST">
+                                    <div className="g-recaptcha" data-sitekey="your_site_key"></div>
+                                    <br/>
+                                    <input type="submit" value="Submit"/>
+                                </form>
+                                </body>
+                                </html>
+
                                 <Button type="submit" form="sign-up-form" variant="contained" color="primary">
                                     Sign Up
                                 </Button>

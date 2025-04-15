@@ -14,11 +14,11 @@ import {
     Checkbox, MenuItem, SelectChangeEvent, ListItemText, OutlinedInput, Grid
 } from "@mui/material";
 import PetitionListObject from "./PetitionListObject";
-import NavBar from "./NavBar";
-import { useUserAuthStateStore } from "../store";
+import NavBar from "../../NavBar";
+import { useUserAuthStateStore } from "../../../store";
 import {Link} from "react-router-dom";
 import Pagination from "./Pagination";
-import {BASE_URL} from "../utility/config";
+import {BASE_URL} from "../../../utility/config";
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {

@@ -20,7 +20,7 @@ import {
 } from "@mui/material";
 import CSS from 'csstype';
 import {Link} from "react-router-dom";
-import {BASE_URL} from "../utility/config";
+import {BASE_URL} from "../../../utility/config";
 
 interface IPetitionProps {
     petition: Petition

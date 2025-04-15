@@ -1,10 +1,9 @@
 import {Avatar, Box, Button, Card, CardContent, Container, Grid, Typography} from "@mui/material";
 import React from "react";
-import NavBar from "./NavBar";
-import Footer from "./Footer";
-import InsuranceDisplay from "./InsuranceDisplay";
-import MyCarousel from "./Testmionials";
-import MyTestimonials from "./MyTestimonials";
+import NavBar from "../NavBar";
+import Footer from "../Footer";
+import InsuranceDisplay from "../utility/other/InsuranceDisplay";
+import MyTestimonials from "../about/MyTestimonials";
 interface TestimonialProps {
     name: string
     comment: string

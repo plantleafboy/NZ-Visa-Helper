@@ -1,7 +1,7 @@
 import React from "react";
-import NavBar from "./NavBar";
+import NavBar from "../../NavBar";
 import {Box, Typography} from "@mui/material";
-import Footer from "./Footer";
+import Footer from "../../Footer";
 
 const Home = () => {
     return (

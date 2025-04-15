@@ -10,7 +10,7 @@ import {
     Stack,
     Typography
 } from "@mui/material";
-import NavBar from "./NavBar";
+import NavBar from "../../NavBar";
 import {Delete, Edit} from "@mui/icons-material";
 import React from "react";
 import { motion } from "motion/react"

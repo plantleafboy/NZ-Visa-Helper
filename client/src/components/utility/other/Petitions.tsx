@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, {ChangeEvent, useState} from "react"
 import {Link, useSearchParams} from "react-router-dom";
 import Pagination from "./Pagination";
-import {BASE_URL} from "../utility/config";
+import {BASE_URL} from "../../../utility/config";
 
 const Petitions = () => {
     const [petitions,setPetitions] = React.useState <Petition[]> ([])

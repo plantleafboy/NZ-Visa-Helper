@@ -8,16 +8,14 @@ import {
     DialogTitle,
     Typography
 } from "@mui/material";
-import StripeEmbeddedCheckout from "./StripeEmbeddedCheckout";
+import StripeEmbeddedCheckout from "../book_appointment/StripeEmbeddedCheckout";
 import dotenv from 'dotenv';
 import axios from "axios";
-import {BASE_URL} from "../utility/config";
+import {BASE_URL} from "../../utility/config";
 import React, {useCallback, useState} from "react";
-import NavBar from "./NavBar";
+import NavBar from "../NavBar";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import MyCarousel from "./Testmionials";
-import Carousel from "react-material-ui-carousel";
-import MyTestimonials from "./MyTestimonials";
+
 import {motion} from "motion/react";
 const BookAppointment = () => {
     const [open, setOpen] = useState(false);
@@ -51,6 +49,9 @@ const BookAppointment = () => {
                     {/*</Typography>*/}
                     <Typography variant="h3" gutterBottom>
                         Make a quick and easy appointment with us now to <b>begin</b> your <i>travel journey</i>.
+                    </Typography>
+                    <Typography variant="h5" gutterBottom>
+                        Appointment includes a 60 minute consultation, one on one. to discuss and identify your travel needs,
                     </Typography>
                     <MotionButton
                         size="large"
