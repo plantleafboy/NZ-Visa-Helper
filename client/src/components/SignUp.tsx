@@ -5,8 +5,6 @@ import {Link, useNavigate} from "react-router-dom";
 import {useUserAuthStateStore} from "../store";
 import NavBar from "./NavBar";
 import {BASE_URL} from "../utility/config";
-
-
 const SignUp = () => {
     const [fieldErrors, setFieldErrors] = React.useState<FieldError>({
         email: "",
@@ -17,8 +15,9 @@ const SignUp = () => {
     const [emailError, setEmailError] = useState(false)
     const [passwordError, setPasswordError] = useState(false)
     const setState = useUserAuthStateStore((state) => state.setState);
-    const authenticated :boolean = useUserAuthStateStore((state) :boolean => {
-        return state.authenticated;});
+    const authenticated: boolean = useUserAuthStateStore((state): boolean => {
+        return state.authenticated;
+    });
     const redirect = useNavigate();
     const [newUserDetails, setNewUserDetails] = React.useState<NewUserDetails>({
         firstName: "",
@@ -98,17 +97,17 @@ const SignUp = () => {
     //     );
     // };
     const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
-        const { name, value } = e.target;
-        setNewUserDetails({ ...newUserDetails, [name]: value });
+        const {name, value} = e.target;
+        setNewUserDetails({...newUserDetails, [name]: value});
     };
 
     const validateFields = () => {
-        const { firstName, lastName, email, password } = newUserDetails;
-        const currFieldErrors :FieldError = {
+        const {firstName, lastName, email, password} = newUserDetails;
+        const currFieldErrors: FieldError = {
             email: "",
             password: "",
         }
-        let hasError :boolean = false;
+        let hasError: boolean = false;
         if (!firstName || !lastName || !email || !password) {
             setFormError(true);
             setErrorMessage("All fields are required");
@@ -133,7 +132,7 @@ const SignUp = () => {
 
         } else setPasswordError(false);
 
-            setFieldErrors(currFieldErrors)
+        setFieldErrors(currFieldErrors)
         return !hasError;
 
     };
@@ -141,7 +140,7 @@ const SignUp = () => {
     const handleSubmit = (e: React.FormEvent) => {
         console.log("In handlesubmit function")
         e.preventDefault();
-        const validationError : Boolean = validateFields()
+        const validationError: Boolean = validateFields()
         if (validationError) {
             handleRegister();
         }
@@ -149,17 +148,23 @@ const SignUp = () => {
 
     return (
         <React.Fragment>
-            <NavBar />
+            <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+            <script
+                src="https://www.google.com/recaptcha/enterprise.js?render=6LdB4xgrAAAAAI2m9KS7D3f2_GaXXorPgPv5D0HF"></script>
+
+            <NavBar/>
             <Container component="main">
                 {authenticated && (
                     <h1>ALREADY LOGGED IN</h1>
                 )}
                 {!authenticated && (
-                    <Box className="sign-up" sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mt: 4 }}>
+                    <Box className="sign-up"
+                         sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', mt: 4}}>
                         <h1>Sign Up Form</h1>
-                        <form onSubmit={handleSubmit} id="sign-up-form" noValidate>
+                        {/*action="https://httpbin.org/post" method="post"*/}
+                        <form  onSubmit={handleSubmit} id="sign-up-form" noValidate>
                             <Stack spacing={2} direction="row" sx={{marginBottom: 4, width: '100%'}}>
-                                <FormControl margin="normal" >
+                                <FormControl margin="normal">
                                     <FormLabel>First Name</FormLabel>
                                     <TextField
                                         // label="First Name"
@@ -217,10 +222,6 @@ const SignUp = () => {
                                 </FormControl>
                                 <span>{formError && (<div>{errorMessage}</div>)}</span>
                                 <html>
-                                <head>
-                                    <title>reCAPTCHA demo: Simple page</title>
-                                    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-                                </head>
                                 <body>
                                 <form action="?" method="POST">
                                     <div className="g-recaptcha" data-sitekey="your_site_key"></div>
@@ -233,7 +234,13 @@ const SignUp = () => {
                                 <Button type="submit" form="sign-up-form" variant="contained" color="primary">
                                     Sign Up
                                 </Button>
-
+                                <div className="g-recaptcha" data-sitekey="6LfD_RgrAAAAAPDimzqDZ51WH_MWcvqGg2tP_YR_"></div>
+                                {/*<button className="g-recaptcha"*/}
+                                {/*        data-sitekey="6LdB4xgrAAAAAI2m9KS7D3f2_GaXXorPgPv5D0HF"*/}
+                                {/*        data-callback='onSubmit'*/}
+                                {/*        data-action='submit'>*/}
+                                {/*    Submit*/}
+                                {/*</button>*/}
                             </Stack>
                         </form>
                         <small>Already have an account? <Link to="/login">Login</Link></small>
