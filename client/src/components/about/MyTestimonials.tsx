@@ -1,120 +1,259 @@
-import React, {useState} from 'react';
-import Carousel from 'react-material-ui-carousel'
-import {Paper, Button, Box, Typography, CardContent, Avatar, Card} from '@mui/material'
+import React from 'react';
+import Carousel from 'react-material-ui-carousel';
+import {
+    Box,
+    Typography,
+    Card,
+    CardContent,
+    Avatar,
+    Rating,
+    Stack,
+    useTheme,
+    useMediaQuery,
+    Paper
+} from '@mui/material';
+import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 
-interface ItemProps {
+// Define types
+interface TestimonialItem {
     name: string;
     description: string;
-    // bannerImage: string;
-}
-const MyTestimonials = () =>
-{
-    return (
-        <Box component="div" sx={{mt: 2, color: "#494949", display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%'}} >
-            <Typography variant='h4'>Testimonials</Typography>
-            <br/>
-            <Carousel
-                className="SecondExample"
-                autoPlay={true}
-                animation="slide"
-                indicators={true}
-                duration={500}
-                navButtonsAlwaysVisible={false}
-                navButtonsAlwaysInvisible={false}
-                cycleNavigation={true}
-                fullHeightHover={true}
-                swipe={true}
-                sx={{width: '70%', height: '100%'}}
-            >
-                {
-                    items.map((item, index) => {
-                        return <Project item={item} key={index}/>
-                    })
-                }
-            </Carousel>
-            <br/>
-        </Box>
-
-    )
+    color: string;
+    href: string;
+    avatar?: string;
+    rating?: number;
+    position?: string;
 }
 
-type Item = {
-    name: string,
-    description: string,
-    color: string,
-    href: string
+interface TestimonialCardProps {
+    item: TestimonialItem;
 }
 
-interface ProjectProps
-{
-    item: Item
-}
-
-function Project({item}: ProjectProps) {
-    return (
-        <Paper
-            className="Project"
-            sx={{
-                backgroundColor: item.color,
-                width: '80%',  // Adjust width as needed (e.g., '80%', '500px', etc.)
-                maxWidth: '800px',
-                padding: 2,
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center", // <-- Centers content inside
-                textAlign: "center", // Centers text content
-                margin: "auto" // <-- Ensures each item is centered
-            }}
-            elevation={10}
-        >
-            <Card sx={{ minWidth: 300 }}>
-                <CardContent>
-                    <Avatar
-                        src={item.name}
-                        alt={item.name}
-                        sx={{ width: 60, height: 60, mx: "auto", mb: 2 }}
-                    />
-                    <Typography variant="body1" sx={{ mb: 2 }}>
-                        "{item.description}"
-                    </Typography>
-                    <Typography variant="subtitle1" textAlign="center" color="primary">
-                        - {item.href}
-                    </Typography>
-                </CardContent>
-            </Card>
-            {/*<Typography variant='h5'>{item.name}</Typography>*/}
-            {/*<br/>*/}
-            {/*<Typography>{item.description}</Typography>*/}
-        </Paper>
-    )
-}
-
-const items: Item[] = [
+const testimonials: TestimonialItem[] = [
     {
         name: "Lear Music Reader",
-        description: "A PDF Reader specially designed for musicians.",
-        color: "#64ACC8",
-        href: 'https://github.com/Learus/Lear-Music-Reader'
+        description: "A PDF Reader specially designed for musicians. The interface is intuitive and the software performs exactly as expected. I especially love the page turning feature!",
+        color: "#f8f9fa",
+        href: 'John Smith',
+        avatar: '/images/avatar1.jpg',
+        rating: 5,
+        position: 'Professional Musician'
     },
     {
         name: "Hash Code 2019",
-        description: "My Solution on the 2019 Hash Code by Google Slideshow problem.",
-        color: "#7D85B1",
-        href: 'https://github.com/Learus/HashCode2019'
+        description: "My experience with this solution for the 2019 Hash Code problem was fantastic. It's efficient, well-documented, and helped me understand the approach thoroughly.",
+        color: "#f8f9fa",
+        href: 'Maria Rodriguez',
+        avatar: '/images/avatar2.jpg',
+        rating: 4.5,
+        position: 'Software Engineer'
     },
     {
         name: "Terrio",
-        description: "A exciting mobile game game made in the Unity Engine.",
-        color: "#CE7E78",
-        href: 'https://play.google.com/store/apps/details?id=com.Brewery.Terrio'
+        description: "Terrio is an addictive mobile game! The graphics are stunning, gameplay is smooth, and it keeps me coming back for more. Definitely worth downloading.",
+        color: "#f8f9fa",
+        href: 'Alex Johnson',
+        avatar: '/images/avatar3.jpg',
+        rating: 5,
+        position: 'Game Enthusiast'
     },
     {
         name: "React Carousel",
-        description: "A Generic carousel UI component for React using material ui.",
-        color: "#C9A27E",
-        href: 'https://github.com/Learus/react-material-ui-carousel'
+        description: "This React Carousel component is exactly what I needed for my project. Clean code, easy to implement, and highly customizable. It saved me so much development time!",
+        color: "#f8f9fa",
+        href: 'Sarah Williams',
+        avatar: '/images/avatar4.jpg',
+        rating: 4.5,
+        position: 'Frontend Developer'
     }
-]
-// https://learus.github.io/react-material-ui-carousel/
+];
 
-export default MyTestimonials;
+const TestimonialCard: React.FC<TestimonialCardProps> = ({ item }) => {
+    return (
+        <Card
+            elevation={2}
+            sx={{
+                maxWidth: 800,
+                mx: 'auto',
+                borderRadius: 4,
+                position: 'relative',
+                overflow: 'visible',
+                transition: 'transform 0.3s, box-shadow 0.3s',
+                '&:hover': {
+                    transform: 'translateY(-5px)',
+                    boxShadow: 8
+                }
+            }}
+        >
+            <Box
+                sx={{
+                    position: 'absolute',
+                    top: -5,
+                    left: { xs: 'calc(50% - 24px)', sm: 40 },
+                    zIndex: 2,
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    backgroundColor: 'primary.main',
+                    borderRadius: '50%',
+                    width: 36,
+                    height: 36,
+                    color: 'white',
+                    boxShadow: 2
+                }}
+            >
+                <FormatQuoteIcon fontSize="medium" />
+            </Box>
+
+            <CardContent sx={{ pt: 4, px: { xs: 3, sm: 5 }, pb: 4 }}>
+                <Typography
+                    variant="body1"
+                    sx={{
+                        mb: 0,
+                        fontStyle: 'italic',
+                        fontSize: '1.1rem',
+                        lineHeight: 1.6,
+                        color: 'text.primary',
+                        pl: { xs: 0, sm: 4 }
+                    }}
+                >
+                    "{item.description}"
+                </Typography>
+
+                <Stack
+                    spacing={2}
+                    alignItems={{ xs: 'center', sm: 'flex-start' }}
+                    sx={{
+                        mt: 3,
+                        flexDirection: { xs: 'column', sm: 'row' },
+                    }}
+                >
+                    {/*<Avatar*/}
+                    {/*    src={item.avatar}*/}
+                    {/*    alt={item.href}*/}
+                    {/*    sx={{*/}
+                    {/*        width: 64,*/}
+                    {/*        height: 64,*/}
+                    {/*        boxShadow: 2,*/}
+                    {/*        border: '2px solid white'*/}
+                    {/*    }}*/}
+                    {/*/>*/}
+
+                    <Stack spacing={0.5}>
+                        <Typography variant="h6" fontWeight="bold" textAlign='center'>
+                            {item.href}
+                        </Typography>
+
+                        <Typography
+                            variant="body2"
+                            color="text.secondary"
+                            textAlign='center'
+                        >
+                            {item.position}
+                        </Typography>
+
+                        {/*<Rating*/}
+                        {/*    value={item.rating || 5}*/}
+                        {/*    precision={0.5}*/}
+                        {/*    readOnly*/}
+                        {/*    size="small"*/}
+                        {/*    sx={{ mt: 0.5 }}*/}
+                        {/*/>*/}
+                    </Stack>
+                </Stack>
+            </CardContent>
+        </Card>
+    );
+};
+
+const ModernTestimonials: React.FC = () => {
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
+    return (
+        <Box
+            component="section"
+            sx={{
+                py: 8,
+                px: 2,
+                backgroundColor: 'background.default',
+                borderRadius: 2,
+                width: '100%'
+            }}
+        >
+            <Box textAlign="center" mb={4}>
+                <Typography
+                    variant="overline"
+                    color="primary"
+                    fontWeight="bold"
+                    letterSpacing={1.5}
+                >
+                    WHAT PEOPLE SAY
+                </Typography>
+                <Typography
+                    variant="h3"
+                    component="h2"
+                    fontWeight="bold"
+                >
+                    Testimonials
+                </Typography>
+            </Box>
+
+            <Box sx={{ maxWidth: 900, mx: 'auto' }}>
+                <Carousel
+                    autoPlay
+                    animation="slide"
+                    indicators
+                    navButtonsAlwaysVisible={!isMobile}
+                    navButtonsWrapperProps={{
+                        style: {
+                            padding: '0 20px'
+                        }
+                    }}
+                    navButtonsProps={{
+                        style: {
+                            backgroundColor: theme.palette.primary.main,
+                            borderRadius: '50%',
+                            opacity: 0.8,
+                            padding: '4px'
+                        }
+                    }}
+                    indicatorContainerProps={{
+                        style: {
+                            marginTop: '24px'
+                        }
+                    }}
+                    indicatorIconButtonProps={{
+                        style: {
+                            padding: '5px',
+                            color: theme.palette.grey[400]
+                        }
+                    }}
+                    activeIndicatorIconButtonProps={{
+                        style: {
+                            color: theme.palette.primary.main
+                        }
+                    }}
+                    interval={6000}
+                    sx={{ py: 4 }}
+                >
+                    {testimonials.map((item, index) => (
+                        <Paper
+                            key={index}
+                            elevation={0}
+                            sx={{
+                                backgroundColor: 'transparent',
+                                px: { xs: 1, sm: 4 },
+                                py: 2
+                            }}
+                        >
+                            <TestimonialCard item={item} />
+                        </Paper>
+                    ))}
+                </Carousel>
+            </Box>
+        </Box>
+    );
+};
+
+export default ModernTestimonials;
