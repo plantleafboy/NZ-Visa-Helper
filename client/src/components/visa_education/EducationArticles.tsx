@@ -28,42 +28,42 @@ const articles: EducationArticle[] = [
         id: 1,
         title: "Study in New Zealand",
         description: "Discover our internationally-renowned education system and unbeatable lifestyle.",
-        image: "/images/study-in-nz.jpg",
+        image: "/images/hiking.png",
         alt: "Students discussing at a table"
     },
     {
         id: 2,
         title: "Scholarships",
         description: "Many New Zealand education providers offer scholarships to international students.",
-        image: "/images/scholarships.jpg",
+        image: "/images/students on laptops.png",
         alt: "Students at a cultural event"
     },
     {
         id: 3,
         title: "Education system",
         description: "Find out about the New Zealand Qualifications Framework, and the different types of schools and education providers.",
-        image: "/images/education-system.jpg",
+        image: "/images/university group discussion.png",
         alt: "Student in a laboratory"
     },
     {
         id: 4,
         title: "Student visas",
         description: "Explore the visa options that allow you to study in New Zealand.",
-        image: "/images/student-visas.jpg",
+        image: "/images/classroom-snapshot.jpg",
         alt: "Two students walking together"
     },
     {
         id: 5,
         title: "Higher education",
         description: "New Zealand's higher education system offers a wide range of programmes and education providers to choose from, in any region of the country.",
-        image: "/images/higher-education.jpg",
+        image: "/images/friends-group.jpg",
         alt: "Graduation ceremony"
     },
     {
         id: 6,
         title: "Information for parents",
         description: "New Zealand offers a high standard of living and is a safe place for your child to build their independence and confidence.",
-        image: "/images/parents-info.jpg",
+        image: "/images/hobbit-land.jpg",
         alt: "Students sitting outdoors"
     }
 ];
