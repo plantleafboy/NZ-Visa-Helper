@@ -2,7 +2,7 @@ import {Avatar, Box, Button, Card, CardContent, Container, Grid, Typography} fro
 import React from "react";
 import NavBar from "../NavBar";
 import Footer from "../Footer";
-import InsuranceDisplay from "../utility/other/InsuranceDisplay";
+import InsuranceDisplay from "../utility/InsuranceDisplay";
 import MyTestimonials from "../about/MyTestimonials";
 
 const About = () => {

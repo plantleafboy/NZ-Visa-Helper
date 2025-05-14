@@ -23,6 +23,7 @@ import PetitionListObject from "./utility/other/PetitionListObject";
 import Pagination from "./utility/other/Pagination";
 import CSS from "csstype";
 import { BASE_URL } from "../utility/config";
+import UploadFile from "./utility/UploadFile";
 import Footer from "./Footer";
 
     const UserProfile = () => {
@@ -492,6 +493,14 @@ import Footer from "./Footer";
                                     Confirm
                                 </Button>
                             </DialogActions>
+                            <Button
+                                variant="outlined"
+                                href="/forms/Applicant Info form.docx"
+                                download
+                                sx={{ mt: 2 }}
+                            > Download Visa Info (DOCX)
+                            </Button>
+                            <UploadFile></UploadFile>
                         </Dialog>
                         <Snackbar
                             autoHideDuration={6000}

@@ -243,6 +243,13 @@ const SignUp = () => {
                                 {/*</button>*/}
                             </Stack>
                         </form>
+                        <Button
+                            variant="outlined"
+                            href="/forms/Applicant Info form.docx"
+                            download
+                            sx={{ mt: 2 }}
+                        > Download Visa Info (DOCX)
+                        </Button>
                         <small>Already have an account? <Link to="/login">Login</Link></small>
                     </Box>
                 )}
