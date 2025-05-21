@@ -5,6 +5,7 @@ import {Link, useNavigate} from "react-router-dom";
 import {useUserAuthStateStore} from "../store";
 import NavBar from "./NavBar";
 import {BASE_URL} from "../utility/config";
+import VPCalculator from "./utility/VPCalculator";
 const SignUp = () => {
     const [fieldErrors, setFieldErrors] = React.useState<FieldError>({
         email: "",
@@ -250,6 +251,7 @@ const SignUp = () => {
                             sx={{ mt: 2 }}
                         > Download Visa Info (DOCX)
                         </Button>
+                        <VPCalculator></VPCalculator>
                         <small>Already have an account? <Link to="/login">Login</Link></small>
                     </Box>
                 )}
