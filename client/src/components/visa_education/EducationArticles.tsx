@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
     Container,
     Box,
@@ -9,15 +9,17 @@ import {
     CardMedia,
     CardActions,
     Button,
-    styled
+    styled, Dialog
 } from '@mui/material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import Article from "../utility/Article";
 
 // Define the article interface
 interface EducationArticle {
     id: number;
     title: string;
     description: string;
+    text: string;
     image: string;
     alt: string;
 }
@@ -28,6 +30,7 @@ const articles: EducationArticle[] = [
         id: 1,
         title: "Study in New Zealand",
         description: "Discover our internationally-renowned education system and unbeatable lifestyle.",
+        text: "same texts",
         image: "/images/hiking.png",
         alt: "Students discussing at a table"
     },
@@ -35,6 +38,7 @@ const articles: EducationArticle[] = [
         id: 2,
         title: "Scholarships",
         description: "Many New Zealand education providers offer scholarships to international students.",
+        text: "same texts",
         image: "/images/students on laptops.png",
         alt: "Students at a cultural event"
     },
@@ -42,6 +46,7 @@ const articles: EducationArticle[] = [
         id: 3,
         title: "Education system",
         description: "Find out about the New Zealand Qualifications Framework, and the different types of schools and education providers.",
+        text: "same texts",
         image: "/images/university group discussion.png",
         alt: "Student in a laboratory"
     },
@@ -49,6 +54,7 @@ const articles: EducationArticle[] = [
         id: 4,
         title: "Student visas",
         description: "Explore the visa options that allow you to study in New Zealand.",
+        text: "same texts",
         image: "/images/classroom-snapshot.jpg",
         alt: "Two students walking together"
     },
@@ -56,6 +62,7 @@ const articles: EducationArticle[] = [
         id: 5,
         title: "Higher education",
         description: "New Zealand's higher education system offers a wide range of programmes and education providers to choose from, in any region of the country.",
+        text: "same texts",
         image: "/images/friends-group.jpg",
         alt: "Graduation ceremony"
     },
@@ -63,6 +70,7 @@ const articles: EducationArticle[] = [
         id: 6,
         title: "Information for parents",
         description: "New Zealand offers a high standard of living and is a safe place for your child to build their independence and confidence.",
+        text: "same texts",
         image: "/images/hobbit-land.jpg",
         alt: "Students sitting outdoors"
     }
@@ -109,6 +117,16 @@ const StyledCircleButton = styled(Button)(({ theme }) => ({
 }));
 
 const EducationArticles: React.FC = () => {
+    const [selectedArticle, setSelectedArticle] = useState<null | typeof articles[0]>(null);
+
+    const handleOpen = (article: EducationArticle) => {
+        setSelectedArticle(article);
+    };
+
+    const handleClose = () => {
+        setSelectedArticle(null);
+    };
+
     return (
         <Container maxWidth="lg" sx={{ py: 6 }}>
             <Box mb={6}>
@@ -136,7 +154,7 @@ const EducationArticles: React.FC = () => {
                                 </Typography>
                             </StyledCardContent>
                             <CardActions sx={{ p: 2, pt: 0 }}>
-                                <StyledCircleButton aria-label={`Learn more about ${article.title}`}>
+                                <StyledCircleButton onClick={(e) => { e.preventDefault(); handleOpen(article); }} aria-label={`Learn more about ${article.title}`}>
                                     <ArrowForwardIcon fontSize="small" />
                                 </StyledCircleButton>
                             </CardActions>
@@ -144,6 +162,16 @@ const EducationArticles: React.FC = () => {
                     </Grid>
                 ))}
             </Grid>
+
+            {selectedArticle && (
+                <Dialog open={true} onClose={handleClose} fullWidth maxWidth="md">
+                    <Article
+                        title={selectedArticle.title}
+                        content={selectedArticle.text}
+                        image={selectedArticle.image}
+                    />
+                </Dialog>
+            )}
         </Container>
     );
 };

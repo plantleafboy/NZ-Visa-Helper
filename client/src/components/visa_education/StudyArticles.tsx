@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
     Container,
     Box,
@@ -9,9 +9,10 @@ import {
     CardMedia,
     CardActions,
     Button,
-    styled
+    styled, Link, Dialog
 } from '@mui/material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import Article from "../utility/Article";
 
 // Define the article interface
 interface StudyArticle {
@@ -74,6 +75,7 @@ const articles: StudyArticle[] = [
     }
 ];
 
+
 // Styled components
 const StyledCard = styled(Card)(({ theme }) => ({
     height: '100%',
@@ -115,6 +117,16 @@ const StyledCircleButton = styled(Button)(({ theme }) => ({
 }));
 
 const StudyArticles = () => {
+    const [selectedArticle, setSelectedArticle] = useState<null | typeof articles[0]>(null);
+
+    const handleOpen = (article: StudyArticle) => {
+        setSelectedArticle(article);
+    };
+
+    const handleClose = () => {
+        setSelectedArticle(null);
+    };
+
     return (
         <Container maxWidth="lg" sx={{ py: 6 }}>
             <Box mb={6}>
@@ -142,7 +154,7 @@ const StudyArticles = () => {
                                 </Typography>
                             </StyledCardContent>
                             <CardActions sx={{ p: 2, pt: 0 }}>
-                                <StyledCircleButton aria-label={`Learn more about ${article.title}`}>
+                                <StyledCircleButton onClick={(e) => { e.preventDefault(); handleOpen(article); }} aria-label={`Learn more about ${article.title}`}>
                                     <ArrowForwardIcon fontSize="small" />
                                 </StyledCircleButton>
                             </CardActions>
@@ -150,6 +162,16 @@ const StudyArticles = () => {
                     </Grid>
                 ))}
             </Grid>
+
+            {selectedArticle && (
+                <Dialog open={true} onClose={handleClose} fullWidth maxWidth="md">
+                    <Article
+                        title={selectedArticle.title}
+                        content={selectedArticle.text}
+                        image={selectedArticle.image}
+                    />
+                </Dialog>
+            )}
         </Container>
     );
 };
