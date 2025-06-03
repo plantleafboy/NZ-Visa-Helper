@@ -18,16 +18,17 @@ interface StudyArticle {
     id: number;
     title: string;
     description: string;
+    text: string;
     image: string;
     alt: string;
 }
 
-// Sample data that matches the image
 const articles: StudyArticle[] = [
     {
         id: 1,
         title: "Study in New Zealand",
         description: "Discover our internationally-renowned education system and unbeatable lifestyle.",
+        text: "same texts",
         image: "/images/hiking.png",
         alt: "Students discussing at a table"
     },
@@ -35,6 +36,7 @@ const articles: StudyArticle[] = [
         id: 2,
         title: "Scholarships",
         description: "Many New Zealand education providers offer scholarships to international students.",
+        text: "same texts",
         image: "/images/students on laptops.png",
         alt: "Students at a cultural event"
     },
@@ -42,6 +44,7 @@ const articles: StudyArticle[] = [
         id: 3,
         title: "Education system",
         description: "Find out about the New Zealand Qualifications Framework, and the different types of schools and education providers.",
+        text: "same texts",
         image: "/images/university group discussion.png",
         alt: "Student in a laboratory"
     },
@@ -49,6 +52,7 @@ const articles: StudyArticle[] = [
         id: 4,
         title: "Student visas",
         description: "Explore the visa options that allow you to study in New Zealand.",
+        text: "same texts",
         image: "/images/classroom-snapshot.jpg",
         alt: "Two students walking together"
     },
@@ -56,6 +60,7 @@ const articles: StudyArticle[] = [
         id: 5,
         title: "Higher education",
         description: "New Zealand's higher education system offers a wide range of programmes and education providers to choose from, in any region of the country.",
+        text: "same texts",
         image: "/images/friends-group.jpg",
         alt: "Graduation ceremony"
     },
@@ -63,6 +68,7 @@ const articles: StudyArticle[] = [
         id: 6,
         title: "Information for parents",
         description: "New Zealand offers a high standard of living and is a safe place for your child to build their independence and confidence.",
+        text: "same texts",
         image: "/images/hobbit-land.jpg",
         alt: "Students sitting outdoors"
     }
