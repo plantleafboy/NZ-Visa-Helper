@@ -4,6 +4,7 @@ import NavBar from "../NavBar";
 import Footer from "../Footer";
 import InsuranceDisplay from "../utility/InsuranceDisplay";
 import MyTestimonials from "../about/MyTestimonials";
+import StudyArticles from "../visa_education/StudyArticles";
 
 const About = () => {
     return (
@@ -72,6 +73,8 @@ const About = () => {
             <Container sx={{display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
                 <MyTestimonials></MyTestimonials>
             </Container>
+
+            <StudyArticles></StudyArticles>
 
             <Box sx={{bgcolor: 'grey.100', display: 'flex', flexDirection: 'row', justifyContent: 'center', mt: 4, mb: 4, py: 4}}>
                 <InsuranceDisplay></InsuranceDisplay>

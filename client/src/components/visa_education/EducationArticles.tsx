@@ -163,15 +163,27 @@ const EducationArticles: React.FC = () => {
                 ))}
             </Grid>
 
-            {selectedArticle && (
-                <Dialog open={true} onClose={handleClose} fullWidth maxWidth="md">
+            <Dialog
+                open={!!selectedArticle}
+                onClose={handleClose}
+                fullWidth
+                maxWidth="md"
+                PaperProps={{
+                    sx: {
+                        height: '90vh',
+                        display: 'flex',
+                        flexDirection: 'column',
+                    },
+                }}
+            >
+                {selectedArticle && (
                     <Article
                         title={selectedArticle.title}
                         content={selectedArticle.text}
                         image={selectedArticle.image}
                     />
-                </Dialog>
-            )}
+                )}
+            </Dialog>
         </Container>
     );
 };
