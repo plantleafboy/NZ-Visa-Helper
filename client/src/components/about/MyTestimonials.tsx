@@ -117,7 +117,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ item }) => {
                         pl: { xs: 0, sm: 4 }
                     }}
                 >
-                    "{item.description}"
+                    {item.description}
                 </Typography>
 
                 <Stack

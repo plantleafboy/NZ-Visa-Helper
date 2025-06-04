@@ -39,8 +39,9 @@ const Article = (props: ArticleProps) => {
                     }}
                 />
                 <Typography
-                    variant="h5"
+                    variant="h4"
                     fontWeight="bold"
+                    textAlign="center"
                     sx={{ px: 3, py: 2 }}
                 >
                     {props.title}
@@ -55,7 +56,7 @@ const Article = (props: ArticleProps) => {
                     py: 2,
                 }}
             >
-                <Typography variant="body1" color="text.secondary" whiteSpace="pre-line">
+                <Typography variant="body1" textAlign="center" color="text.secondary" whiteSpace="pre-line">
                     {props.content}
                 </Typography>
             </Box>

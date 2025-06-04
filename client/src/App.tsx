@@ -7,7 +7,6 @@ import Login from "./components/Login";
 import Petitions from "./components/utility/other/Petitions";
 import SignUp from "./components/SignUp";
 import PetitionList from "./components/utility/other/PetitionLists";
-import Home from "./components/utility/other/Home";
 import PetitionView from "./components/utility/other/PetitionView";
 import About from "./components/about/About";
 import VisaInfo from "./components/visa_education/VisaInfo";
