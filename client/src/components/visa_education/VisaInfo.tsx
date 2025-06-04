@@ -4,6 +4,7 @@ import Footer from "../Footer";
 import ArticleDropdown from "../visa_education/ArticleDropdown";
 import EducationOptions from "../visa_education/EducationOptions";
 import EducationArticles from "./EducationArticles";
+import WorkAndLeave from "./WorkAndLeave";
 
 const VisaInfo = () => {
     return (
@@ -19,7 +20,7 @@ const VisaInfo = () => {
                 <EducationOptions></EducationOptions>
                 <ArticleDropdown></ArticleDropdown>
                 <EducationArticles></EducationArticles>
-
+                <WorkAndLeave></WorkAndLeave>
             </Container>
             {/*<Footer text={"Footer to add"}></Footer>*/}
         </Box>
