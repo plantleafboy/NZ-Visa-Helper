@@ -1,30 +1,12 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
     Container,
     Box,
     Typography,
-    Grid,
-    Card,
-    CardContent,
-    CardMedia,
-    CardActions,
-    Button,
-    styled, Link, Dialog
 } from '@mui/material';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import Article from "../utility/Article";
+import ArticleGridObject from "../utility/ArticleGridObject";
 
-// Define the article interface
-interface StudyArticle {
-    id: number;
-    title: string;
-    description: string;
-    text: string;
-    image: string;
-    alt: string;
-}
-
-const articles: StudyArticle[] = [
+const articles: ArticleObject[] = [
     {
         id: 1,
         title: "Study in New Zealand",
@@ -75,57 +57,7 @@ const articles: StudyArticle[] = [
     }
 ];
 
-
-// Styled components
-const StyledCard = styled(Card)(({ theme }) => ({
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-    borderRadius: theme.spacing(1),
-    boxShadow: theme.shadows[1],
-    transition: 'transform 0.3s ease-in-out',
-    '&:hover': {
-        transform: 'translateY(-5px)',
-        boxShadow: theme.shadows[4],
-    }
-}));
-
-// Define StyledCardMedia with proper typing
-const StyledCardMedia = styled(CardMedia)(({ theme }) => ({
-    height: 200,
-})) as typeof CardMedia;
-
-const StyledCardContent = styled(CardContent)({
-    flexGrow: 1,
-    padding: '16px',
-});
-
-const StyledCircleButton = styled(Button)(({ theme }) => ({
-    width: 40,
-    height: 40,
-    minWidth: 40,
-    borderRadius: '50%',
-    padding: 0,
-    marginLeft: 'auto',
-    color: theme.palette.primary.main,
-    border: `1px solid ${theme.palette.grey[300]}`,
-    '&:hover': {
-        backgroundColor: theme.palette.primary.main,
-        color: theme.palette.common.white,
-        border: `1px solid ${theme.palette.primary.main}`,
-    }
-}));
-
 const StudyArticles = () => {
-    const [selectedArticle, setSelectedArticle] = useState<null | typeof articles[0]>(null);
-
-    const handleOpen = (article: StudyArticle) => {
-        setSelectedArticle(article);
-    };
-
-    const handleClose = () => {
-        setSelectedArticle(null);
-    };
 
     return (
         <Container maxWidth="lg" sx={{ py: 6 }}>
@@ -134,56 +66,8 @@ const StudyArticles = () => {
                     Study Options
                 </Typography>
             </Box>
+            <ArticleGridObject articles={articles}/>
 
-            <Grid container spacing={4}>
-                {articles.map((article) => (
-                    <Grid item xs={12} sm={6} md={4} key={article.id}>
-                        <StyledCard>
-                            <CardMedia
-                                component="img"
-                                image={article.image}
-                                alt={article.alt}
-                                sx={{ height: 200 }}
-                            />
-                            <StyledCardContent>
-                                <Typography variant="h5" component="h2" gutterBottom fontWeight="bold">
-                                    {article.title}
-                                </Typography>
-                                <Typography variant="body1" color="text.secondary">
-                                    {article.description}
-                                </Typography>
-                            </StyledCardContent>
-                            <CardActions sx={{ p: 2, pt: 0 }}>
-                                <StyledCircleButton onClick={(e) => { e.preventDefault(); handleOpen(article); }} aria-label={`Learn more about ${article.title}`}>
-                                    <ArrowForwardIcon fontSize="small" />
-                                </StyledCircleButton>
-                            </CardActions>
-                        </StyledCard>
-                    </Grid>
-                ))}
-            </Grid>
-
-            <Dialog
-                open={!!selectedArticle}
-                onClose={handleClose}
-                fullWidth
-                maxWidth="md"
-                PaperProps={{
-                    sx: {
-                        height: '90vh',
-                        display: 'flex',
-                        flexDirection: 'column',
-                    },
-                }}
-            >
-                {selectedArticle && (
-                    <Article
-                        title={selectedArticle.title}
-                        content={selectedArticle.text}
-                        image={selectedArticle.image}
-                    />
-                )}
-            </Dialog>
         </Container>
     );
 };
