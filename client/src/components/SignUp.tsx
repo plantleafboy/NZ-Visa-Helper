@@ -1,4 +1,14 @@
-import {Box, Button, Container, FormControl, FormLabel, Stack, TextField} from "@mui/material";
+import {
+    Box,
+    Button,
+    Checkbox,
+    Container,
+    FormControl,
+    FormControlLabel, FormHelperText,
+    FormLabel,
+    Stack,
+    TextField
+} from "@mui/material";
 import axios from "axios";
 import React, {useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
@@ -6,6 +16,7 @@ import {useUserAuthStateStore} from "../store";
 import NavBar from "./NavBar";
 import {BASE_URL} from "../utility/config";
 import VPCalculator from "./utility/VPCalculator";
+import Agreement from "./Agreement";
 const SignUp = () => {
     const [fieldErrors, setFieldErrors] = React.useState<FieldError>({
         email: "",
@@ -15,6 +26,9 @@ const SignUp = () => {
     const [formError, setFormError] = React.useState(false);
     const [emailError, setEmailError] = useState(false)
     const [passwordError, setPasswordError] = useState(false)
+    const [checked, setChecked] = useState(false);
+    const [error, setError] = useState(false);
+
     const setState = useUserAuthStateStore((state) => state.setState);
     const authenticated: boolean = useUserAuthStateStore((state): boolean => {
         return state.authenticated;
@@ -103,6 +117,13 @@ const SignUp = () => {
     };
 
     const validateFields = () => {
+        if (!checked) {
+            setError(true);
+            return false;
+        } else {
+            setChecked(true);
+            setError(false);
+        }
         const {firstName, lastName, email, password} = newUserDetails;
         const currFieldErrors: FieldError = {
             email: "",
@@ -141,6 +162,7 @@ const SignUp = () => {
     const handleSubmit = (e: React.FormEvent) => {
         console.log("In handlesubmit function")
         e.preventDefault();
+
         const validationError: Boolean = validateFields()
         if (validationError) {
             handleRegister();
@@ -221,14 +243,32 @@ const SignUp = () => {
                                         required
                                     /> <span>{passwordError && (<div>{fieldErrors.password}</div>)}</span>
                                 </FormControl>
+
+                                <Agreement></Agreement>
+
+
+                                <FormControlLabel
+                                    control={
+                                        <Checkbox
+                                            checked={checked}
+                                            onChange={(e) => setChecked(e.target.checked)}
+                                            name="terms"
+                                        />
+                                    }
+                                    label="I agree to the terms and conditions"
+                                />
+                                {error && <FormHelperText>You must agree before submitting.</FormHelperText>}
+
+
+
                                 <span>{formError && (<div>{errorMessage}</div>)}</span>
                                 <html>
                                 <body>
-                                <form action="?" method="POST">
-                                    <div className="g-recaptcha" data-sitekey="your_site_key"></div>
-                                    <br/>
-                                    <input type="submit" value="Submit"/>
-                                </form>
+                                {/*<form action="?" method="POST">*/}
+                                {/*    <div className="g-recaptcha" data-sitekey="your_site_key"></div>*/}
+                                {/*    <br/>*/}
+                                {/*    <input type="submit" value="Submit"/>*/}
+                                {/*</form>*/}
                                 </body>
                                 </html>
 

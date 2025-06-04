@@ -10,7 +10,7 @@ const Agreement = () => {
                 <li>We are not responsible for any actions taken based on the information provided.</li>
                 <li>Your data will be handled according to our privacy policy.</li>
             </ul>
-            <button className="bg-blue-500 text-white px-4 py-2 rounded">Accept</button>
+            {/*<button className="bg-blue-500 text-white px-4 py-2 rounded">Accept</button>*/}
         </div>
 
     )
