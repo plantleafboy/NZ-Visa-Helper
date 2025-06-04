@@ -59,7 +59,7 @@ const VPCalculator = () => {
     const severity: 'success' | 'error' = meetsRequirement ? 'success' : 'error';
 
     return (
-        <Box sx={{ maxWidth: 600, mx: 'auto', mt: 4 }}>
+        <Box sx={{ maxWidth: 600, mx: 'auto', mt: 4, mb: 8}}>
             <Card>
                 <CardHeader title="Skilled Category Residence Visa Points Calculator" />
                 <CardContent>
