@@ -60,13 +60,13 @@ const articles: ArticleObject[] = [
     }
 ];
 
-const EducationArticles = () => {
+const VisaArticles = () => {
 
     return (
         <Container maxWidth="lg" sx={{ py: 6 }}>
             <Box mb={6}>
                 <Typography variant="h2" component="h1" fontWeight="bold" gutterBottom>
-                    Explore the Education Options
+                    Explore the Visa Options
                 </Typography>
             </Box>
             <ArticleGridObject articles={articles}/>
@@ -75,4 +75,4 @@ const EducationArticles = () => {
     );
 };
 
-export default EducationArticles;
+export default VisaArticles;
