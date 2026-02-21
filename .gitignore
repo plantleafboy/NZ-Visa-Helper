@@ -6,3 +6,5 @@ server/logs/app.log
 client/logs/app.log
 server/logs/error.log
 client/logs/error.log
+/node_modules
+/logs
