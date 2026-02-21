@@ -10,4 +10,7 @@ module.exports = (app: Express) => {
 
     app.route(rootUrl+'/email/appointment')
         .post(email.handleAppointmentEmail);
+
+    app.route(rootUrl+'/email/heartbeat')
+        .get(email.testLog);
 }
