@@ -21,6 +21,7 @@ const StripeEmbeddedCheckout = () => {
             return response.data.clientSecret;
         } catch (error: unknown) {
             console.error('Error:', error);
+            throw error;
         }
     }, []);
 
