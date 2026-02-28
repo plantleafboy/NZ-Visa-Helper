@@ -8,3 +8,4 @@ server/logs/error.log
 client/logs/error.log
 /node_modules
 /logs
+*/dist
