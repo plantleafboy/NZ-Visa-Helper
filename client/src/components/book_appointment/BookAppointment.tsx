@@ -19,7 +19,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import {motion} from "motion/react";
 const BookAppointment = () => {
     const [open, setOpen] = useState(false);
-    const MotionButton = motion(Button);
+    const MotionButton = motion.create(Button);
 
     const handleClickOpen = () => {
         setOpen(true);

@@ -50,7 +50,7 @@ function NavBar(props: AppBarProps) {
         return state
     });
     React.useEffect(() => {
-        getUserImage();
+        // getUserImage();
     }, []);
 
     const logoutUser = () => {

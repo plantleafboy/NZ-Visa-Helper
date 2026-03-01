@@ -4,11 +4,11 @@
   <meta charset="utf-8" />
 <meta http-equiv="Content-Security-Policy" content="
   default-src 'self'; 
-  script-src 'self' https://js.stripe.com https://ajax.googleapis.com https://cdn.jsdelivr.net 'unsafe-inline' 'unsafe-eval'; 
-  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net https://js.stripe.com; 
+  script-src 'self' https://js.stripe.com https://m.stripe.network https://ajax.googleapis.com https://cdn.jsdelivr.net 'unsafe-inline' 'unsafe-eval'; 
+  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net https://js.stripe.com https://m.stripe.network 'unsafe-hashes'; 
   img-src 'self' data: https://affiliates.orbitprotect.com https://*.stripe.com;
   frame-src 'self' https://js.stripe.com https://hooks.stripe.com https://checkout.stripe.com; 
-  connect-src 'self' https://api.stripe.com https://nz-visa-helper-app-wwwir.ondigitalocean.app;
+  connect-src 'self' https://api.stripe.com https://nz-visa-helper-app-wwwir.ondigitalocean.app https://cdn.jsdelivr.net http://localhost:4941 ws://localhost:3000;
   font-src 'self' https://fonts.gstatic.com;
 ">
 
