@@ -3,10 +3,12 @@ import bodyParser from "body-parser"
 import allowCrossOriginRequestsMiddleware from "../app/middleware/cors.middleware"
 import Logger from "./logger"
 import {rootUrl} from "../app/routes/base.routes";
+import path from 'path';
 
 export default () => {
     const app = express();
-
+    
+    app.use(express.static(path.join(__dirname, '../../client/build')));
     // Middleware
     app.use(allowCrossOriginRequestsMiddleware);
     app.use((req, res, next) => {
