@@ -20,7 +20,7 @@ const VisaInfo = () => {
             }}>
 
                 <EducationOptions></EducationOptions>
-                <ArticleDropdown></ArticleDropdown>
+                {/* <ArticleDropdown></ArticleDropdown> */}
                 <EducationArticles></EducationArticles>
                 <VisaArticles></VisaArticles>
                 <WorkAndLeave></WorkAndLeave>
