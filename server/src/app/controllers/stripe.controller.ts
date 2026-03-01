@@ -47,8 +47,8 @@ async function fulfillCheckout(sessionId: string) {
 const createSession = async (req: Request, res: Response) => {
     try {
 
-        const clientOrigin = process.env.NODE_ENV === 'production' 
-        ? 'https://nz-visa-helper-app-wwwir.ondigitalocean.app' 
+        const clientOrigin = process.env.NODE_ENV === 'production'
+        ? 'https://nz-visa-helper-app-wwwir.ondigitalocean.app'
         : req.headers.origin || 'http://localhost:3000';
 
         const session = await stripe.checkout.sessions.create({

@@ -58,7 +58,9 @@ import {BASE_URL} from "../utility/config";
 
 
 const Redirect = () => {
-    const [status, setStatus] = useState(null);
+
+    const [loading, setLoading] = useState(true);
+    const [status, setStatus] = useState('');
     const [customerEmail, setCustomerEmail] = useState('');
     //tanstack requires react 18+
     // const query = useQuery();
@@ -73,6 +75,10 @@ const Redirect = () => {
         const urlParams = new URLSearchParams(queryString);
         const sessionId = urlParams.get('session_id');
         console.log(sessionId)
+        if (!sessionId) {
+            setStatus('no_session');
+            return;
+        }
 
         axios.get(`${BASE_URL}/api/v1/stripe/session-status?session_id=${sessionId}`)
 
@@ -83,6 +89,7 @@ const Redirect = () => {
                 console.log("get response: ", response.data)
 
             })
+            .finally(() => setLoading(false))
             .catch((error) => {
                 console.error("Error fetching session status:", error);
             });
@@ -90,7 +97,9 @@ const Redirect = () => {
     }, []);
 
     // @ts-ignore
-    if (status === 'open') {
+    if (loading) return <Box><NavBar /><h3>Verifying your payment...</h3></Box>;
+
+    else if (status === 'open') {
         //TODO: or redirect to book an appointment page with a prop to open the payment form MODAL
         return (
             <Box>
