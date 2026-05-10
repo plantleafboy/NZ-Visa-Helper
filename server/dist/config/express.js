@@ -8,8 +8,10 @@ const body_parser_1 = __importDefault(require("body-parser"));
 const cors_middleware_1 = __importDefault(require("../app/middleware/cors.middleware"));
 const logger_1 = __importDefault(require("./logger"));
 const base_routes_1 = require("../app/routes/base.routes");
+const path_1 = __importDefault(require("path"));
 exports.default = () => {
     const app = (0, express_1.default)();
+    app.use(express_1.default.static(path_1.default.join(__dirname, '../../client/build')));
     // Middleware
     app.use(cors_middleware_1.default);
     app.use((req, res, next) => {

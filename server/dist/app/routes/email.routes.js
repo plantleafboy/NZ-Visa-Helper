@@ -31,5 +31,7 @@ module.exports = (app) => {
         .post(email.handleContactEmail);
     app.route(base_routes_1.rootUrl + '/email/appointment')
         .post(email.handleAppointmentEmail);
+    app.route(base_routes_1.rootUrl + '/email/heartbeat')
+        .get(email.testLog);
 };
 //# sourceMappingURL=email.routes.js.map

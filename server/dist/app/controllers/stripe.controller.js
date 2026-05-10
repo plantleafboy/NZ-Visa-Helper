@@ -52,6 +52,9 @@ function fulfillCheckout(sessionId) {
 }
 const createSession = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        const clientOrigin = process.env.NODE_ENV === 'production'
+            ? 'https://nz-visa-helper-app-wwwir.ondigitalocean.app'
+            : req.headers.origin || 'http://localhost:3000';
         const session = yield stripe.checkout.sessions.create({
             // payment_method_types: ['card'], FOR EXTRA PAYMENT TYPES
             line_items: [{
@@ -66,7 +69,7 @@ const createSession = (req, res) => __awaiter(void 0, void 0, void 0, function* 
                 }],
             mode: 'payment',
             ui_mode: 'embedded',
-            return_url: `${req.headers.origin}/order-outcome/return?session_id={CHECKOUT_SESSION_ID}` // make server page (url)
+            return_url: `${clientOrigin}/order-outcome/return?session_id={CHECKOUT_SESSION_ID}` // make server page (url)
         });
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json({ id: session.id, clientSecret: session.client_secret });

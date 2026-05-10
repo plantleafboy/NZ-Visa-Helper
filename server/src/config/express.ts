@@ -7,10 +7,16 @@ import path from 'path';
 
 export default () => {
     const app = express();
-    
+
     app.use(express.static(path.join(__dirname, '../../client/build')));
     // Middleware
     app.use(allowCrossOriginRequestsMiddleware);
+     // ROUTES
+    require('../app/routes/backdoor.routes')(app);
+    require('../app/routes/stripe.routes')(app);
+    require('../app/routes/user.routes')(app);
+    require('../app/routes/petition.routes')(app);
+    require('../app/routes/email.routes')(app);
     app.use((req, res, next) => {
         if (req.originalUrl === '/api/v1/stripe/webhook') {
             Logger.info('Stripe webhook called via /api/v1');
@@ -41,13 +47,6 @@ export default () => {
     app.get(rootUrl + '/testbeat', (req, res) => {
         res.send({'message': 'I\'m a new query!'});
     });
-
-    // ROUTES
-    require('../app/routes/backdoor.routes')(app);
-    require('../app/routes/stripe.routes')(app);
-    require('../app/routes/user.routes')(app);
-    require('../app/routes/petition.routes')(app);
-    require('../app/routes/email.routes')(app);
 
     return app;
 }
