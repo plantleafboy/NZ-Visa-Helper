@@ -10,3 +10,4 @@ client/logs/error.log
 /logs
 */dist
 *.map
+server/dist

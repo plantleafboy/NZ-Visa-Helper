@@ -14,6 +14,12 @@ exports.default = () => {
     app.use(express_1.default.static(path_1.default.join(__dirname, '../../client/build')));
     // Middleware
     app.use(cors_middleware_1.default);
+    // ROUTES
+    require('../app/routes/backdoor.routes')(app);
+    require('../app/routes/stripe.routes')(app);
+    require('../app/routes/user.routes')(app);
+    require('../app/routes/petition.routes')(app);
+    require('../app/routes/email.routes')(app);
     app.use((req, res, next) => {
         if (req.originalUrl === '/api/v1/stripe/webhook') {
             logger_1.default.info('Stripe webhook called via /api/v1');
@@ -41,12 +47,6 @@ exports.default = () => {
     app.get(base_routes_1.rootUrl + '/testbeat', (req, res) => {
         res.send({ 'message': 'I\'m a new query!' });
     });
-    // ROUTES
-    require('../app/routes/backdoor.routes')(app);
-    require('../app/routes/stripe.routes')(app);
-    require('../app/routes/user.routes')(app);
-    require('../app/routes/petition.routes')(app);
-    require('../app/routes/email.routes')(app);
     return app;
 };
 //# sourceMappingURL=express.js.map

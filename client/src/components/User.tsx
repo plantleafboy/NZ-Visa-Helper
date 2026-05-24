@@ -19,7 +19,6 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import {useUserAuthStateStore} from "../store";
 import NavBar from "./NavBar";
 import {Delete, Edit } from "@mui/icons-material";
-import PetitionListObject from "./utility/other/PetitionListObject";
 import Pagination from "./utility/other/Pagination";
 import CSS from "csstype";
 import { BASE_URL } from "../utility/config";
@@ -39,7 +38,7 @@ import Footer from "./Footer";
         const [errorFlag, setErrorFlag] = React.useState(false);
         const [errorMessage, setErrorMessage] = React.useState("");
         const [profileImage, setProfileImage] = React.useState<string>("");
-        const [petitions, setPetitions] = React.useState<Array<Petition>>([]);
+        // const [petitions, setPetitions] = React.useState<Array<Petition>>([]);
         const [emailError, setEmailError] = useState(false)
         const [passwordError, setPasswordError] = useState(false)
         const [changePasswordError, setChangePasswordError] = useState(false)
@@ -296,23 +295,14 @@ import Footer from "./Footer";
                     console.log("API Response: ", response.data);
                     setErrorFlag(false);
                     setErrorMessage("");
-                    setPetitions(response.data.petitions);
+                    // setPetitions(response.data.petitions);
                 }, (error) => {
                     setErrorFlag(true);
                     setErrorMessage(error.response.statusText)
                 });
         }
 
-        const petition_rows = () => petitions.map((petition: Petition) => <PetitionListObject key={petition.petitionId + petition.title} petition={petition}/>);
-
-        // const getPetitions = () => {
-        //     axios.get(`${BASE_URL}/api/v1/petitions?ownerId=${userId}`)
-        //         .then(
-        //             axios.spread((data1, data2) => {
-        //                 setPetitions([...data1.data.petitions, ...data2.data.petitions]);
-        //             }),
-        //         );
-        // };
+        // const petition_rows = () => petitions.map((petition: Petition) => <PetitionListObject key={petition.petitionId + petition.title} petition={petition}/>);
 
         if (errorFlag) {
             return (
@@ -523,7 +513,7 @@ import Footer from "./Footer";
                         >
                             Owned Petitions
                         </Typography>
-                            {petition_rows()}
+                            {/* {petition_rows()} */}
                     </Paper>
                 </div>
             );
