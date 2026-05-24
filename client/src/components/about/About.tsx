@@ -19,7 +19,7 @@ const About = () => {
                 color: "white",
                 py: 10,
                 textAlign: "center",
-                height: "60vh",
+                height: "80vh",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center"

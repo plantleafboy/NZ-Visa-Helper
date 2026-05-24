@@ -182,7 +182,7 @@ const SignUp = () => {
                 )}
                 {!authenticated && (
                     <Box className="sign-up"
-                         sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', mt: 4}}>
+                         sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', mt: 6}}>
                         <h1>Sign Up Form</h1>
                         {/*action="https://httpbin.org/post" method="post"*/}
                         <form  onSubmit={handleSubmit} id="sign-up-form" noValidate>

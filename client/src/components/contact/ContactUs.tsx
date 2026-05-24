@@ -79,7 +79,7 @@ const ContactUs = () => {
     return (
         <React.Fragment>
             <NavBar></NavBar>
-            <Box className="sign-up" sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', mt: 4, justifyContent: 'center', ml: 10, mr: 3 }}>
+            <Box className="sign-up" sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', mt: 10, justifyContent: 'center', ml: 10, mr: 3 }}>
                 <Container sx={{flex: 0.4, pb: 10}}>
                     <h1>Get Started by Contacting Us</h1>
                     <Typography variant='h5'>Let us help start your journey in New Zealand</Typography>

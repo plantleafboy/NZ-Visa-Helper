@@ -76,7 +76,7 @@ const Login = () => {
                     <h1>USER IS LOGGED IN</h1>
                 )}
                 {!authenticated && (
-                    <Box className="login" sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mt: 4 }}>
+                    <Box className="login" sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mt: 6 }}>
                         <form autoComplete="off" onSubmit={handleSubmit} noValidate>
                             <h2>Login Form</h2>
                             <TextField

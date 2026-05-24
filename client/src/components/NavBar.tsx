@@ -108,12 +108,24 @@ function NavBar(props: AppBarProps) {
     };
 
     return (
-            <AppBar position="static">
+            <AppBar 
+                position="absolute" // Lifts it up over the hero section
+                elevation={0}       // Removes the default drop-shadow border
+                sx={{ 
+                    backgroundColor: "rgba(13, 71, 161, 0.7)",
+                    // background: "linear-gradient(to bottom, rgba(13, 71, 161, 0.4) 0%, rgba(13, 71, 161, 0) 100%)",
+                    // backgroundColor: 'transparent',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    zIndex: 10,       // Ensures it stacks well above the video layer (which is at zIndex: 3)
+                }}
+            >
                 <Toolbar>
                         <IconButton size='large' edge={'start'} color={'inherit'} aria-label={'logo'} sx={{display: {xs:'none', md: 'flex'}}}>
                             <AirplaneTicketIcon/>
                         </IconButton>
-                        <Typography variant='h6' component='div' sx={{flexGrow:1, display: {xs:'none', md: 'flex'}}}> Peng Visa Service </Typography>
+                        <Typography variant='h6' component='div' sx={{flexGrow:1, display: {xs:'none', md: 'flex'}}}> NZ Visa Helper </Typography>
 
                         <Box sx={{display:{xs:'none',md:'flex'}}}>
                             {pages.map((page) => (
@@ -191,7 +203,7 @@ function NavBar(props: AppBarProps) {
                             <IconButton size='large' edge={'start'} color={'inherit'} aria-label={'logo'} sx={{display: {xs:'flex', md: 'none'}}}>
                                 <AirplaneTicketIcon/>
                             </IconButton>
-                            <Typography variant='h6' component='div' sx={{flexGrow:1, display: {xs:'flex', md: 'none'}}}> Peng Visa Service </Typography>
+                            <Typography variant='h6' component='div' sx={{flexGrow:1, display: {xs:'flex', md: 'none'}}}> NZ Visa Helper </Typography>
                         </Box>
                         <IconButton
                             size="large"
