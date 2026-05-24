@@ -13,6 +13,74 @@ const About = () => {
             <NavBar />
             {/* Hero Section */}
             <Box
+            sx={{
+                position: "relative",
+                overflow: "hidden", 
+                color: "white",
+                py: 10,
+                textAlign: "center",
+                height: "60vh",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center"
+            }}
+            >
+                <Box
+                    component="video"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    src="/images/coast_3321014-hd_1920_1080_30fps.mp4" // Swap this with the real path to your video file
+                    sx={{
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",        // Mimics backgroundSize: "cover" or contain
+                        objectPosition: "center", // Mimics backgroundPosition: "top center"
+                        zIndex: 1,                 // Keeps it below the content layer
+                    }}
+                />
+
+                {/* Optional Overlay to darken the video for text readability */}
+                <Box
+                    sx={{
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        width: "100%",
+                        height: "100%",
+                        backgroundColor: "rgba(0, 0, 0, 0.2)", // Adjust darkness here (0.4 = 40% opacity)
+                        zIndex: 2,
+                    }}
+                />
+
+                {/* The Content Layer */}
+                <Container 
+                    sx={{
+                        position: "relative",
+                        zIndex: 3,            
+                        display: "flex", 
+                        alignItems: "center", 
+                        flexDirection: "column", 
+                        justifyContent: "center"
+                    }}
+                >
+                    <Typography variant="h3" gutterBottom>
+                        Welcome to Your Journey to New Zealand
+                    </Typography>
+                    <Typography variant="h6" sx={{ maxWidth: 600, mx: "auto", mb: 4 }}>
+                        Our experienced team specializes in helping individuals and families from China migrate to New Zealand with
+                        ease and confidence.
+                    </Typography>
+                    <Button variant="contained" color="primary" size="large">
+                        Learn More
+                    </Button>
+                </Container>
+            </Box>
+            {/* <Box
                 sx={{
                     backgroundImage: "url('/images/hiking.png')",
                     backgroundSize: "cover",
@@ -38,7 +106,7 @@ const About = () => {
                         Learn More
                     </Button>
                 </Container>
-            </Box>
+            </Box> */}
 
             {/* Info Section */}
             <Box sx={{py: 5, bgcolor: "grey.100", height: '50vh', display: "flex", alignItems: "center", flexDirection: "row", justifyContent: "center"}}>
