@@ -60,21 +60,51 @@ const ContactUs = () => {
         sendEmail(); //to change
     }
 
-    const sendEmail = () => {
-        axios.post(`${BASE_URL}/api/v1/email/contact`, formData).then(
-            (response) => {
-                toast.success("Email sent successfully!");
-                setFormData({
-                    name: "",
-                    email: "",
-                    message: ""
-                });
-            },
-            (error) => {
-                toast.error("Failed to send email.");
-            },
-        );
+
+    const sendEmail = async () => {
+        console.log('>>> logging for active URL: ', BASE_URL);
+        console.log('>>> logging for environment: ', process.env.NODE_ENV);
+
+        try {
+            // Await the response directly
+            const response = await axios.post(`${BASE_URL}/api/v1/email/contact`, formData);
+            
+            // This will print the moment the server completes the 200 OK handshake
+            console.log('>>> success block response data: ', response.data);
+            
+            toast.success("Email sent successfully!");
+            
+            setFormData({
+                name: "",
+                email: "",
+                message: ""
+            });
+        } catch (error) {
+            console.error('>>> Error caught in email section:', error);
+            toast.error("Failed to send email.");
+        }
     };
+
+    // const sendEmail = () => {
+    //     console.log('>>> logging for active URL: ', BASE_URL)
+    //     console.log('>>> logging for environment: ', process.env.NODE_ENV)
+
+    //     axios.post(`${BASE_URL}/api/v1/email/contact`, formData).then(
+    //         (response) => {
+    //             toast.success("Email sent successfully!");
+    //             console.log('>>> success block for email send: ')
+    //             setFormData({
+    //                 name: "",
+    //                 email: "",
+    //                 message: ""
+    //             });
+    //         },
+    //         (error) => {
+    //             toast.error("Failed to send email.");
+    //             console.log('>>> error section email');
+    //         },
+    //     );
+    // };
 
     return (
         <React.Fragment>
@@ -86,14 +116,14 @@ const ContactUs = () => {
                 </Container>
                 {/*<Container sx={{flex: 0.6, ml: 4, mt: 4, backgroundColor: ""}}>*/}
                 <Paper
-                    elevation={3} // Controls shadow depth
+                    elevation={3}
                     sx={{
                         mx: "auto",
                         flex: 0.6,
-                        p: 4, // Adds padding inside the form
-                        borderRadius: 3, // Makes the corners rounded
-                        border: "1px solid #ccc", // Optional: Adds an outline
-                        boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)", // Subtle shadow
+                        p: 4,
+                        borderRadius: 3,
+                        border: "1px solid #ccc",
+                        boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
                         backgroundColor: "white"
                     }}
                 >

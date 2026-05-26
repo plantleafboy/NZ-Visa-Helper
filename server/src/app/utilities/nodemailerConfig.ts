@@ -8,18 +8,18 @@ const htmlTemplate = `
     <h1> Hello World </h1>
     <p>Thanks for your enquiry, here is the request</p>
 `;
-// Create the transporter
+
 const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 465,
-    secure: true, // Use true for port 465; false for 587
+    secure: true, // true - port 465 & false for 587
     auth: {
         user: process.env.EMAIL_USERNAME,
         pass: process.env.EMAIL_PASSWORD,
     },
 });
 
-// Verify the transporter configuration
+// // Verify the transporter configuration
 // transporter.verify((error, success) => {
 //     if (error) {
 //         console.error("Error connecting to email server:", error);
@@ -28,12 +28,11 @@ const transporter = nodemailer.createTransport({
 //     }
 // });
 
-// Function to send an email
 export const sendAppointmentEmail = async (to: string='hi', subject: string='test', text: string='helloworld', html?: string) => {
     try {
         const info = await transporter.sendMail({
             to: "holdEmail", // List of recipients
-            subject: 'Contact request from ', // Subject line
+            subject: 'Contact request from ',
             html: htmlTemplate
         });
         // const info = await transporter.sendMail({

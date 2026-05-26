@@ -1,5 +1,5 @@
 {
-  "name": "seng365-2024-assignment1-reference-project",
+  "name": "NZ-Visa_helper",
   "version": "0.0.1",
   "description": "Reference petition site server for SENG365 Assignment 1",
   "main": "dist/server.js",

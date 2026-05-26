@@ -8,15 +8,8 @@ import path from 'path';
 export default () => {
     const app = express();
 
-    app.use(express.static(path.join(__dirname, '../../client/build')));
-    // Middleware
     app.use(allowCrossOriginRequestsMiddleware);
-     // ROUTES
-    require('../app/routes/backdoor.routes')(app);
-    require('../app/routes/stripe.routes')(app);
-    require('../app/routes/user.routes')(app);
-    require('../app/routes/petition.routes')(app);
-    require('../app/routes/email.routes')(app);
+
     app.use((req, res, next) => {
         if (req.originalUrl === '/api/v1/stripe/webhook') {
             Logger.info('Stripe webhook called via /api/v1');
@@ -25,6 +18,25 @@ export default () => {
             bodyParser.json()(req, res, next);
         }
     });
+
+    // app.use((req, res, next) => {
+    //     if (req.originalUrl === '/api/v1//email/contact') {
+    //         Logger.info('email API called via /api/v1');
+    //         next();
+    //     } else {
+    //         bodyParser.json()(req, res, next);
+    //     }
+    // });
+     // ROUTES
+    require('../app/routes/backdoor.routes')(app);
+    require('../app/routes/stripe.routes')(app);
+    require('../app/routes/user.routes')(app);
+    require('../app/routes/petition.routes')(app);
+    require('../app/routes/email.routes')(app);
+
+    app.use(express.static(path.join(__dirname, '../../client/build')));
+
+
     app.use(bodyParser.raw({type: 'text/plain'}));
     app.use(bodyParser.raw({type: ['image/*'], limit: '5mb'}));
 

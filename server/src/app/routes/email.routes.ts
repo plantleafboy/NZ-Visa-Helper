@@ -5,7 +5,7 @@ import * as email from '../controllers/email.controller';
 // note: consider internal routing for the API request
 
 module.exports = (app: Express) => {
-    app.route(rootUrl+'/email/contact')
+    app.route(rootUrl+'/email/contact') // ContactUs component request
         .post(email.handleContactEmail);
 
     app.route(rootUrl+'/email/appointment')

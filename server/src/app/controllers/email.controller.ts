@@ -13,6 +13,10 @@ const handleContactEmail = async (req: Request, res: Response)   => {
     }
     catch (e) {
         Logger.error(e);
+        return res.status(500).json({
+            error: 'Internal Server Error via email controller',
+            message: e instanceof Error ? e.message : 'Unknown error occurred'
+        });
     }
     return;
 }
