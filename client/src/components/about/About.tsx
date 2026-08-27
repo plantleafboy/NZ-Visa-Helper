@@ -75,11 +75,9 @@ const About = () => {
                         Our experienced team specializes in helping individuals and families from China migrate to New Zealand with
                         ease and confidence.
                     </Typography>
-                    <a href="https://nz-visa-helper-app-wwwir.ondigitalocean.app/visa-info">
-                        <Button variant="contained" color="primary" size="large">
-                            Learn More
-                        </Button>
-                    </a>
+                    <Button variant="contained" color="primary" size="large" to="/visa-info">
+                        Learn More
+                    </Button>
                 </Container>
             </Box>
             {/* <Box
