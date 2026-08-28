@@ -2,6 +2,7 @@ import {Avatar, Box, Button, Card, CardContent, Container, Grid, Typography} fro
 import React from "react";
 import NavBar from "../NavBar";
 import Footer from "../Footer";
+import { Link } from 'react-router-dom';
 import InsuranceDisplay from "../utility/InsuranceDisplay";
 import MyTestimonials from "../about/MyTestimonials";
 import StudyArticles from "../visa_education/StudyArticles";
@@ -75,7 +76,7 @@ const About = () => {
                         Our experienced team specializes in helping individuals and families from China migrate to New Zealand with
                         ease and confidence.
                     </Typography>
-                    <Button variant="contained" color="primary" size="large" to="/visa-info">
+                    <Button variant="contained" color="primary" size="large" component={Link} to="/visa-info">
                         Learn More
                     </Button>
                 </Container>
