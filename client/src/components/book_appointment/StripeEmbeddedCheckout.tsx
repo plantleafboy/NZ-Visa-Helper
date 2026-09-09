@@ -12,7 +12,11 @@ import {BASE_URL} from "../../utility/config";
 
 // Make sure to call `loadStripe` outside of a component's render to avoid
 // recreating the `Stripe` object on every render.
-const stripePromise = loadStripe('pk_test_51QjIpJKgxsHSLKCZ6DajWzC7qBe26n9GghQC8JiVFfu37tMLWwc7A0vaizdOevVpHcK1llulyuPkfTqdrZthOS2t0061pU4Teu');
+const STRIPE_PUBLISHABLE_KEY = process.env.NODE_ENV === 'production'
+    ? 'pk_live_51QjIpJKgxsHSLKCZNyigVf37dsnc9k50jwbTqfXvvKJ0XR1P0aV3z7aYLJIohx3q1Fg4IujOyXz4mJSi98YE9anh00OVNAh6MO'
+    : 'pk_test_51QjIpJKgxsHSLKCZ6DajWzC7qBe26n9GghQC8JiVFfu37tMLWwc7A0vaizdOevVpHcK1llulyuPkfTqdrZthOS2t0061pU4Teu';
+
+const stripePromise = loadStripe(STRIPE_PUBLISHABLE_KEY);
 const StripeEmbeddedCheckout = () => {
     const fetchClientSecret = useCallback(async () => {
         try {

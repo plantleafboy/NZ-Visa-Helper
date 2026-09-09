@@ -3,6 +3,8 @@ import Logger from '../../config/logger';
 import Stripe from 'stripe';
 import dotenv from 'dotenv';
 import {sendEmailWithoutParameters} from "../utilities/nodemailerConfig";
+import {BASE_URL} from "../../config/host-url";
+
 
 dotenv.config();
 
@@ -47,9 +49,10 @@ async function fulfillCheckout(sessionId: string) {
 const createSession = async (req: Request, res: Response) => {
     try {
 
-        const clientOrigin = process.env.NODE_ENV === 'production'
-        ? 'https://nz-visa-helper-app-wwwir.ondigitalocean.app'
-        : req.headers.origin || 'http://localhost:3000';
+        const clientOrigin = BASE_URL
+        // const clientOrigin = process.env.NODE_ENV === 'production'
+        // ? 'https://nz-visa-helper-app-wwwir.ondigitalocean.app'
+        // : req.headers.origin || 'http://localhost:3000';
 
         const session = await stripe.checkout.sessions.create({
             // payment_method_types: ['card'], FOR EXTRA PAYMENT TYPES
