@@ -1,5 +1,5 @@
 {
-  "name": "NZ-Visa_helper",
+  "name": "NZ-Visa_helper-server",
   "version": "0.0.1",
   "description": "NZ Visa Helper online website",
   "main": "dist/server.js",
