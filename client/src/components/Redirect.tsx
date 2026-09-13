@@ -12,6 +12,8 @@ const Redirect = () => {
     const [loading, setLoading] = useState(true);
     const [status, setStatus] = useState('');
     const [customerEmail, setCustomerEmail] = useState('');
+    const [showSuccess, setShowSuccess] = useState(true); // or trigger based on your existing success state
+
     //tanstack requires react 18+
     // const query = useQuery();
     // const sessionId = query.get('session_id'); // Get the session_id from the URL
@@ -67,6 +69,11 @@ const Redirect = () => {
                 <Box>
                     <NavBar></NavBar>
                     <section id="success">
+                        <SuccessPage
+                            open={showSuccess}
+                            onClose={() => setShowSuccess(false)}
+                            customerEmail={customerEmail}
+                        />
                         <p>
                             We appreciate your business! A confirmation email will be sent to {customerEmail}
                              and we will be in contact with you shortly.

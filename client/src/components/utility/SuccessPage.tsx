@@ -50,7 +50,7 @@ const fireConfetti = () => {
     });
 };
 
-const SuccessPage = ({ open, onClose, customerEmail }) => {
+const SuccessPage:React.FC<SuccessProps> = ({ open, onClose, customerEmail }) => {
     useEffect(() => {
         if (open) {
             fireConfetti();
