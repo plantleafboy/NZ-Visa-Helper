@@ -4,9 +4,8 @@
   "description": "Reference petition site server for SENG365 Assignment 1",
   "main": "dist/server.js",
   "scripts": {
-    "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
-    "build": "tsc",
-    "prestart": "npm run build",
+    "lint": "tslint -c tslint.json -p tsconfig.json --fix",
+    "build": "npm run lint && tsc",
     "start": "node .",
     "debug": "node --inspect dist/server.js",
     "devStart": "nodemon server.ts",
