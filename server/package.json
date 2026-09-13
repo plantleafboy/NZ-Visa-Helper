@@ -1,11 +1,10 @@
 {
   "name": "NZ-Visa_helper",
   "version": "0.0.1",
-  "description": "Reference petition site server for SENG365 Assignment 1",
+  "description": "NZ Visa Helper online website",
   "main": "dist/server.js",
   "scripts": {
-    "lint": "tslint -c tslint.json -p tsconfig.json --fix",
-    "build": "npm run lint && tsc",
+    "build": "tsc",
     "start": "node .",
     "debug": "node --inspect dist/server.js",
     "devStart": "nodemon server.ts",
