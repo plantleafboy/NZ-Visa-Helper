@@ -122,7 +122,7 @@ const Redirect = () => {
                              and we will be in contact with you shortly.
                             <br/>
                             If you have any questions, please email <a
-                            href="mailto:orders@example.com">orders@example.com</a>.
+                            href="mailto:sunpengyimin@gmail.com">sunpengyimin@gmail.com</a>.
                         </p>
                     </section>
                 </Box>
