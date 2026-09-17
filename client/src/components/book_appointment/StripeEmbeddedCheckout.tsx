@@ -20,11 +20,13 @@ const stripePromise = loadStripe(STRIPE_PUBLISHABLE_KEY);
 const StripeEmbeddedCheckout = () => {
     const fetchClientSecret = useCallback(async () => {
         try {
+            
             const response = await axios.post(`${BASE_URL}/api/v1/stripe/embedded-checkout`);
+            console.log('current publishable key (stripe):', STRIPE_PUBLISHABLE_KEY);
             console.log('Checkout response:', response);
             return response.data.clientSecret;
         } catch (error: unknown) {
-            console.error('Error:', error);
+            console.error('User Thrown Error -> stripeEmbeddedcheckout: ', error);
             throw error;
         }
     }, []);
