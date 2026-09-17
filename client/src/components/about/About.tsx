@@ -81,40 +81,10 @@ const About = () => {
                     </Button>
                 </Container>
             </Box>
-            {/* <Box
-                sx={{
-                    backgroundImage: "url('/images/hiking.png')",
-                    backgroundSize: "cover",
-                    backgroundPosition: "top center",
-                    color: "white",
-                    py: 10,
-                    textAlign: "center",
-                    height: "60vh",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center"
-                }}
-            >
-                    <Container sx={{display: "flex", alignItems: "center", flexDirection: "column", justifyContent: "center"}}>
-                    <Typography variant="h3" gutterBottom>
-                        Welcome to Your Journey to New Zealand
-                    </Typography>
-                    <Typography variant="h6" sx={{ maxWidth: 600, mx: "auto", mb: 4 }}>
-                        Our experienced team specializes in helping individuals and families from China migrate to New Zealand with
-                        ease and confidence.
-                    </Typography>
-                    <Button variant="contained" color="primary" size="large">
-                        Learn More
-                    </Button>
-                </Container>
-            </Box> */}
 
             {/* Info Section */}
             <Box sx={{py: 5, bgcolor: "grey.100", height: '50vh', display: "flex", alignItems: "center", flexDirection: "row", justifyContent: "center"}}>
                 <Container>
-                    {/*<Typography variant="h4" gutterBottom textAlign="center" sx={{alignSelf: "top"}}>*/}
-                    {/*    Why Choose Us?*/}
-                    {/*</Typography>*/}
                     <Grid container spacing={10}>
                         <Grid item xs={12} md={4}>
                             <Typography variant="h4">Expert Guidance</Typography>

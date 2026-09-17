@@ -8,6 +8,8 @@ import {
     Button
 } from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import { Link } from 'react-router-dom';
+
 
 interface SuccessProps {
     open: boolean;
@@ -77,7 +79,7 @@ const SuccessPage:React.FC<SuccessProps> = ({ open, onClose, customerEmail }) =>
                 </Typography>
 
                 <Box sx={{ mt: 3 }}>
-                    <Button variant="contained" onClick={onClose}>
+                    <Button variant="contained" onClick={onClose} component={Link} to="/about">
                         Done
                     </Button>
                 </Box>

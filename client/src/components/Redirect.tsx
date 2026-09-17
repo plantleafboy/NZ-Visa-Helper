@@ -74,13 +74,13 @@ const Redirect = () => {
                             onClose={() => setShowSuccess(false)}
                             customerEmail={customerEmail}
                         />
-                        <p>
+                        {/* <p>
                             We appreciate your business! A confirmation email will be sent to {customerEmail}
                              and we will be in contact with you shortly.
                             <br/>
                             If you have any questions, please email <a
                             href="mailto:sunpengyimin@gmail.com">sunpengyimin@gmail.com</a>.
-                        </p>
+                        </p> */}
                     </section>
                 </Box>
             )
