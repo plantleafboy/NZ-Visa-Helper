@@ -18,7 +18,7 @@ interface SuccessProps {
 }
 
 const fireConfetti = () => {
-    const duration = 2 * 1000;
+    const duration = 1 * 500;
     const end = Date.now() + duration;
 
     const frame = () => {
@@ -27,14 +27,16 @@ const fireConfetti = () => {
             angle: 60,
             spread: 55,
             origin: { x: 0 },
-            colors: ['#1976d2', '#66bb6a', '#ffca28']
+            colors: ['#1976d2', '#66bb6a', '#ffca28'],
+            zIndex: 1400, // above MUI's Dialog (1300)
         });
         confetti({
             particleCount: 4,
             angle: 120,
             spread: 55,
             origin: { x: 1 },
-            colors: ['#1976d2', '#66bb6a', '#ffca28']
+            colors: ['#1976d2', '#66bb6a', '#ffca28'],
+            zIndex: 1400, // above MUI's Dialog (1300)
         });
 
         if (Date.now() < end) {
@@ -44,12 +46,6 @@ const fireConfetti = () => {
 
     frame();
 
-    // one big celebratory burst from the center too
-    confetti({
-        particleCount: 150,
-        spread: 100,
-        origin: { y: 0.6 }
-    });
 };
 
 const SuccessPage:React.FC<SuccessProps> = ({ open, onClose, customerEmail }) => {
