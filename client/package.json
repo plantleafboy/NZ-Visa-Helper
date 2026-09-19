@@ -1,6 +1,7 @@
 {
   "name": "NZ-Visa_helper-client",
   "engines": {
+    "node": "20.x",
     "npm": "10.x"
   },
   "version": "0.1.0",
