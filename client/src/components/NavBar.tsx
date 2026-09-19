@@ -85,9 +85,10 @@ function NavBar(props: AppBarProps) {
                 (response) => {
                     setErrorFlag(false);
                     setErrorMessage("");
+                    const contentType = response.headers["content-type"];
                     const imageUrl = URL.createObjectURL(
                         new Blob([response.data], {
-                            type: response.headers["content-type"],
+                            type: typeof contentType === "string" ? contentType : undefined,
                         }),
                     );
                     setUserImage(imageUrl);
