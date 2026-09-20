@@ -75,5 +75,10 @@
   "allowScripts": {
     "core-js@3.37.1": true,
     "core-js-pure@3.37.1": true
+  },
+  "overrides": {
+  "fdir": {
+    "picomatch": "^4.0.7"
+  }
   }
 }
