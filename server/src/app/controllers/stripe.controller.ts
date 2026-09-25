@@ -48,7 +48,7 @@ async function fulfillCheckout(sessionId: string) {
 
 const createSession = async (req: Request, res: Response) => {
     try {
-
+        Logger.info('in create session -> BASE URL: ', BASE_URL)
         const clientOrigin = BASE_URL
         // const clientOrigin = process.env.NODE_ENV === 'production'
         // ? 'https://nz-visa-helper-app-wwwir.ondigitalocean.app'
