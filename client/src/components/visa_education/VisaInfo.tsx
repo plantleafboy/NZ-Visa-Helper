@@ -22,7 +22,7 @@ const VisaInfo = () => {
                 <EducationOptions></EducationOptions>
                 {/* <ArticleDropdown></ArticleDropdown> */}
                 <EducationArticles></EducationArticles>
-                <VisaArticles></VisaArticles>
+                {/* <VisaArticles></VisaArticles> */}
                 <WorkAndLeave></WorkAndLeave>
             </Container>
             {/*<Footer text={"Footer to add"}></Footer>*/}
