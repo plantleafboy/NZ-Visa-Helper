@@ -21,16 +21,6 @@ const handleContactEmail = async (req: Request, res: Response)   => {
     return;
 }
 
-const handleAppointmentEmail = async (req: Request, res: Response)   => {
-    try {
-        await sendAppointmentEmail()
-        res.status(200).send('Email sent successfully');
-    }
-    catch (e) {
-        Logger.error(e);
-    }
-    return;
-}
 
 const testLog = async (req: Request, res: Response) => {
     Logger.info("working query received")
@@ -38,4 +28,4 @@ const testLog = async (req: Request, res: Response) => {
 }
 
 
-export {handleContactEmail, testLog, handleAppointmentEmail}
+export {handleContactEmail, testLog}

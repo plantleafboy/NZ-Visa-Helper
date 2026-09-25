@@ -28,20 +28,13 @@ const transporter = nodemailer.createTransport({
 //     }
 // });
 
-export const sendAppointmentEmail = async (to: string='hi', subject: string='test', text: string='helloworld', html?: string) => {
+export const sendAppointmentEmail = async (req: Request, to: string='hi', subject: string='test', text: string='helloworld', html?: string) => {
     try {
         const info = await transporter.sendMail({
             to: "holdEmail", // List of recipients
             subject: 'Contact request from ',
             html: htmlTemplate
         });
-        // const info = await transporter.sendMail({
-        //     from: `"Immigration service" <${process.env.EMAIL_USER}>`, // Sender address
-        //     to, // List of recipients
-        //     subject, // Subject line
-        //     text, // Plain text body
-        //     html, // HTML body (optional)
-        // });
 
         // console.log(`Email sent: ${info.messageId}`);
     } catch (error) {
@@ -65,12 +58,4 @@ export const sendContactEmail = async (name: string, email: string, message: str
         // console.error("Error sending email:", error);
         throw error;
     }
-};
-
-export const sendEmailWithoutParameters = async () => {
-    await transporter.sendMail({
-        to: "alexhpcp@gmail.com", // List of recipients
-        subject: 'my subject', // Subject line
-        html: htmlTemplate
-    }).then(r => "success");
 };
