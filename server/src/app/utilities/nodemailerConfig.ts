@@ -29,11 +29,11 @@ const transporter = nodemailer.createTransport({
 // });
 
 export const sendAppointmentEmail = async (req: Request, to: string='hi', subject: string='test', text: string='helloworld', html?: string) => {
-    const message = req.
+    const message = 'test message';
     try {
         const info = await transporter.sendMail({
-            to: "holdEmail", // List of recipients
-            subject: 'Contact request from ',
+            to: "alexhpcp@Gmail.com", // List of recipients
+            subject: 'fulfillmenet checkout info ',
             text: message,
             // html: htmlTemplate
         });
