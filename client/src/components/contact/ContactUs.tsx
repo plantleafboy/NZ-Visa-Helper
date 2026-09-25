@@ -36,13 +36,6 @@ const ContactUs = () => {
         setFormData({ ...formData, [name]: value});
     };
 
-    // axios.get(`${BASE_URL}/api/v1/users/1/image`,).then(
-    //     (response) => {
-    //     },
-    //     (error) => {
-    //     },
-    // );
-
     const handleSubmit = (e: React.FormEvent) => {
         /** TODO
          * validates the input fields for form data:
@@ -66,9 +59,8 @@ const ContactUs = () => {
         console.log('>>> logging for environment: ', process.env.NODE_ENV);
 
         try {
-            // Await the response directly
             const response = await axios.post(`${BASE_URL}/api/v1/email/contact`, formData);
-            
+
             // This will print the moment the server completes the 200 OK handshake
             console.log('>>> success block response data: ', response.data);
             
@@ -85,26 +77,6 @@ const ContactUs = () => {
         }
     };
 
-    // const sendEmail = () => {
-    //     console.log('>>> logging for active URL: ', BASE_URL)
-    //     console.log('>>> logging for environment: ', process.env.NODE_ENV)
-
-    //     axios.post(`${BASE_URL}/api/v1/email/contact`, formData).then(
-    //         (response) => {
-    //             toast.success("Email sent successfully!");
-    //             console.log('>>> success block for email send: ')
-    //             setFormData({
-    //                 name: "",
-    //                 email: "",
-    //                 message: ""
-    //             });
-    //         },
-    //         (error) => {
-    //             toast.error("Failed to send email.");
-    //             console.log('>>> error section email');
-    //         },
-    //     );
-    // };
 
     return (
         <React.Fragment>

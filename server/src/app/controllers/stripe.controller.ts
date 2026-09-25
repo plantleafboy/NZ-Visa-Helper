@@ -41,17 +41,16 @@ const createSession = async (req: Request, res: Response) => {
 };
 
 const getCheckoutStatus = async (req: Request, res: Response) => {
-    Logger.info('enter function here');
+    Logger.info('stripe: route -> controller -> getCheckoutStatus 1');
 
     const session = await stripe.checkout.sessions.retrieve(req.query.session_id as string);
-    Logger.info(req.query.session_id);
+    Logger.info('session_id: ', req.query.session_id);
     if (session.status === 'complete')
-         
-    res.send({
-        status: session.status,
-        payment_status: session.payment_status,
-        customer_email: session.customer_details.email
-    });
+        res.send({
+            status: session.status,
+            payment_status: session.payment_status,
+            customer_email: session.customer_details.email
+        });
 }
 
 const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET;
@@ -75,7 +74,7 @@ const webhookFulfilment = async (req: Request, res: Response) => {
         || event.type === 'checkout.session.async_payment_succeeded'
     ) 
         {
-            Logger.info('Checkout session was completed!');
+            Logger.info('Checkout session was completed!'); 
             await fulfillCheckout(event.data.object.id, payload); //confirm what event and payload (req.body) is
         }
 

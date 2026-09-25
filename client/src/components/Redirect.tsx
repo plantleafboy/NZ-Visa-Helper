@@ -40,6 +40,7 @@ const Redirect = () => {
                 setCustomerEmail(customer_email);
                 console.log("get response: ", response.data)
 
+
             })
             .finally(() => setLoading(false))
             .catch((error) => {
@@ -61,8 +62,9 @@ const Redirect = () => {
             </Box>
         )
         // @ts-ignore
-    } else if (status === 'complete') {
-            //TODO: call fulfillment function?? HERE WE WAIT FOR WEBHOOK FLOW AND SHOW STANDARD SUCCESS PAGE
+    } else if (status === 'complete') { //webhook success flow
+            //KEEP ON SERVER - redirect to success page + call fulfillment function (email verification)
+
             return (
                 // Show success page + use session.payment_status or session.customer_email
                 // customize the success page

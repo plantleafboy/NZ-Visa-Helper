@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const htmlTemplate = `
-    <h1> Hello World </h1>
+    <h1> test webhook fulfillment </h1>
     <p>Thanks for your enquiry, here is the request</p>
 `;
 
@@ -29,11 +29,13 @@ const transporter = nodemailer.createTransport({
 // });
 
 export const sendAppointmentEmail = async (req: Request, to: string='hi', subject: string='test', text: string='helloworld', html?: string) => {
+    const message = req.
     try {
         const info = await transporter.sendMail({
             to: "holdEmail", // List of recipients
             subject: 'Contact request from ',
-            html: htmlTemplate
+            text: message,
+            // html: htmlTemplate
         });
 
         // console.log(`Email sent: ${info.messageId}`);
