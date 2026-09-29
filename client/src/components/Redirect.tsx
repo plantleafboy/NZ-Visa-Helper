@@ -5,6 +5,7 @@ import {Navigate, useParams} from "react-router-dom";
 import {useCallback, useEffect, useState} from "react";
 import {BASE_URL} from "../utility/config";
 import SuccessPage from "./utility/SuccessPage";
+import NotFound from "./Redirect";
 
 
 const Redirect = () => {
@@ -89,7 +90,7 @@ const Redirect = () => {
     } else {
         return (
             <Box>
-                <NavBar></NavBar>
+                <NotFound></NotFound>
                 <h3>Exception Error session status: neither complete or open. Please try payment again</h3>
                 {/*<Navigate to="/book-appointment" />*/}
             </Box>
