@@ -14,7 +14,10 @@ import {BASE_URL} from "../../utility/config";
 // recreating the `Stripe` object on every render.
 const STRIPE_PUBLISHABLE_KEY = process.env.NODE_ENV === 'production'
     ? 'pk_live_51QjIpJKgxsHSLKCZNyigVf37dsnc9k50jwbTqfXvvKJ0XR1P0aV3z7aYLJIohx3q1Fg4IujOyXz4mJSi98YE9anh00OVNAh6MO'
-    : 'pk_test_51QjIpJKgxsHSLKCZ6DajWzC7qBe26n9GghQC8JiVFfu37tMLWwc7A0vaizdOevVpHcK1llulyuPkfTqdrZthOS2t0061pU4Teu';
+    : 'pk_test_51UJQjVKN642FRo3pnMS6OYLeaNBnQCc5TIJ3XWUoN65PXLc7wlyT0Q2uuAdsS6qrjsN257obGNSdhQAT2dDm7XUL005rgQn90J';   //sandbox key
+    //: 'pk_test_51QjIpJKgxsHSLKCZ6DajWzC7qBe26n9GghQC8JiVFfu37tMLWwc7A0vaizdOevVpHcK1llulyuPkfTqdrZthOS2t0061pU4Teu';   //old_test key
+console.log('env read: ' + process.env.NODE_ENV);
+console.log('stripe_publishable_key: ' + STRIPE_PUBLISHABLE_KEY)
 
 const stripePromise = loadStripe(STRIPE_PUBLISHABLE_KEY);
 const StripeEmbeddedCheckout = () => {

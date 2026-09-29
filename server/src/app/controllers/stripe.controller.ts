@@ -13,7 +13,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
 
 const createSession = async (req: Request, res: Response) => {
     try {
-        Logger.info('in create session -> BASE URL: ', BASE_URL)
+        Logger.info('in create session -> BASE URL: ' + BASE_URL)
         const clientOrigin = BASE_URL
 
         const session = await stripe.checkout.sessions.create({
@@ -44,7 +44,7 @@ const getCheckoutStatus = async (req: Request, res: Response) => {
     Logger.info('stripe: route -> controller -> getCheckoutStatus 1');
 
     const session = await stripe.checkout.sessions.retrieve(req.query.session_id as string);
-    Logger.info('session_id: ', req.query.session_id);
+    Logger.info('session_id: ' + session);
     if (session.status === 'complete')
         res.send({
             status: session.status,
@@ -56,7 +56,9 @@ const getCheckoutStatus = async (req: Request, res: Response) => {
 const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
 const webhookFulfilment = async (req: Request, res: Response) => {
-    Logger.info("Received > webhook req.body", req.body);
+    
+    // Logger.info("Received > webhook req.body" + req.body);
+    Logger.info(`Received req from webhook`);   
     const payload = req.body;
     const sig = req.headers['stripe-signature'];
     let event;
@@ -64,37 +66,34 @@ const webhookFulfilment = async (req: Request, res: Response) => {
     try {
         event = stripe.webhooks.constructEvent(payload, sig, endpointSecret);
     } catch (err) {
-        Logger.error('fail on construction ', err.message);
+        Logger.error('fail on construction ' + err.message);
         return res.status(400).send(`Webhook construct event Error: ${err.message}`);
     }
 
-    // since we use checkout API from stripe, we can expect these events
-    if (
-        event.type === 'checkout.session.completed'
-        || event.type === 'checkout.session.async_payment_succeeded'
-    ) 
-        {
-            Logger.info('Checkout session was completed!'); 
-            await fulfillCheckout(event.data.object.id, payload); //confirm what event and payload (req.body) is
-        }
-
-    // alternative webhook wevents, hoewever should not be applicable to us TODO: if needed, finish alternative flow(s)
-    else if (event.type === 'payment_intent.succeeded') { // TODO: confirm what data is required and where it is retrieved from
-        Logger.info('Payment Intent was successful!');
-
-        const checkoutSessions = await stripe.checkout.sessions.list({
-            payment_intent: event.data.object.id,
-        });
-        if (checkoutSessions.data.length > 0) {
-            const session = checkoutSessions.data[0];
-            Logger.info('Found Checkout Session:', session);
-        } else {
-            Logger.error('No Checkout Session associated with this Payment Intent');
-        }
+    if (event.type == 'checkout.session.completed')
+    {
+        Logger.info('--- Checkout.session.completed received ---'); 
+        await fulfillCheckout(event.data.object.id, payload); //confirm what event and payload (req.body) is
     }
+    else {
+        Logger.warn('alternative event received: ' + event.type);
+    } 
+
+    // else if (event.type === 'payment_intent.succeeded') {
+    //     Logger.info('Payment Intent was successful!');
+    //     const checkoutSessions = await stripe.checkout.sessions.list({
+    //         payment_intent: event.data.object.id,
+    //     });
+    //     if (checkoutSessions.data.length > 0) {
+    //         const session = checkoutSessions.data[0];
+    //         Logger.info('Found Checkout Session:' + session);
+    //     } else {
+    //         Logger.error('No Checkout Session associated with this Payment Intent');
+    //     }
+    // }
 
     res.status(200).end();
-    Logger.info('fulfilled');
+    Logger.info('end of func webhookfulfilment');
 
 };
 

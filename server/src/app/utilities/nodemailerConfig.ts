@@ -28,19 +28,16 @@ const transporter = nodemailer.createTransport({
 //     }
 // });
 
-export const sendAppointmentEmail = async (req: Request, to: string='hi', subject: string='test', text: string='helloworld', html?: string) => {
-    const message = 'test message';
+export const sendAppointmentEmail = async (recipient: string='alexplantdev@gmail.com', subject: string='test', text: string='helloworld') => {
+    const message = 'this is a succesful flow from the checkout! thank you for your interest. We will be in contact shortly!';
     try {
         const info = await transporter.sendMail({
-            to: "alexhpcp@Gmail.com", // List of recipients
-            subject: 'fulfillmenet checkout info ',
+            to: recipient,
+            subject: 'NZ Visa Helper - Checkout Notice',
             text: message,
             // html: htmlTemplate
         });
-
-        // console.log(`Email sent: ${info.messageId}`);
     } catch (error) {
-        // console.error("Error sending email:", error);
         throw error;
     }
 };

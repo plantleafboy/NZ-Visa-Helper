@@ -5,13 +5,23 @@ import {sendAppointmentEmail} from "../utilities/nodemailerConfig";
 import Logger from '../../config/logger';
 dotenv.config();
 import Stripe from 'stripe';
-const stripe = new Stripe(process.env.STRIPE_TEST_SECRET_KEY!);
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
+
+interface FulfillmentData {
+    sessionId: string;
+    paymentStatus: string;
+    amountTotal: number | null;
+    currency: string | null;
+    customerEmail: string | undefined;
+    customerName: string | undefined; 
+    paymentIntentId: string | null;
+    lineItems: Stripe.LineItem[] | undefined;
+}
 
 //verifies checkout status using stripe functions + sends email (nodeMailerConfig)
 async function fulfillCheckout(sessionId: string, req: Request) {
     //https://dashboard.stripe.com/apikeys
-    Logger.info('Fulfilling Checkout Session (from stripeCheckoutService' + sessionId);
-    Logger.info('Request: ', req);
+    Logger.info('Found Checkout Session:  ' + sessionId);    
 
     // TODO: Make this function safe to run multiple times,
     // even concurrently, with the same session ID
@@ -25,16 +35,29 @@ async function fulfillCheckout(sessionId: string, req: Request) {
         expand: ['line_items'],
     });
 
-    if (checkoutSession.payment_status !== 'unpaid') {
+    const fulfillmentData: FulfillmentData = {
+        sessionId: checkoutSession.id,
+        paymentStatus: checkoutSession.payment_status,
+        amountTotal: checkoutSession.amount_total,
+        currency: checkoutSession.currency,
+        customerEmail: checkoutSession.customer_details?.email ?? undefined,
+        customerName: checkoutSession.customer_details?.name ?? undefined,
+        paymentIntentId: checkoutSession.payment_intent as string | null,
+        lineItems: checkoutSession.line_items?.data,
+    };
+    // Logger.info(` > > > > Found Checkout Session: ${JSON.stringify(checkoutSession)}`);   
+
+    if (checkoutSession.payment_status === 'paid') {
         try {
-            await sendAppointmentEmail(req) // change to correct email function
+            await sendAppointmentEmail(fulfillmentData.customerEmail) // change to correct email function
         } catch (e) {
-            Logger.error('Error sending email:', e);
+            Logger.error('Error sending fulfillment email:' + e);
         }
-
-        // TODO: Record/save fulfillment status for this Checkout Session save IN USER DB
     }
+    else {
+        Logger.error('Error checkout payment status NOT paid!');
+    }
+        // TODO: Record/save fulfillment status for this Checkout Session save IN USER DB
 }
-
 
 export {fulfillCheckout} 
