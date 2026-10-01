@@ -30,6 +30,7 @@ const createSession = async (req: Request, res: Response) => {
                 quantity: 1,
             }],
             mode: 'payment',
+            allow_promotion_codes: true,
             ui_mode: 'embedded',
             return_url: `${clientOrigin}/order-outcome/return?session_id={CHECKOUT_SESSION_ID}`   // make server page (url)
         })

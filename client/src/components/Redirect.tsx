@@ -27,7 +27,6 @@ const Redirect = () => {
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         const sessionId = urlParams.get('session_id');
-        console.log(sessionId)
         if (!sessionId) {
             setStatus('no_session');
             return;
