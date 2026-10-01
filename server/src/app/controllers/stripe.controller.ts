@@ -13,7 +13,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
 
 const createSession = async (req: Request, res: Response) => {
     try {
-        Logger.info('in create session -> BASE URL: ' + BASE_URL)
+        Logger.info('controller ---> in create session -> BASE URL: ' + BASE_URL)
         const clientOrigin = BASE_URL
 
         const session = await stripe.checkout.sessions.create({
@@ -25,7 +25,7 @@ const createSession = async (req: Request, res: Response) => {
                         name: 'Client Appointment',
                     },
                     // unit_amount: 9000,
-                    unit_amount: 10,
+                    unit_amount: 100,
                 },
                 quantity: 1,
             }],
@@ -37,6 +37,13 @@ const createSession = async (req: Request, res: Response) => {
         res.status(200).json({ id: session.id, clientSecret: session.client_secret });
 
     } catch (e) {
+        Logger.error('createSession failed: ' + JSON.stringify({
+            message: e.message,
+            type: e.type,
+            code: e.code,
+            param: e.param,
+            statusCode: e.statusCode,
+        }));
         res.status(500).json({ error: e.message })
     }
 };
