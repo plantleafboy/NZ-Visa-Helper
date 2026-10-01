@@ -24,7 +24,8 @@ const createSession = async (req: Request, res: Response) => {
                     product_data: {
                         name: 'Client Appointment',
                     },
-                    unit_amount: 9000,
+                    // unit_amount: 9000,
+                    unit_amount: 10,
                 },
                 quantity: 1,
             }],
@@ -93,8 +94,6 @@ const webhookFulfilment = async (req: Request, res: Response) => {
     // }
 
     res.status(200).end();
-    Logger.info('end of func webhookfulfilment');
-
 };
 
 

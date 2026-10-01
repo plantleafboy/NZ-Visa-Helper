@@ -7,17 +7,6 @@ dotenv.config();
 import Stripe from 'stripe';
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
-interface FulfillmentData {
-    sessionId: string;
-    paymentStatus: string;
-    amountTotal: number | null;
-    currency: string | null;
-    customerEmail: string | undefined;
-    customerName: string | undefined; 
-    paymentIntentId: string | null;
-    lineItems: Stripe.LineItem[] | undefined;
-}
-
 //verifies checkout status using stripe functions + sends email (nodeMailerConfig)
 async function fulfillCheckout(sessionId: string, req: Request) {
     //https://dashboard.stripe.com/apikeys
@@ -35,7 +24,7 @@ async function fulfillCheckout(sessionId: string, req: Request) {
         expand: ['line_items'],
     });
 
-    const fulfillmentData: FulfillmentData = {
+    const fulfillmentObject: StripeFulfillmentData = {
         sessionId: checkoutSession.id,
         paymentStatus: checkoutSession.payment_status,
         amountTotal: checkoutSession.amount_total,
@@ -43,13 +32,13 @@ async function fulfillCheckout(sessionId: string, req: Request) {
         customerEmail: checkoutSession.customer_details?.email ?? undefined,
         customerName: checkoutSession.customer_details?.name ?? undefined,
         paymentIntentId: checkoutSession.payment_intent as string | null,
-        lineItems: checkoutSession.line_items?.data,
     };
-    // Logger.info(` > > > > Found Checkout Session: ${JSON.stringify(checkoutSession)}`);   
+    
+    // lineItems: checkoutSession.line_items?.data, // TODO: check if required.
 
     if (checkoutSession.payment_status === 'paid') {
         try {
-            await sendAppointmentEmail(fulfillmentData.customerEmail) // change to correct email function
+            await sendAppointmentEmail(fulfillmentObject) // change to correct email function
         } catch (e) {
             Logger.error('Error sending fulfillment email:' + e);
         }
@@ -58,6 +47,9 @@ async function fulfillCheckout(sessionId: string, req: Request) {
         Logger.error('Error checkout payment status NOT paid!');
     }
         // TODO: Record/save fulfillment status for this Checkout Session save IN USER DB
+
+    Logger.info('end of function - fulfillCheckout');
+
 }
 
 export {fulfillCheckout} 

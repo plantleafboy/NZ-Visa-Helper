@@ -1,7 +1,7 @@
 import nodemailer from "nodemailer"
 import dotenv from 'dotenv';
+import Logger from '../../config/logger';
 
-// Load environment variables
 dotenv.config();
 
 const htmlTemplate = `
@@ -19,20 +19,19 @@ const transporter = nodemailer.createTransport({
     },
 });
 
-// // Verify the transporter configuration
-// transporter.verify((error, success) => {
-//     if (error) {
-//         console.error("Error connecting to email server:", error);
-//     } else {
-//         console.log("Email server is ready to send messages:", success);
-//     }
-// });
+transporter.verify((error, success) => {
+    if (error) {
+        Logger.error("Error connecting to email server:" + error);
+    } else {
+        Logger.info("Email server is ready to send messages:" + success);
+    }
+});
 
-export const sendAppointmentEmail = async (recipient: string='alexplantdev@gmail.com', subject: string='test', text: string='helloworld') => {
-    const message = 'this is a succesful flow from the checkout! thank you for your interest. We will be in contact shortly!';
+export const sendAppointmentEmail = async (fulfillmentObject : StripeFulfillmentData) => {
+    const message = `Thanks ${fulfillmentObject.customerName}! This is a successful flow from the checkout! Thank you for your interest. We will be in contact shortly!`;
     try {
         const info = await transporter.sendMail({
-            to: recipient,
+            to: fulfillmentObject.customerEmail,
             subject: 'NZ Visa Helper - Checkout Notice',
             text: message,
             // html: htmlTemplate
