@@ -18,13 +18,21 @@ const createSession = async (req: Request, res: Response) => {
 
         const session = await stripe.checkout.sessions.create({
             // payment_method_types: ['card'], FOR EXTRA PAYMENT TYPES
+            // line_items: [{
+            //     price_data: {
+            //         currency: 'usd',
+            //         product_data: {
+            //             name: 'Client Appointment',
+            //         },
+            //         // unit_amount: 9000,
+            //         unit_amount: 100,
+            //     },
+            //     quantity: 1,
+            // }],
             line_items: [{
                 price_data: {
                     currency: 'usd',
-                    product_data: {
-                        name: 'Client Appointment',
-                    },
-                    // unit_amount: 9000,
+                    product: 'prod_VMmmUaY6zI5pIz',
                     unit_amount: 100,
                 },
                 quantity: 1,
